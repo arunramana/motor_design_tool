@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- base css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/login.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-6 white_bg" id="remove_pad">
+            <div class="mm_logos">
+                <img class="mm_logo" src="assets/images/mm_logo.svg" alt="">
+                <img class="poweredby" src="assets/images/poweredby.svg" alt="">
+            </div>
+            <!-- <img class="bg_img" src="assets/images/full_pic.svg" alt=""> -->
+        </div>
+        <div class="col-md-6">
+            <div class="right_signup_div">
+                <div class="pad20A row">			
+                    <div class="login_title pad20B" align="center">Sign-up</div>
+					<div class="col-md-12 pad25B"><div class="upload_photo"><img src="assets/images/profile_signup.svg">
+					</div>
+					
+					</div>
+					<div class="col-md-6">
+                    <div class="form-group">
+                        <label for="user_id" class="form-label">User Name <span class="red_txt">*</span></label>
+                       <div> <input type="text" id="user_id" class="form-control" /></div>
+	                </div>
+					</div>
+					<div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email_id" class="form-label">Email ID <span class="red_txt">*</span></label>
+                      <div>  <input type="text" id="email_id" class="form-control" /></div>
+                   </div>
+					</div>
+					<div class="col-md-6">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password <span class="red_txt">*</span></label>						
+							<div><input class="form-control" id="password" type="password">     </div>
+						    <a href="javascript:void(0);" class="toggle-password"><i class="eye-slash pad5R "  toggle="#password"></i> </a>                    </div>
+					</div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="confirm_password" class="form-label">Confirm Password <span class="red_txt">*</span></label>
+                            <div><input class="form-control" id="confirm_password" type="password"></div>
+                            <a href="javascript:void(0);" class="toggle-password"><i class="eye-slash pad5R " toggle="#confirm_password"></i> </a>
+                        </div>
+                    </div>			
+					
+                    <div class="mrg20T" align="center">
+                        <a  class="primarybt w-80" onclick="createAccount()">Create Account</a>
+                    </div>
+                    
+                     <div class="row mrg20T">
+                    <div class="col-md-11 registration_text">
+                        <span>Already have an account?  <a href="login.html" class="primaryclr"><b>Login</b></a></span>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader_animation_overlay" id="loader_animation_overlay">
+        <div class="loader_animation" id="loader_animation"></div>
+    </div>
+
+    <script src="./assets/js/jquery.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+         $(document).on('click', '.toggle-password', function () {
+    var input = $($(this).find('i').attr('toggle'));
+    $(this).find('i').toggleClass('eye eye-slash');
+    if (input.attr('type') == 'password') {
+        input.attr('type', 'text');
+    } else {
+        input.attr('type', 'password');
+    }
+});
+
+        function validateInput(userId, email, password, confirmPassword) {
+        // Check if all fields are filled
+        if (!userId || !email || !password || !confirmPassword) {
+            alert("Please fill in all the fields.");
+            return false; // Validation failed
+        }
+
+        // Validate email format
+        const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!validRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return false; // Validation failed
+        }
+
+        // Validate password format (alphanumeric)
+       const minLength = 8;
+    const capitalLetterRegex = /[A-Z]/;
+    const smallLetterRegex = /[a-z]/;
+    const numberRegex = /\d/;
+    const symbolRegex = /[!"#$%&'()*+,-./:;<=>?@[^_`{|}~]/;
+
+    let errorMessage = '';
+
+    if (password.length < minLength) {
+        errorMessage += `Password must be at least ${minLength} characters long.\n`;
+    }
+    if (!capitalLetterRegex.test(password)) {
+        errorMessage += 'Password must contain at least one capital letter.\n';
+    }
+    if (!smallLetterRegex.test(password)) {
+        errorMessage += 'Password must contain at least one small letter.\n';
+    }
+    if (!numberRegex.test(password)) {
+        errorMessage += 'Password must contain at least one number.\n';
+    }
+    if (!symbolRegex.test(password)) {
+        errorMessage += 'Password must contain at least one special character .\n';
+    }
+
+    if (errorMessage) {
+        alert(errorMessage);
+        return false; // Validation failed
+    }
+
+    if (password !== confirmPassword) {
+                alert("Password and Confirm Password do not match.");
+                return false; // Validation failed
+            }
+
+        // All validations passed
+        return true;
+    }
+
+    function hashPassword(password) {
+            return CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+        }
+
+
+
+    function callSignupAPI(userId, email, hashedPassword) {
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        const raw = JSON.stringify({
+            "email": email,
+            "password": hashedPassword,
+            "user_name": userId,
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+        
+        showLoader()
+        fetch(base_url+"/signup", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                hideLoader()
+                if (result.error !== "none") {
+                    alert("User already exists. Please use a different email or login.");
+                } else {
+                    console.log(result);
+                    sessionStorage.setItem('user_id', result.user_id);
+                    sessionStorage.setItem('user_name', result.user_name);
+                    sessionStorage.setItem('email', result.email);
+                    window.location.href = 'dashboard.html';
+                    // Handle other response cases if needed
+                }
+            })
+            .catch((error) => {
+                hideLoader()
+                console.error(error)});
+    }
+
+        function createAccount() {
+            const userId = document.getElementById('user_id').value;
+        const email = document.getElementById('email_id').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+
+        // Validate input
+        if (!validateInput(userId, email, password, confirmPassword)) {
+            // Validation failed, return early
+            return;
+        }
+
+        const hashedPassword = hashPassword(password);
+
+        // If all validations pass, make the API call
+        callSignupAPI(userId, email, hashedPassword);
+
+           
+        }
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+    </script> 
+
+</body>
+
+</html>

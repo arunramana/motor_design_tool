@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="my_vehicle_ic">My Vehicles</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+			<div class="page-content">
+			   							 
+					<div class="ip_body">   
+						<div class="ip_container">
+                            <h3 class="ip_h3">Design motor for</h3>
+                            <div class="ip_toggle-button" id="toggleButton">
+                                <div class="ip_option ip_active" id="evOption">EV Application</div>
+                                <div class="ip_option" id="nonEvOption">Non-EV Application</div>
+                            </div>
+                            <button class="ip_submit-button" onclick="submitForm()">Submit</button>
+                        </div>
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+<div id="create_new" class="modal fade">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">      
+      <div class="modal-header">
+	  <div class="left"><h3>Create new Vehicle</h3></div>
+	  <div class="right"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button> </div>
+      </div>
+      <div class="modal-body pad40T">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">NAME</td>
+    <td class="pad10B"> <div data-tip="Please fill out this field.">  <input name="" type="text" class="form-control" id="vehicle_name"></div></td>
+  </tr>
+   <tr>
+    <td valign="top">DESCRIPTION</td>
+    <td><div data-tip="Please fill out this field."> <textarea name="" cols="" rows=""  class="form-control h80px" id="vehicle_desc"></textarea></div></td>
+  </tr>
+   <tr>
+    <td align="right" class="pad20T" colspan="2">	
+      <a href="#" class="secondarybt" data-dismiss="modal">Cancel</a>
+      <button onclick="createVehicle()" class="primarybt">Save</button> 
+      </td>
+    </tr>
+</table>
+
+	<div class="clear mrg20B"></div>
+      </div>
+	
+      </div>
+    </div>
+  </div>
+
+  <div id="create_new" class="modal fade">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">      
+        <div class="modal-header">
+        <div class="left"><h3>Create new Vehicle</h3></div>
+        <div class="right"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button> </div>
+        </div>
+        <div class="modal-body pad40T">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top">NAME</td>
+      <td class="pad10B"> <div data-tip="This is the context sensitive help">  <input name="" type="text" class="form-control" id="vehicle_name"></div></td>
+    </tr>
+     <tr>
+      <td valign="top">DESCRIPTION</td>
+      <td><div data-tip="This is the context sensitive help"> <textarea name="" cols="" rows=""  class="form-control h80px" id="vehicle_desc"></textarea></div></td>
+      
+    </tr>
+     <tr>
+      <td align="right" class="pad20T" colspan="2">	
+        <a href="#" class="secondarybt" data-dismiss="modal">Cancel</a>
+        <button onclick="createVehicle()" class="primarybt">Save</button> 
+        </td>
+      </tr>
+  </table>
+  
+      <div class="clear mrg20B"></div>
+        </div>
+      
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const evOption = document.getElementById('evOption');
+    const nonEvOption = document.getElementById('nonEvOption');
+    const toggleButton = document.getElementById('toggleButton');
+
+    evOption.addEventListener('click', function() {
+        evOption.classList.add('ip_active');
+        nonEvOption.classList.remove('ip_active');
+    });
+
+    nonEvOption.addEventListener('click', function() {
+        nonEvOption.classList.add('ip_active');
+        evOption.classList.remove('ip_active');
+    });
+});
+
+function submitForm() {
+    const isEvSelected = document.getElementById('evOption').classList.contains('ip_active');
+    const selectedPage = isEvSelected ? 'dashboard.html' : 'non-ev-dashboard.html';
+    window.location.href = selectedPage;
+}
+</script>
+	
+<script>
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+  // var base_url = "http://127.0.0.1:5000";
+
+  localStorage.removeItem('vehicleData')
+    localStorage.removeItem('vehicleGetData')
+  function fetchVehicleData(vehicleName, callback) {
+    showLoader();
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehicleName // Fetch from parameter
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    fetch(base_url + "/get_vehicle_data", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            hideLoader();
+            if (data && data.input && !isEmpty(data.input)) {
+                // Store data in local storage
+                localStorage.setItem('vehicleData', JSON.stringify(data.input));
+                // Call the callback function to navigate
+                callback(true);
+            } else {
+                createEmptyMotorData()
+                console.error('No data found for the vehicle');
+                callback(false);
+                
+            }
+        })
+        .catch(error => {
+        hideLoader();
+        console.error('Error:', error);
+        alert('Failed to complete the operation. Please try again.');
+    });
+}
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+function createEmptyMotorData() {
+const vehicleGetData = {
+    "gvw": "",
+    "gear_ratio": "",
+    "wheel_radius": "",
+    "frontal_area": "",
+    "cd": "",
+    "rolling_resistance_coeff": "",
+    "gear_efficiency": "",
+    "rated_speed_kmph": "",
+    "continuous_gradient": "",
+    "max_speed": "",
+    "gradeability": "",
+    "time_to_cross_grade_from_rest": "",
+    "length_of_grade": "",
+    "acceleration_from_rest_to_speed": "",
+    "time_to_accelerate": "",
+    "v_dc": ""
+};
+
+// Store the vehicleGetData object in local storage
+localStorage.setItem('vehicleGetData', JSON.stringify(vehicleGetData));
+}
+
+function listVehicles() {
+    showLoader();
+    fetch(base_url + "/get_all_vehicles", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "user_id": user_id }) // Assuming API requires an user_id
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoader();
+        const table = document.getElementById('vehicle_list');
+        const tableContainer = document.querySelector('.table_grid');
+        table.innerHTML = ''; // Clear existing entries
+        
+
+        // Assuming both arrays are of the same length
+        if (Array.isArray(data.vehicle_names) && Array.isArray(data.vehicle_desc) && data.vehicle_names.length === data.vehicle_desc.length && data.vehicle_names.length > 0) {
+            let rows = '';
+            data.vehicle_names.forEach((name, index) => {
+                const desc = data.vehicle_desc[index];
+                rows += `<tr>
+                    <td><a href="#" data-vehicle="${name}">${name}</a></td>
+                    <td><a href="#" data-vehicle="${name}">${desc}</a></td>
+                    <td><div class="delete_ic" onclick="deleteVehicle('${name}')"></div></td>
+                </tr>`;
+            });
+            table.innerHTML = rows;
+            tableContainer.style.display = ''; // Show the table
+        } else {
+            // Hide or remove the table if there are no vehicles
+            tableContainer.style.display = 'none'; // Hide the table container
+        }
+    })
+    .catch(error => {
+        hideLoader();
+        console.error('Error:', error);
+        document.querySelector('.table_grid').style.display = 'none'; // Hide the table container on error too
+    });
+}
+
+function createVehicle() {
+    showLoader();
+    const vehicleName = document.getElementById('vehicle_name').value.replaceAll(' ', '_');
+    const vehicleDesc = document.getElementById('vehicle_desc').value;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id, // Example user_id, replace or modify as necessary
+        "vehicle_name": vehicleName,
+        "desc": vehicleDesc
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url +"/create_vehicle", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader();
+            console.log(result);
+            alert("Vehicle created successfully");
+            window.location.reload();
+            // Optionally, clear the input fields or close the modal
+            $('#create_new').modal('hide');
+        })
+        .catch(error => {
+            hideLoader();
+            console.log('error', error)});
+
+}
+
+function deleteVehicle(vehicleName) {
+    showLoader();
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "user_id": user_id,"vehicle_name": vehicleName })
+    };
+
+    fetch(base_url +"/delete_vehicle", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader();
+            console.log(result);
+            alert("Vehicle deleted successfully");
+            window.location.reload();
+            listVehicles();  // Refresh the list after deletion
+        })
+        .catch(error => {
+            hideLoader();
+            console.error('error', error)});
+}
+
+function navigateToVehicleParams(vehicleName) {
+    localStorage.setItem('vehicle_name', vehicleName);
+  var url = "vehicle_parameters.html?vehicle=" + encodeURIComponent(vehicleName);
+  window.location.href = url;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    localStorage.removeItem('vehicleData');
+    localStorage.removeItem('vehicle_name');
+    listVehicles();
+
+    // Attach event listeners to vehicle links after they are loaded
+    document.getElementById('vehicle_list').addEventListener('click', function(event) {
+        if (event.target.tagName === 'A' && event.target.dataset.vehicle) {
+            event.preventDefault(); // Prevent default navigation
+            const vehicleName = event.target.dataset.vehicle;
+            showLoader();
+            fetchVehicleData(vehicleName, function(hasData) {
+            hideLoader();
+            if (hasData) {
+                var storedData = localStorage.getItem('vehicleData');
+                if (storedData) {
+                    console.log("Data retrieved from storage:", JSON.parse(storedData));
+                } else {
+                    console.log("No data found in local storage, unexpected scenario.");
+                }
+            } else {
+                console.log("Navigating without data.");
+            }
+            navigateToVehicleParams(vehicleName);
+        });
+        }
+    });
+});
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+        }
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+					<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='winding_output.html'"></i> <span id="vehiName"></span>/ Vehicle Dynamics/ Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>   
+                                                     
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+			<div class="page-content">			   							 
+			<div class="row d-flex align-items-center dash_pad1">   
+					<div class="col-md-12 pad25T">								
+						
+                        <div id="process">
+                            <ul id="stepButtons" class="process-row nav nav-tabs">                
+                                <li class="process-step active1">
+                                    <button type="button" class="btn btn-circle btn-default" onclick="vehicleParam()">
+                                        <i class="vehicle_ic"></i>
+                                    </button>
+                                    <p>Vehicle Parameters</p>
+                                </li>                
+                                <li class="process-step active1">
+                                    <button type="button" class="btn btn-circle btn-default" onclick="previousButton()">
+                                        <i class="performance"></i>
+                                    </button>
+                                    <p>Performance Specs</p>
+                                </li>
+                                <li class="process-step active">
+                                    <button type="button" class="btn btn-circle btn-default" onclick="saveDataAndNavigateBack()">
+                                        <i class="drive_cycle"></i>
+                                    </button>
+                                    <p>Drive Cycle</p>
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+					<div class="clear mrg25B"></div>						
+					<div class="row d-flex align-items-center dash_pad">   
+													
+				<div class="mrg20B pad20L" align="center">	
+                    <canvas id="chartContainer"></canvas> 
+									</div>
+									
+								</div>
+								
+							<div class="clear mrg25B"></div>
+				<div class="row">
+                    <div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+                    <div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns" onclick="showEditModal()">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+                    <div class="col-sm-4" align="right"><button id="runButton" class="nxt_pre_btns" onclick="checkDataAndProceed()">Run <img src="assets/images/arrow_right.svg"> </button></div></div>
+					
+				</div>
+				
+				</div>				
+			</div>	
+		
+						
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="editModalLabel">Warning!</h4>
+                        </div>
+                        <div class="modal-body">
+                            If you do not want data to be overwritten, please create a new version.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="createVersion()">Create Version</button>
+                            <button type="button" class="btn btn-secondary" onclick="overwriteData()">Overwrite Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-dragdata"></script>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script src="./assets/js/config.js"></script>
+<script>
+var dataAltered;
+function saveDataAndNavigateBack() {
+    const driveCycleEdited = localStorage.getItem('driveCycleEdited') === 'true';
+    var storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData'));
+    console.log("Before Save:", storedObject);
+
+    if (driveCycleEdited) {
+        console.log("Stored",storedObject)
+        storedObject.drive_cycle = localStorage.getItem('datapoints');
+        localStorage.setItem('vehicleData',JSON.stringify(storedObject));
+    } else if (dataAltered) {
+        console.log("getObject",getObject)
+        getObject.drive_cycle = localStorage.getItem('datapoints');
+        localStorage.setItem('vehicleGetData',JSON.stringify(getObject));
+    }else{
+        
+    }
+
+    
+    
+    console.log("Vehicle data saved. Navigating back to vehicle parameters...");
+    // Navigate to the previous page
+}
+
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'performance_specs.html';
+}
+function vehicleParam(){
+    saveDataAndNavigateBack();
+    window.location.href = 'vehicle_parameters.html';
+}
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    fetchVehicleData();
+
+});
+
+function fetchVehicleData() {
+    hideLoader()
+    const storedData = localStorage.getItem('vehicleData')
+    console.log("check",localStorage.getItem('vehicleData'))
+    console.log("check1",localStorage.getItem('vehicleGetData'))
+    const data1 = JSON.parse(localStorage.getItem('vehicleGetData'));
+    if (storedData) {
+            const data = JSON.parse(storedData);
+            if (data && !isEmpty(data)) {
+               
+                fillInputFields(data);
+            disableGraphInteraction();
+                dataAltered = false;
+            } else {
+                enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+            }
+        } else {
+            enableAndPopulateFields(data1);
+            console.log("No data available. User needs to input values.");
+            dataAltered = true;
+            editButton.style.display = 'none';
+        }
+
+    }
+
+    function fillInputFields(data) {
+    var dataPoints = JSON.parse(data.drive_cycle);
+    localStorage.setItem('datapoints',JSON.stringify(dataPoints));
+    console.log("checkme",dataPoints)
+    renderChart(dataPoints, false);
+}
+
+function enableAndPopulateFields(data1) {
+    let dataPoints = data1.drive_cycle;
+    localStorage.setItem('datapoints',JSON.stringify(dataPoints))
+    renderChart(dataPoints, true); 
+}
+
+function disableGraphInteraction() {
+    document.getElementById('chartContainer').style.pointerEvents = 'none';
+}
+
+function enableGraphInteraction() {
+    document.getElementById('chartContainer').style.pointerEvents = 'auto';
+}
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+        }
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+
+
+        function renderChart(dataPoints, draggable) {
+    var ctx = document.getElementById('chartContainer').getContext('2d');
+    var existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+        existingChart.destroy(); // Destroy the existing Chart instance
+    }
+
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Speed',
+                data: dataPoints,
+                borderColor: '#36a2eb',
+                backgroundColor: '#36a2eb55',
+                borderWidth: 3,
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#ff6384',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    title: {
+                        display: true,
+                        text: 'Time (seconds)',
+                        color: '#333',
+                        font: {
+                            size: 16,
+                            family: 'Roboto, sans-serif',
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: '#e9e9e9'
+                    },
+                    ticks: {
+                        color: '#333'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Speed (km/h)',
+                        color: '#333',
+                        font: {
+                            size: 16,
+                            family: 'Roboto, sans-serif',
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        color: '#e9e9e9'
+                    },
+                    ticks: {
+                        color: '#333'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#333',
+                        font: {
+                            size: 14,
+                            family: 'Roboto, sans-serif'
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#333',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#fff',
+                    borderWidth: 1,
+                    titleFont: {
+                        size: 14,
+                        family: 'Roboto, sans-serif'
+                    },
+                    bodyFont: {
+                        size: 12,
+                        family: 'Roboto, sans-serif'
+                    },
+                    padding: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return '';
+                        },
+                        label: function(context) {
+                            var label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.raw.y + ', Time: ' + context.raw.x;
+                            return label;
+                        }
+                    }
+                },
+                dragData: {
+                    round: 0,
+                    showTooltip: true,
+                    dragX: true,
+                    onDragStart: function(e, datasetIndex, index, value) {
+                        if (index === 0 || index === dataPoints.length - 1) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    },
+                    onDrag: function(e, datasetIndex, index, value) {
+                        if (index === 0 || index === dataPoints.length - 1) return false;
+
+                        var pointBefore = dataPoints[index - 1].x;
+                        var pointAfter = dataPoints[index + 1].x;
+
+                        if (value.x <= pointBefore) {
+                            value.x = pointBefore + 1;
+                        }
+                        if (value.x >= pointAfter) {
+                            value.x = pointAfter - 1;
+                        }
+
+                        dataPoints[index].x = value.x;
+                        dataPoints[index].y = value.y;
+                        chart.update();
+                    },
+                    onDragEnd: function(e, datasetIndex, index, value) {
+                        if (index === 0 || index === dataPoints.length - 1) return false;
+
+                        dataPoints[index].x = value.x;
+                        dataPoints[index].y = value.y;
+                        localStorage.setItem('datapoints',JSON.stringify(dataPoints));
+                        console.log("check1234",JSON.stringify(dataPoints))
+
+                        chart.options.scales.y.min = 0;
+                        chart.options.scales.y.max = Math.max(...dataPoints.map(point => point.y)) + 10;
+                        chart.update();
+                    }
+                }
+            }
+        }
+    });
+
+    if (!draggable) {
+        chart.options.plugins.dragData = null;
+        chart.update();
+    }
+}
+
+    
+
+function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    $('#errorModal').modal('show');
+}
+
+function showEditModal() {
+    $('#editModal').modal('show');
+}
+
+function createVersion() {
+    showLoader()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/create_vehicle_version", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            window.location.href = 'dashboard.html';
+            // Optionally redirect or update UI here
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+}
+
+
+function overwriteData() {
+    showLoader()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/delete_all_motors", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            localStorage.setItem('driveCycleEdited', 'true');
+            enableGraphInteraction();
+            dataAltered = true;
+            document.getElementById('editButton').style.display = 'none';
+            $('#editModal').modal('hide');
+            renderChart(JSON.parse(localStorage.getItem('datapoints')), true); 
+            
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+   
+}
+
+
+
+function checkDataAndProceed() {
+
+const vehicleParamEdited = localStorage.getItem('vehicleParamEdited') === 'true';
+const performanceSpecEdited = localStorage.getItem('performanceSpecEdited') === 'true';
+const driveCycleEdited = localStorage.getItem('driveCycleEdited') === 'true';
+
+if(vehicleParamEdited || performanceSpecEdited){
+    localStorage.setItem('driveCycleEdited','true');
+}
+
+
+console.log("v",vehicleParamEdited)
+console.log("p",performanceSpecEdited)
+if (dataAltered || vehicleParamEdited || performanceSpecEdited || driveCycleEdited) {
+    console.log("altered")
+    validateInputs();  
+     // Directly navigate if data is pre-filled
+} else {
+    console.log("altered")
+        localStorage.removeItem('vehicleData');
+    navigateToNext();
+    // Call validation function if data needs to be entered or confirmed
+}
+}
+
+function navigateToNext(){
+    window.location.href = "continuous_mode.html";
+}
+
+function validateInputs() {
+    const driveCycleEdited = localStorage.getItem('driveCycleEdited') === 'true';
+    var storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData'));
+
+    if (driveCycleEdited) {
+        storedObject.drive_cycle = localStorage.getItem('datapoints');
+        localStorage.setItem('vehicleData', JSON.stringify(storedObject));
+    } else {
+        getObject.drive_cycle = localStorage.getItem('datapoints');
+        localStorage.setItem('vehicleGetData', JSON.stringify(getObject));
+    }
+
+   
+   
+
+    makeAPICall();
+}
+
+function makeAPICall() {
+    const formData = JSON.parse(localStorage.getItem('formData'));
+    const storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const vehicleParamEdited = localStorage.getItem('vehicleParamEdited') === 'true';
+    const performanceSpecEdited = localStorage.getItem('performanceSpecEdited') === 'true';
+
+console.log('checkdatapoints',localStorage.getItem('datapoints'))
+
+    function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+    let requestBody;
+    if (vehicleParamEdited || performanceSpecEdited){
+        requestBody = {
+            "user_id": user_id,
+            "vehicle_name": vehiName,
+            "gvw": storedObject.gvw,
+            "gear_ratio": storedObject.gear_ratio,
+            "wheel_radius": storedObject.wheel_radius,
+            "frontal_area": storedObject.frontal_area,
+            "cd": storedObject.cd,
+            "rolling_resistance_coeff": storedObject.rolling_resistance_coeff,
+            "gear_efficiency": storedObject.gear_efficiency,
+            "rated_speed_kmph": storedObject.rated_speed_kmph,
+            "continuous_gradient": storedObject.continuous_gradient,
+            "max_speed": storedObject.max_speed,
+            "gradeability": storedObject.gradeability,
+            "time_to_cross_grade_from_rest": storedObject.time_to_cross_grade_from_rest,
+            "length_of_grade": storedObject.length_of_grade,
+            "acceleration_from_rest_to_speed": storedObject.acceleration_from_rest_to_speed,
+            "time_to_accelerate": storedObject.time_to_accelerate,
+            "v_dc": storedObject.v_dc,
+            "factor":storedObject.factor,
+            "drive_cycle":localStorage.getItem('datapoints')
+        };
+    }else {
+      console.log("formdata",formData)
+        const { batteryVoltage, wheelRadius, dragCoefficient, rollingResistance, grossVehicleWeight, frontalArea, gearRatio, gearEfficiency } = formData;
+        
+        const continuousGradient = localStorage.getItem("ContinuosGradient");
+        const ratedSpeedKmph = localStorage.getItem("SpeedContinuous");
+        const maxSpeed = localStorage.getItem("MaxSpeedOnLevel");
+        const gradeability = localStorage.getItem("Gradeability");
+        const lengthOfGrade = localStorage.getItem("LengthOfGrade");
+        const timeToCrossGrade = localStorage.getItem("TimetoCrossGrade");
+        const accelerationFromRest = localStorage.getItem("AccelerationRest");
+        const timeToAccelerate = localStorage.getItem("timeAccelerate");
+        const factors = localStorage.getItem("factor");
+       
+        requestBody = {
+              "user_id": user_id,
+              "vehicle_name": vehiName,
+              "gvw": grossVehicleWeight,
+              "gear_ratio": gearRatio,
+              "wheel_radius": wheelRadius,
+              "frontal_area": frontalArea,
+              "cd": dragCoefficient,
+              "rolling_resistance_coeff": rollingResistance,
+              "gear_efficiency": gearEfficiency,
+              "rated_speed_kmph": ratedSpeedKmph,
+              "continuous_gradient": continuousGradient,
+              "max_speed": maxSpeed,
+              "gradeability": gradeability,
+              "time_to_cross_grade_from_rest": timeToCrossGrade,
+              "length_of_grade": lengthOfGrade,
+              "acceleration_from_rest_to_speed": accelerationFromRest,
+              "time_to_accelerate": timeToAccelerate,
+              "v_dc": batteryVoltage,
+              "factor":factors,
+              "drive_cycle":localStorage.getItem('datapoints')
+           
+        };
+    }
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(requestBody),
+        redirect: "follow"
+    };
+
+        showLoader()
+        fetch(base_url + "/vehicle_dynamics", requestOptions)
+            .then(response => {
+                if (!response.ok) { // Check if the response status is 200 (ok)
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.text(); // or response.json() if the server returns JSON
+            })
+            .then(result => {
+                hideLoader()
+                console.log(result);
+                localStorage.removeItem('vehicleParamEdited');
+            localStorage.removeItem('performanceSpecEdited');
+            localStorage.removeItem('vehicleData');
+            localStorage.removeItem('vehicleGetData');
+                navigateToNext();
+            })
+            .catch(error => {
+                hideLoader()
+                console.error('Error:', error)});
+    
+}
+
+
+
+</script>
+  </body>
+</html>

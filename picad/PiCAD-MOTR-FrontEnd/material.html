@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='motor_wiz_inputs.html'"></i> <span id="vehiName"></span> / <span id="motoName"></span> / Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item">
+	                            <a class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+            <!-- Slider -->
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="WireMaterialContent" style="display: none;">
+                    <h3>Wire Material </h3>
+                    <p>Copper exhibits superior conductivity, better resistance to corrosion and higher 
+                        mechanical strength. However, copper is heavier and more expensive than aluminum. 
+                        Copper is often preferred for demanding applications that prioritize performance and 
+                        reliability. </p>
+                        <p>Aluminum is lighter and generally more cost-effective than copper. While aluminum 
+                            has lower conductivity resulting in more resistive loss, still it remains a viable option for 
+                            many applications, particularly those prioritizing cost and weight considerations. </p>
+                    <!-- Content for Battery Voltage -->
+                    <!-- <h3>Battery voltage DC (V)</h3><br>
+
+                    <ul> 
+                       <li>The battery voltage is often pre-decided by the vehicle manufacturer.  Else, it can be 
+                        chosen based on the availability of charging infrastructure. </li><br>
+                       <li>In case the controller is a bought-out item, then the voltage limit of the controller 
+                        defines the battery voltage that would be compatible with it.</li>
+                    </ul> -->
+
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="WiregaugeContent" style="display: none;">
+                    <h3>Wire Gauge</h3>
+                    <p>Wire gauges, as defined by the Standard Wire Gauge (SWG), play a crucial role in 
+                        ensuring the appropriate selection of wire. The SWG number serves as a numerical 
+                        representation of the wire gauge, beginning with 1 for the thickest wire and ascending to 40 
+                        for the thinnest wire.</p>
+                        <table id="slider-table">
+                            <thead>
+                                <tr>
+                                    <th>SWG </th>
+                                    <th>Wire 
+                                        diameter in 
+                                        mm  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15 </td>
+                                    <td>1.829 </td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>1.626 </td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>1.422 </td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>1.219 </td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>1.016</td>
+                                </tr>
+                                <tr>
+                                    <td>20 </td>
+                                    <td>0.914  </td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>0.813</td>
+                                </tr>
+                                <tr>
+                                    <td>22  </td>
+                                    <td>0.711</td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>0.610</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>0.559</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>0.508</td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>0.457</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>0.417</td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>0.376</td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>0.345</td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td>0.315</td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table><!-- Content for Wheel Radius -->
+                    <!-- <h3>Wheel Radius (m) </h3><br>
+                    <p>This refers to the “rolling radius” of the wheel – the distance from the centre of the 
+                        wheel to its point of contact with the road.  However, tyre manufacturers specify this in the 
+                        form of a riddle that has to be uncovered to arrive at this number, as given in the below 
+                        example: </p>
+                    <p>Example: Calculate the wheel diameter [mm], and radius [mm] for the tire with the size 
+                        marking <b>225/55R17.</b></p>
+                        <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> 
+                        <p>Credit: <a href=":https://x-engineer.org/calculate-wheel-radius/">https://x-engineer.org/calculate-wheel-radius/ </a></p>
+                    <p><b>Step 1.</b> Write down the known parameters and convert rim diameters from inch in mm.</p>
+                        <p>Width, W=225 mm </p>
+                        <p>Aspect Ratio, AR=55 % </p>
+                        <p>D=17 in=17⋅25.4=431.8 mm </p><br>
+                    <p><b>Step 2.</b> Calculate the tire sidewall height. 
+                        <p>H= (AR * W)/100=55⋅225100=123.75 mm </p><br>
+                    <p><b>Step 3.</b> Calculate the wheel diameter 
+                       <p>dw=D+(2 * H) =431.8+2⋅123.75=679.3 mm </p><br>
+                    <p><b>Step 4.</b> Calculate the wheel radius </p>  
+                       <p>rw=dw/2=679.32=339.65 mm= 0.339 m </p>  -->
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="FillFactorContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Fill Factor (%)  </h3><br>
+                    <p>It is a measure of how much copper is packed into the stator slot. A higher fill factor 
+                        reduces the wire resistance, and hence the copper loss.  This reduces the temperature rise 
+                        during operation.</p>
+                        <img src="./assets/images/Fill Factor .png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"><BR></BR>
+                    <p>Credit: <a href=" https://www.emetor.com/glossary/slot-fill-factor/ "> https://www.emetor.com/glossary/slot-fill-factor/ </a></p>
+                    <p><b>For example,</b> a fill factor of 40 % would signify that 40% of the slot area is occupied 
+                        by the conductors, the rest of the slot area being occupied by conductor insulation, slot 
+                        insulation, and inevitable gaps in between the conductors and between the conductors and 
+                        the slot sides. </p>
+                    <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="MagnetContent" style="display: none;">
+                    <h3>Magnet </h3>
+                    <p>The designation N42 indicates that a sintered neodymium rare earth magnet 
+                        possesses a maximum energy product of 42 Mega Gauss Oersteds (MGOe), representing its 
+                        capacity for storing magnetic energy. This value is typically illustrated by the magnet's 
+                        Demagnetization Curve, also known as the BH Curve, where the maximum point is denoted 
+                        as (BH)max. In general, a higher grade indicates a stronger magnet. </p>
+                        <p>Different letters accompany the N42 grade to denote temperature ratings for 
+                            sintered neodymium rare earth magnets. Specifically, N42M signifies a temperature rating of 
+                            100℃, N42H indicates 120℃, N42SH denotes 150℃, and N42UH represents 180℃.</p><!-- Content for drag Coefficient -->
+                    <!-- <h3>Rolling Resistance Coefficient </h3><br>
+                    <p>This is a dimensionless parameter representing the force opposing the motion of a 
+                        rolling vehicle. Big rolling resistance coefficients typically lead to increased energy 
+                        consumption.  </p>
+                    <p>Rolling resistance refers to the force that opposes the motion of a vehicle as its tires roll along a level 
+                        surface. It arises mainly due to the deformation of the tire, internal friction within the tire material, 
+                        and the interaction between the tire and the road surface. Rolling resistance consumes energy. </p>
+                        
+                        <table id="slider-table">
+                            <caption>Battery Voltage Table</caption>
+                            <thead>
+                                <tr>
+                                    <th>Road surface* </th>
+                                    <th>Rolling resistance coefficient* </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pneumatic car tires on </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>large set pavement </td>
+                                    <td>0.013 </td>
+                                </tr>
+                                <tr>
+                                    <td>small set pavement </td>
+                                    <td>0.013 </td>
+                                </tr>
+                                <tr>
+                                    <td>concrete, asphalt  </td>
+                                    <td>0.011 </td>
+                                </tr>
+                                <tr>
+                                    <td>rolled gravel  </td>
+                                    <td>0.02 </td>
+                                </tr>
+                                <tr>
+                                    <td>Tar-Macadam </td>
+                                    <td>0.025  </td>
+                                </tr>
+                                <tr>
+                                    <td>unpaved road </td>
+                                    <td>0.05  </td>
+                                </tr>
+                                <tr>
+                                    <td>field  </td>
+                                    <td>0.1 – 0.35  </td>
+                                </tr>
+                                <tr>
+                                    <td>Pneumatic truck tires on </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>concrete, asphalt </td>
+                                    <td>0.006 – 0.01 </td>
+                                </tr>
+                                <tr>
+                                    <td>Strake wheels in field </td>
+                                    <td>0.14 – 0.24 </td>
+                                </tr>
+                                <tr>
+                                    <td>Track-type tractor in field </td>
+                                    <td>0.07 – 0.12 </td>
+                                </tr>
+                                <tr>
+                                    <td>Wheel on rail </td>
+                                    <td>0.001 – 0.002 </td>
+                                </tr>
+                                <tr>
+                                    <td>large set pavement </td>
+                                    <td>0.013 </td>
+                                </tr>
+                                Add more rows as needed -->
+                            <!-- </tbody>
+                        </table>
+                        <p>Credit: <a href="https://x-engineer.org/rolling-resistance/#comment-1829">https://x-engineer.org/rolling-resistance/#comment-1829 </a></p> -->
+                        <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="SteelContent" style="display: none;">
+                    <h3>Steel</h3>
+                    <p>Electrical steels are designed to have advantageous magnetic properties, including 
+                        high magnetic permeability and low core loss, essential for effective performance in an 
+                        electric motor. The designation "M250" specifies the magnetic characteristics of the steel, 
+                        with a core loss of 235 W/kg at a magnetic field strength of 1.5 T for a frequency of 50 Hz. 
+                        Meanwhile, "35A" denotes the thickness of the magnetic steel lamination, at 0. 35mm. 
+                        M250 35A steel is chosen for its capacity to conduct magnetic flux efficiently and reduce 
+                        energy losses. </p><!-- Content for drag Coefficient -->
+                    <!-- <h3>Gross Vehicle Weight(kg) </h3><br>
+                    <p>It is the “total” weight of the vehicle, which includes the kerb weight and the payload.  </p>
+                    <p>Kerb weight: This is the bare vehicle weight including that of its power-train 
+                        (motor, batteries etc.)  </p>
+                    <p>Payload: This includes the maximum weight of passengers and cargo that the 
+                        vehicle is designed to carry. </p>
+                    <p>In the case of a 2-wheeler, the kerb weight is around 100-200 kgs. The payload includes 
+                        the total weight of two passengers and luggage – usually estimated at 160Kg. </p>
+                    <p>In the case of a 4-wheeler, the kerb weight can be chosen in the following range 
+                        depending upon the application in addition to the weight of the passengers. </p>
+                    <ul>
+                        <li>Subcompact cars: 1,000 kg - 1,500 kgs  </li>
+                        <li>Compact cars: 1,200 kg - 1,800 kgs </li>
+                        <li>Midsize sedans: 1,400 kg - 2,000 kgs </li>
+                        <li>SUVs and crossovers: 1,500 kg - 2,500 kgs depending on size and purpose. </li>
+                    </ul>
+                 -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                </div>
+              <div class="overlay"></div>
+  <!-- Slider -->
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">	
+						<div id="process" class="w75p">
+              <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="previousButton()">
+                       <i class="performance"></i>
+                    </button>
+                    <p>Topology</p>
+                </li>   
+				  <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="saveDataAndNavigateBack()">
+                        <i class="metrial_ic"></i>
+                    </button>
+                    <p>Material</p>
+                </li>
+				  <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="checkDataAndProceed()">
+                        <i class="geometry_ic"></i>
+                    </button>
+                    <p>Geometry</p>
+                </li>             
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="thermalButton()">
+                        <i class="thermal_ic"></i>
+                    </button>
+                    <p>Thermal</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg45B"></div>	
+					
+						<div class="row">													
+							<div class="col-md-6 pad10B"> <div class="box_bg">	
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td valign="middle">Wire Material</td>
+									<td align="right">
+										<select id="wireMaterial" class="custom-select">
+											<option>COPPER</option>
+											<option>ALUMINIUM</option>
+										</select>
+									</td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon"   data-content-id="WireMaterialContent" href="javascript:void(0)"><i class="info_ic" title="Info"></i> </a>
+                                    </td>
+								  </tr>	
+								   <tr>
+									<td valign="middle">Wire gauge</td>
+									<td align="right"> <select id="wireGauge" class="custom-select">
+										<option>18 SWG</option>
+										<option>19 SWG</option>
+										<option>20 SWG</option>
+										<option>21 SWG</option>
+										<option>22 SWG</option>
+										<option>23 SWG</option>
+										<option>24 SWG</option>
+										<option>25 SWG</option>
+										<option>26 SWG</option>
+										<option>27 SWG</option>
+										<option>28 SWG</option>
+										<option>29 SWG</option>
+										<option>30 SWG</option>
+									</select></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="There isn't a definitive optimal value, but typically, 22 SWG is commonly used."  data-content-id="WiregaugeContent" href="javascript:void(0)"><i class="info_ic" title="Info"></i> </a>
+                                    </td>
+								  </tr>		
+								   <tr>
+									<td valign="middle">Fill Factor <b>(%)</b></td>
+									<td align="right"><div data-tip="From 1-100"><input id="fillFactor" name="fillFactor" type="number" class="form-control num_input" min="0" max="100"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="A fill factor of more than 40% is generally not feasible unless there is a steep 
+                                        increase in manufacturing cost."  data-content-id="FillFactorContent" href="javascript:void(0)"><i class="info_ic" title="Info"></i> </a>
+                                    </td>
+								  </tr>				   
+								</table>
+							</div></div>
+							
+							<div class="col-md-6"> <div class="box_bg">	
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td valign="middle">Magnet</td>
+									<td align="right">  <select id="magnetType" class="custom-select">
+										<option>N42</option>
+									</select></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-content-id="MagnetContent" href="javascript:void(0)"><i class="info_ic" title="Info"></i> </a>
+                                    </td>
+								  </tr>	
+								   <tr>
+									<td valign="middle">Steel</td>
+									<td align="right"> <select id="steelType" class="custom-select">
+										<option>M250-35A</option>
+									</select></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-content-id="SteelContent" href="javascript:void(0)"><i class="info_ic" title="Info"></i> </a>
+                                    </td>
+								  </tr>					   
+								</table>
+							</div></div>
+						
+						</div>
+						<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+								</div>
+								<div class="modal-body">
+								  <p id="errorMessage"></p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						
+							<div class="clear mrg45B"></div>
+						<div class="pad10A pad35T">			
+						
+						<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()" >Next <img src="assets/images/arrow_right.svg"> </button></div></div>
+						
+					
+					</div>						
+						
+					
+					</div>
+						
+						
+						</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script src="./assets/js/config.js"></script>
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function saveDataAndNavigateBack() {
+
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput')) || {};
+    const materialEdited = localStorage.getItem('materialEdited') === 'true';
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+    // Get values from form inputs
+    var wireMaterial = document.getElementById('wireMaterial').value;
+    var wireGauge = document.getElementById('wireGauge').value;
+    var fillFactor = document.getElementById('fillFactor').value;
+    var magnetType = document.getElementById('magnetType').value;
+    var steelType = document.getElementById('steelType').value;
+
+    // Store values in localStorage
+    localStorage.setItem('wireMaterial',wireMaterial );
+            localStorage.setItem( 'wireGauge',wireGauge);
+            localStorage.setItem('magnetType',magnetType);
+			localStorage.setItem('steelType',steelType);
+            localStorage.setItem('fillFactor',fillFactor);
+
+        
+            if (materialEdited) {
+                storedObject['wire'][1] = wireMaterial
+                storedObject['wire'][0] = wireGauge
+                storedObject['magnet'][0] = magnetType
+                storedObject['steel'][0] = steelType
+                storedObject.fill_factor = fillFactor
+
+    localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+            }
+            if(dataAltered){
+                getObject['wire'][1] = wireMaterial;
+                        getObject['wire'][0] = wireGauge;
+                        getObject.magnet = magnetType
+                        getObject.steel = steelType
+                        getObject.fill_factor = fillFactor
+
+                        localStorage.setItem('motorGetData', JSON.stringify(getObject));
+            }
+    console.log("Data saved. Navigating back to topology page...");
+    // Navigate to the previous page
+}
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'topology.html'; 
+}
+
+function thermalButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'geometry.html'; 
+}
+
+
+	
+	var dataAltered = false;
+
+    
+    
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+let motoName = getQueryParams("motor_name");
+    if(!motoName){
+        motoName = localStorage.getItem("motor_name")
+        document.getElementById("motoName").innerText = motoName;
+    }else{
+        document.getElementById("motoName").innerText = motoName;
+        localStorage.setItem("motor_name", motoName); // Store in local storage
+    }
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+console.log("motorName",motoName)
+
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    fetchMotorData();
+
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('cdatalick', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+
+    document.getElementById('editButton').addEventListener('click', enableFormFields);
+});
+
+function checkDataAndProceed() {
+
+	const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+    const materialEdited = localStorage.getItem('materialEdited') === 'true';
+console.log(topologyEdited)
+console.log(materialEdited)
+	if (dataAltered || topologyEdited || materialEdited ) {
+        validateMaterials();  
+         // Directly navigate if data is pre-filled
+    } else {
+        navigateToNext();
+        // Call validation function if data needs to be entered or confirmed
+    }
+}
+
+	function fetchMotorData() {
+        const data = JSON.parse(localStorage.getItem('motorDataInput'));
+        const data1 = JSON.parse(localStorage.getItem('motorGetData'));
+
+        var checkdata;
+    if(typeof(data) == 'string'){
+    checkdata = JSON.parse(data)
+    }else{
+        checkdata=data
+    }
+
+          if (checkdata && !isEmpty(checkdata)) {
+                console.log("int",checkdata);
+                populateAndDisableFields(checkdata);
+                dataAltered = false;
+            } else {
+              enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+                
+            }
+          hideLoader()
+      }
+
+	  function populateAndDisableFields(data) {
+    document.getElementById('wireMaterial').value = data.wire[1];
+    document.getElementById('wireGauge').value = data.wire[0];
+    document.getElementById('fillFactor').value = data.fill_factor;
+    document.getElementById('magnetType').value = data.magnet[0];
+    document.getElementById('steelType').value = data.steel[0];
+
+    localStorage.setItem( 'wireGauge',data.wire[0]);
+    localStorage.setItem('fillFactor',data.fill_factor);
+
+    var wireMaterial = document.getElementById('wireMaterial').value;
+            var wireGauge = document.getElementById('wireGauge').value;
+            var fillFactor = document.getElementById('fillFactor').value;
+            var magnetType = document.getElementById('magnetType').value;
+            var steelType = document.getElementById('steelType').value;
+
+            
+            localStorage.setItem('wireMaterial',wireMaterial );
+            localStorage.setItem( 'wireGauge',wireGauge);
+            localStorage.setItem('magnetType',magnetType);
+			localStorage.setItem('steelType',steelType);
+            localStorage.setItem('fillFactor',fillFactor);
+
+    disableFormFields();
+}
+
+function enableAndPopulateFields(data1) {
+    // Optionally set any default values or leave blank for user input
+    document.getElementById('wireMaterial').value = data1.wire[1];
+    document.getElementById('wireGauge').value = data1.wire[0];
+    document.getElementById('fillFactor').value = data1.fill_factor;
+    document.getElementById('magnetType').value = data1.magnet;
+    document.getElementById('steelType').value = data1.steel;
+    
+}
+
+function enableFormFields() {
+    ['wireMaterial', 'wireGauge', 'fillFactor', 'magnetType', 'steelType'].forEach(function(id) {
+        document.getElementById(id).disabled = false;
+    });
+	localStorage.setItem('materialEdited', 'true');
+}
+
+function disableFormFields() {
+    ['wireMaterial', 'wireGauge', 'fillFactor', 'magnetType', 'steelType'].forEach(function(id) {
+        document.getElementById(id).disabled = true;
+    });
+}
+
+
+		function validateMaterials() {
+
+            const materialEdited = localStorage.getItem('materialEdited') === 'true';
+    const storedObject = JSON.parse(localStorage.getItem('motorDataInput'));
+    // Define the input with its min and max values
+    const input = {
+        id: "fillFactor",
+        min: 1,
+        max: 100,
+        name: "Fill Factor"
+    };
+
+    let valid = true;
+    let element = document.getElementById(input.id);
+    let value = parseFloat(element.value);  // Convert input to a floating point number for accurate comparison
+
+    // Validate the input field
+    if (element.value === "") {
+        showError(`${input.name} is empty`);
+        valid = false;
+    } else if (isNaN(value) || value < input.min || value > input.max) {
+        showError(`${input.name} should be a number between ${input.min} and ${input.max}`);
+        valid = false;
+    }
+    
+    console.log("matter",materialEdited)
+
+        if (materialEdited) {
+                switch (input.id) {       
+                    case 'fillFactor':
+                        storedObject['fill_factor'] = element.value;
+                        break;
+                    default:
+                        break;
+                }
+               
+            
+}
+
+localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+
+    if (valid){
+		saveMaterialsAndNavigate();
+	} // Return the validation status
+}
+
+		function saveMaterialsAndNavigate() {
+            const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput'));
+            const materialEdited = localStorage.getItem('materialEdited') === 'true';
+            const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+            var storedObject;
+            if (typeof(storedObject1) == 'string'){
+                storedObject = JSON.parse(storedObject1)
+                }else{
+                    storedObject = storedObject1
+                }
+
+			var wireMaterial = document.getElementById('wireMaterial').value;
+            var wireGauge = document.getElementById('wireGauge').value;
+            var fillFactor = document.getElementById('fillFactor').value;
+            var magnetType = document.getElementById('magnetType').value;
+            var steelType = document.getElementById('steelType').value;
+
+            
+            localStorage.setItem('wireMaterial',wireMaterial );
+            localStorage.setItem( 'wireGauge',wireGauge);
+            localStorage.setItem('magnetType',magnetType);
+			localStorage.setItem('steelType',steelType);
+            localStorage.setItem('fillFactor',fillFactor);
+            
+
+            if (materialEdited) {
+            storedObject.wire[1] = wireMaterial
+                storedObject.wire[0] = wireGauge
+                storedObject.magnet = magnetType
+                storedObject.steel = steelType
+                localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+            }
+            if(dataAltered){
+                getObject.wire[1] = wireMaterial;
+            getObject.wire[0] = wireGauge;
+            getObject.magnet = magnetType
+            getObject.steel = steelType
+            getObject.fill_factor = fillFactor
+
+            localStorage.setItem('motorGetData', JSON.stringify(getObject));
+            }
+
+            console.log("get",getObject)
+            console.log("store",storedObject)
+            
+			navigateToNext(); // Save the data if validation passes
+          // Navigate to the next page
+    }
+
+	function navigateToNext() {
+		window.location.href = 'geometry.html';
+}
+
+	function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    $('#errorModal').modal('show');
+}
+	/* If the user clicks anywhere outside the select box,
+	then close all select boxes: */
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+
+</script>
+
+  </body>
+</html>

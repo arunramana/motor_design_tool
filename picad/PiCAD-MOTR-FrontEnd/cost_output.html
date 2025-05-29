@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+					<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='performance_output.html'"></i> <span id="vehiName"></span> / <span id="motoName"></span>/ Output</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+			<div class="page-content">			   							 
+			<div class="row d-flex align-items-center dash_pad1">   
+					<div class="col-md-12 pad25T">								
+						
+						<div id="process" class="w80p">
+            <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='geometry_output.html'">
+                        <i class="geometry_ic"></i>
+                    </button>
+                    <p>Geometry</p>
+                </li>                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='winding_output.html'">
+					 <i class="wiring_ic"></i>
+					</button>
+                    <p>Winding Diagram</p>
+                </li>
+				<li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='flux_density_output.html'">
+					 <i class="flux_ic"></i>
+					</button>
+                    <p>Flux Density Plot</p>
+                </li>
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='air_gap_output.html'">
+					 <i class="air_gap"></i>
+					</button>
+                    <p>Air Gap Flux</p>
+                </li>
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='performance_output.html'">
+					 <i class="performance"></i>
+					</button>
+                    <p>Performance Analysis</p>
+                </li>
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='cost_output.html'">
+					 <i class="cost_ic"></i>
+					</button>
+                    <p>Cost & Weight</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg25B"></div>						
+					<div class="row d-flex align-items-center dash_pad">   
+													
+				<div class="col-md-8 offset-md-2">		
+						<div class="table_grid1">
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<th>Material</th>
+									<th align="center">Weight (g)</th>
+									<th align="center">Cost (INR)</th>
+								  </tr>
+								   <tr>
+								     <td>Stator Steel</td>
+									<td id="stator_steel_weight"></td>
+									<td id="stator_steel_cost"></td>
+								  </tr>
+								   <tr>
+								     <td>Rotor Steel</td>
+                                     <td id="rotor_steel_weight"></td>
+                                     <td id="rotor_steel_cost"></td>
+								  </tr>
+								   <tr>
+								     <td>Conductor</td>
+								     <td id="conductor_weight"></td>
+									<td id="conductor_cost"></td>
+  </tr>   <tr>
+								     <td>Magnet</td>
+								     <td id="magnet_weight"></td>
+									<td id="magnet_cost"></td>
+  </tr>  <tr>
+								     <td>Total</td>
+								     <td id="total_weight"></td>
+									<td id="total_cost"></td>
+  </tr>
+								</table>
+
+							</div>
+									</div>
+									
+								</div>
+								
+							<div class="clear mrg25B"></div>
+				<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onClick="window.location.href='performance_output.html'" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" id="downloadBtn">Download<img src="assets/images/download_ic1.svg" align="absmiddle"> </button></div>
+					
+				</div>
+				
+				</div>				
+			</div>	
+		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script src="./assets/js/config.js"></script>
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+let motoName = getQueryParams("motor_name");
+    if(!motoName){
+        motoName = localStorage.getItem("motor_name")
+        document.getElementById("motoName").innerText = motoName;
+    }else{
+        document.getElementById("motoName").innerText = motoName;
+        localStorage.setItem("motor_name", motoName); // Store in local storage
+    }
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+console.log("motorName",motoName)
+
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+  const storedData = localStorage.getItem('motorDataOutput');
+  if (storedData) {
+      const motorDataOutput = JSON.parse(storedData);
+      console.log("Motor Data Input Retrieved:", motorDataOutput);
+      cost_weight_table(motorDataOutput)
+     
+  } else {
+      console.log("No motor data found in storage.");
+      hideLoader()
+  }
+});
+
+function cost_weight_table(data){
+hideLoader()
+document.getElementById('stator_steel_weight').textContent=Math.round(data.cost.stator_steel[0])
+document.getElementById('stator_steel_cost').textContent=Math.round(data.cost.stator_steel[1])
+document.getElementById('rotor_steel_weight').textContent=Math.round(data.cost.rotor_steel[0])
+document.getElementById('rotor_steel_cost').textContent=Math.round(data.cost.rotor_steel[1])
+document.getElementById('conductor_weight').textContent=Math.round(data.cost.conductor[0])
+document.getElementById('conductor_cost').textContent=Math.round(data.cost.conductor[1])
+document.getElementById('magnet_weight').textContent=Math.round(data.cost.magnet[0])
+document.getElementById('magnet_cost').textContent=Math.round(data.cost.magnet[1])
+document.getElementById('total_weight').textContent=Math.round(data.cost.total[0])
+document.getElementById('total_cost').textContent=Math.round(data.cost.total[1])
+
+}
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+        }
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("downloadBtn").addEventListener("click", function() {
+                showLoader()
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                const raw = JSON.stringify({
+                    "user_id": user_id,
+                    "vehicle_name": vehiName,
+                    "motor_name": motoName
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch(base_url+"/download", requestOptions)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        hideLoader()
+                        return response.blob();
+                    })
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = vehiName+'_'+motoName+'.zip'; // Set the file name here
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(error => {
+                        hideLoader()
+                        console.error('There was an error!', error)});
+            });
+
+        });
+            
+</script>
+  </body>
+</html>

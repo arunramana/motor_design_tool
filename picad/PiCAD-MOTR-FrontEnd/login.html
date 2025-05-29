@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- base css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/login.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-6 white_bg" id="remove_pad">
+            <div class="mm_logos">
+                <img class="mm_logo" src="assets/images/mm_logo.svg" alt="">
+                <img class="poweredby" src="assets/images/poweredby.svg" alt="">
+            </div>
+            <!-- <img class="bg_img" src="assets/images/full_pic.svg" alt=""> -->
+        </div>
+        
+                        <div class="col-md-6">
+                            <div class="row right_login_div">
+                                
+                                <div class="div_login">			
+                                  <div class="light_txt mrg10T">Welcome</div>	
+                                    <div class="login_title">Login to your account</div>
+                                  <div class="form-group mrg20T">
+                                        <label for="email_id" class="form-label">Email ID</label>
+                                       <div >  <input type="text" class="form-control" id="email_id" /></div>
+                                                         </div>
+                                  <div class="form-group">
+                                        <label for="passwrd" class="form-label">Password</label>						
+                                          <div > <input class="form-control" id="password" type="password">    </div> 
+                                            <a href="javascript:void(0);" class="toggle-password"><i class="eye-slash pad5R "  toggle="#password"></i> </a>                    </div>
+                                    <div align="right" class="mrg10TM">
+                                       <a href="forgot_password.html" class="forgot_link">Forgot password?</a> 
+                                    </div>
+                                    <div class="mrg20T">
+                                        <a  class="primarybt" onclick="validateAndLogin()">Login</a>
+                                    </div>
+                                    
+                                     <div class="row mrg20T">
+                                    <div class="col-md-10 registration_text">
+                                        <span>Not registered? <a href="register.html" class="primaryclr"><b>Create account</b></a></span>
+                                    </div>
+                                </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+                    
+
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/config.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).on('click', '.toggle-password', function () {
+    var input = $($(this).find('i').attr('toggle'));
+    $(this).find('i').toggleClass('eye eye-slash');
+    if (input.attr('type') == 'password') {
+        input.attr('type', 'text');
+    } else {
+        input.attr('type', 'password');
+    }
+});
+
+       
+        
+
+        function validateEmail(email) {
+            const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            return validRegex.test(email);
+        }
+
+
+
+        function hashPassword(password) {
+            // Hash the password using SHA-256 algorithm
+            return CryptoJS.SHA256(password).toString();
+        }
+
+        function validateAndLogin() {
+            const emailId = document.getElementById('email_id').value;
+            var password = document.getElementById('password').value;
+
+            console.log("Email",emailId)
+            console.log("pass",password)
+
+            if (!emailId || !password) {
+                alert("Username or password is missing");
+                return;
+            }
+
+            // Validate if email is a valid email address
+            if (!validateEmail(emailId)) {
+                alert("Please enter a valid email address");
+                return;
+            }
+
+            const hashedPassword = hashPassword(password);
+
+            console.log(`Email: ${emailId}`);
+            console.log(`Original password: ${password}`);
+            console.log(`Hashed password: ${hashedPassword}`);
+            login(emailId, hashedPassword);
+        }
+
+        function login(emailId, hashedPassword) {
+            console.log("Email1",emailId)
+            console.log("pass1",hashedPassword)
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "email": emailId,
+                "password": hashedPassword
+            });
+
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            };
+            showLoader()
+
+            fetch(base_url+"/login", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    hideLoader()
+                    console.log("API response:", result);
+                    if (result.error === "none") {
+                        console.log("User ID:", result);
+                        sessionStorage.setItem('user_id', result.user_id);
+                        sessionStorage.setItem('user_name', result.user_name);
+                        sessionStorage.setItem('email', result.email);
+                        navigatetonext();
+                        
+                    } else {
+                        alert("Login Error: Invalid email or password");
+                    }
+                })
+                .catch((error) => {
+                    hideLoader()
+                    console.error(error)});
+        }
+
+        window.onload = function() {
+            const userId = sessionStorage.getItem('user_id');
+            if (userId) {
+                setUserId(userId);
+                navigatetonext();
+            } 
+        };
+
+      function  navigatetonext(){
+window.location.href = "dashboard.html";
+        }
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+
+
+</script>
+
+</body>
+
+</html>

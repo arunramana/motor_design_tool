@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='motor_wiz_inputs.html'"></i>  Loading.... </div></div>
+                <div class="top-menu">
+                    <!-- <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                 <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span> 
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> 						
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul> -->
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item ">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+                
+              <div class="page-content-wrapper">
+                <div class="page-content">			   							 
+                <div class="row d-flex align-items-center dash_pad1">   
+                    <div class="col-md-12 pad25T">								    
+                  <div class="clear mrg25B"></div>						
+                  <div class="row d-flex align-items-center dash_pad">   
+                                    
+                  <div class="mrg20B pad20L" align="center">	
+                              <img src="/assets/images/loading.gif" class="w-100p" id="loading_image">
+                              <p>Please Wait Few Minutes</p>
+                  </div>
+                            
+                  </div>
+                          
+                        <div class="clear mrg25B"></div>
+                  </div>				
+                </div>	 
+                      </div>
+                    <div class="clear mrg15B"></div>
+                    
+                </div>	
+                          
+               </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="assets/js/config.js"></script>
+	
+<script>
+
+var userMail=sessionStorage.getItem('email')
+var userName=sessionStorage.getItem('user_name')
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+</script>
+  </body>
+</html>

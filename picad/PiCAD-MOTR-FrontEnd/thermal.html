@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='motor_wiz_inputs.html'"></i> <span id="vehiName"></span> / <span id="motoName"></span> / Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+            <!-- Slider -->
+<div class="slider-screen">
+    <div class="close-btn">&times;</div>
+    <div class="slider-content"></div>
+    <div id="YokeContent" style="display: none;">
+        <!-- Content for Battery Voltage -->
+        <h3>Yoke Housing HTC (W/m2K)</h3><br>
+        <p>It is a measure of the effectiveness of conductive heat transfer between a stator yoke and 
+            motor housing. Its value lies could be as low as 375 W/(m2K) for a stator that is merely 
+            pressed into the housing bore. It could be as high as 25000 W/(m2K) if the housing is shrink-
+            fitted around the stator. </p>
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="ConvectiveHTCContent" style="display: none;">
+        <!-- Content for Wheel Radius -->
+        <h3>Convective HTC (W/m2K) </h3><br>
+        <p>The convective heat transfer coefficient, h, can be defined as the rate of heat transfer 
+            between a solid surface (motor housing) and a fluid (such as air) per unit surface area per unit 
+            temperature difference. When the fluid is static, it is called ‘natural’ convection; if the fluid is 
+            forced to flow past the hot surface with a certain velocity, it is called ‘forced’ convection. </p>
+            <img src="./assets/images/Convective HTC .png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> 
+            <p>Credit: <a href="https://toppr.com/guides/physics/thermodynamics/heat-transfer-convection/ ">https://toppr.com/guides/physics/thermodynamics/heat-transfer-convection/ </a></p>
+        
+            <p>In <b>natural convection</b>, the motion of the fluid is driven solely by buoyancy 
+                forces due to temperature variations, leading to a natural circulation of the 
+                fluid. For natural, take h = <b>10</b> W/(m2K) </p>
+                <p><b>Forced convection</b>, on the other hand, involves the use of external mechanisms, 
+                    such as pumps or fans, to induce fluid motion and enhance heat transfer. For 
+                    forced convection, </p>
+                    <ol type="a">
+                        <li>with air take h = 25 to 40 W/(m2K)</li>
+                        <li>with water and liquids take h = 50 - 10000 W/(m2K)</li>
+                    </ol>
+        </ul> 
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="LContent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>L-Housing/ L-Stack</h3><br>
+        <p>A dimensionless parameter used to characterize the proportions of a motor in terms of its 
+            housing length and stack length.  Heat that is conducted out of the stator stack spreads over 
+            the entire length of the housing, providing more exposure to the surrounding air for cooling.</p>
+       
+            <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="FinAreaFactorContent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Fin Area factor </h3><br>
+        <p>A dimensionless parameter used to quantify the surface area of a fin for enhancing heat transfer process. Fins are used to increase the effective area of the housing that is exposed to air – thereby improving the rate of heat transfer. The extent to which the area is amplified due to the presence of fins is defined by the fin-area factor. </p>
+        <img src="./assets/images/Fin Area factor.png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"><br><br>
+        <p>The fin area factor tells how much area is outside (Aout) compared to inside (Ain). A 
+            higher number means there's more fin area, which leads to more heat transfer. The nominal 
+            value of this factor is between 1 and 4. A value higher than 4 could obstruct airflow and 
+            decrease the heat transfer.</p>
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="AmbientTemperatureontent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Ambient Temperature (°C) </h3><br>
+        <p>Enter your average temperature of the environment in which the motor will operate.</p>
+        <!-- Include your images, tables, etc. -->
+    </div>
+  </div>
+  <div class="overlay"></div>
+<!-- Slider -->
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">	
+						<div id="process" class="w75p">
+                <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="topologyButton()">
+                       <i class="performance"></i>
+                    </button>
+                    <p>Topology</p>
+                </li>   
+				  <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="materialButton()">
+                        <i class="metrial_ic"></i>
+                    </button>
+                    <p>Material</p>
+                </li>
+				  <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="previousButton()">
+                        <i class="geometry_ic"></i>
+                    </button>
+                    <p>Geometry</p>
+                </li>             
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="saveDataAndNavigateBack()">
+                        <i class="thermal_ic"></i>
+                    </button>
+                    <p>Thermal</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg45B"></div>	
+					
+						<div class="row">	
+											
+							<div class="col-md-6 mrg20B"><div class="box_bg">						
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">							
+								   <tr>
+									<td valign="top">Yoke-Housing HTC <b>(w/m^2k)</b></td>
+									<td align="right"><div data-tip="From 400-25000"><input name="htc_cond_yoke_housing" id="htc_cond_yoke_housing" type="number" class="form-control num_input" min="400" max="25000"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Value lies between 375 to 25000 W/(m2K) depending upon the fit of stator with the housing. " data-content-id="YokeContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+								  </tr>
+								   <tr>
+									<td valign="top">Convective HTC <b>(w/m^2k)</b></td>
+									<td align="right"><div data-tip="From 10-10000"><input name="htc_conv" id="htc_conv" type="number" class="form-control num_input" min="10" max="10000"></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="For natural take value as 10 W/(m2K) and for forced take value between 50 – 20000 W/(m2K). " data-content-id="ConvectiveHTCContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                    </td>
+								  </tr>													   
+								</table>
+							</div></div>
+								
+							<div class="col-md-6 mrg20B"> <div class="box_bg">			
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td valign="top">L-Housing/L-Stack</td>
+									<td class="pad10B" align="right"><div data-tip="From 1-4"><input name="housing_stack_length_ratio" id="housing_stack_length_ratio" type="number" class="form-control num_input" min="1" max="4"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="To be revised" data-content-id="LContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+								  </tr>
+								   <tr>
+									<td valign="top">Fin Area Factor</td>
+									<td align="right"><div data-tip="From 1-4"><input name="fin_area_factor" id="fin_area_factor" type="number" class="form-control num_input" min="1" max="4"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The nominal value of this factor is between 1 and 4. A value higher than 4 could 
+                                        obstruct airflow and decrease the heat transfer 
+                                        " data-content-id="FinAreaFactorContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+								  </tr>				   
+								</table>
+							</div></div>
+							
+							
+								<div class="col-md-6 mrg20B">	<div class="box_bg">							
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td valign="top">Ambient Temperature <b>(c)</b></td>
+									<td class="pad10B" align="right"><div data-tip="From -5 - 80"><input id="ambient_temperature" name="ambient_temperature" type="number" class="form-control num_input" min="-5" max="80"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Average ambient temperature of your motor operating environment." data-content-id="AmbientTemperatureContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                    </td>
+								  </tr>								   
+								</table>
+							</div></div>
+						
+						</div>
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+								</div>
+								<div class="modal-body">
+								  <p id="errorMessage"></p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						
+							<div class="clear mrg45B"></div>
+						<div class="pad10A">	
+						
+						
+					<div class="row">
+					<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+					<div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+					<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()">Run Simulation <img src="assets/images/arrow_right.svg"></button></div>
+					</div>					
+					
+					</div>						
+						
+				
+					</div>
+						
+						
+						</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function saveDataAndNavigateBack() {
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput')) || {};
+    const thermalEdited = localStorage.getItem('thermalEdited') === 'true';
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+    localStorage.setItem('htc_cond_yoke_housing', document.getElementById('htc_cond_yoke_housing').value);
+    localStorage.setItem('htc_conv', document.getElementById('htc_conv').value);
+    localStorage.setItem('housing_stack_length_ratio', document.getElementById('housing_stack_length_ratio').value);
+    localStorage.setItem('fin_area_factor', document.getElementById('fin_area_factor').value);
+    localStorage.setItem('ambient_temperature', document.getElementById('ambient_temperature').value);
+
+    if (thermalEdited) {
+    storedObject.htc_cond_yoke_housing = document.getElementById('htc_cond_yoke_housing').value;
+    storedObject.htc_conv = document.getElementById('htc_conv').value;
+    storedObject.housing_stack_length_ratio = document.getElementById('housing_stack_length_ratio').value;
+    storedObject.fin_area_factor = document.getElementById('fin_area_factor').value;
+    storedObject.ambient_temperature = document.getElementById('ambient_temperature').value;
+
+    localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+}
+if(dataAltered){
+    getObject.htc_cond_yoke_housing = document.getElementById('htc_cond_yoke_housing').value;
+    getObject.htc_conv = document.getElementById('htc_conv').value;
+    getObject.housing_stack_length_ratio = document.getElementById('housing_stack_length_ratio').value;
+    getObject.fin_area_factor = document.getElementById('fin_area_factor').value;
+    getObject.ambient_temperature = document.getElementById('ambient_temperature').value;
+    localStorage.setItem('motorGetData', JSON.stringify(getObject));
+    console.log("Saved successfully")
+}
+    console.log("Data saved. Navigating back...");
+    // Navigate to the previous page
+}
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'geometry.html';
+}
+function topologyButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'topology.html';
+}
+function materialButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'material.html';
+}
+
+	var dataAltered = false;
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+let motoName = getQueryParams("motor_name");
+    if(!motoName){
+        motoName = localStorage.getItem("motor_name")
+        document.getElementById("motoName").innerText = motoName;
+    }else{
+        document.getElementById("motoName").innerText = motoName;
+        localStorage.setItem("motor_name", motoName); // Store in local storage
+    }
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+console.log("motorName",motoName)
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchMotorData();
+
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+
+    document.getElementById('editButton').addEventListener('click', enableFormFields);
+});
+
+let checkoutputdata = false;
+
+function checkDataAndProceed() {
+
+const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+const materialEdited = localStorage.getItem('materialEdited') === 'true';
+const geometryEdited = localStorage.getItem('geometryEdited') === 'true';
+const thermalEdited = localStorage.getItem('thermalEdited') === 'true';
+console.log(topologyEdited)
+console.log(materialEdited)
+console.log(geometryEdited)
+console.log(thermalEdited)
+if (dataAltered || topologyEdited || materialEdited || geometryEdited || thermalEdited ) {
+  validateCurrentPageInputs();  
+     // Directly navigate if data is pre-filled
+} else {
+
+    if (checkoutputdata === true){
+        localStorage.removeItem('motorDataInput');
+    navigateToNext();
+    }else{
+        alert("No Output Data available")
+    }
+    
+    
+    // Call validation function if data needs to be entered or confirmed
+}
+}
+
+function navigateToNext() {
+	window.location.href = 'geometry_output.html';
+}
+	
+
+function fetchMotorData() {
+    showLoader()
+    const data = JSON.parse(localStorage.getItem('motorDataInput'));
+    const data1 = JSON.parse(localStorage.getItem('motorGetData'));
+
+
+    var checkdata;
+    if(typeof(data) == 'string'){
+    checkdata = JSON.parse(data)
+    }else{
+        checkdata=data
+    }
+
+          if (checkdata && !isEmpty(checkdata)) {
+            
+            console.log("int",checkdata);
+                populateAndDisableFields(checkdata);
+                dataAltered = false;
+            } else {
+                hideLoader()
+                enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+                
+            }
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName,
+        "motor_name": motoName// Fetch from URL parameters
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    fetch(base_url + "/get_motor_data", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            hideLoader()
+            let parsedOutput;
+            console.log("checking",checkoutputdata)
+            if (data.error =="none" && data.output) {
+                
+                try {
+                    if ((typeof(data.output)) === 'string'){
+                    parsedOutput = JSON.parse(data.output);
+                    console.log("parsed",parsedOutput)
+                    }else{
+                        parsedOutput = data.output
+                    }
+
+                } catch (e) {
+                    console.error('Failed to parse output:', e);
+                    // alert('Failed to parse output. Please try again.');
+                }
+
+                if (parsedOutput && !isEmpty(parsedOutput) && parsedOutput.status !== 'error') {
+                    console.log("output checking",checkoutputdata)
+                    localStorage.setItem('motorDataOutput', JSON.stringify(parsedOutput));
+                    console.log("Output data stored locally.");
+                    checkoutputdata = true;
+                    
+                } 
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error)});
+      }
+
+	  function populateAndDisableFields(data) {
+    document.getElementById('htc_cond_yoke_housing').value = data.htc_cond_yoke_housing;
+    document.getElementById('htc_conv').value = data.htc_conv;
+    document.getElementById('housing_stack_length_ratio').value = data.housing_stack_length_ratio;
+    document.getElementById('fin_area_factor').value = data.fin_area_factor;
+    document.getElementById('ambient_temperature').value = data.ambient_temperature;
+
+    localStorage.setItem('htc_cond_yoke_housing', document.getElementById('htc_cond_yoke_housing').value);
+    localStorage.setItem('htc_conv', document.getElementById('htc_conv').value);
+    localStorage.setItem('housing_stack_length_ratio', document.getElementById('housing_stack_length_ratio').value);
+    localStorage.setItem('fin_area_factor', document.getElementById('fin_area_factor').value);
+    localStorage.setItem('ambient_temperature', document.getElementById('ambient_temperature').value);
+
+    disableFormFields();
+}
+
+function enableAndPopulateFields(data1) {
+    document.getElementById('htc_cond_yoke_housing').value = data1.htc_cond_yoke_housing;
+    document.getElementById('htc_conv').value = data1.htc_conv;
+    document.getElementById('housing_stack_length_ratio').value = data1.housing_stack_length_ratio;
+    document.getElementById('fin_area_factor').value = data1.fin_area_factor;
+    document.getElementById('ambient_temperature').value = data1.ambient_temperature;
+}
+
+function enableFormFields() {
+    ['htc_cond_yoke_housing', 'htc_conv', 'housing_stack_length_ratio', 'fin_area_factor', 'ambient_temperature'].forEach(function(id) {
+        document.getElementById(id).disabled = false;
+    });
+    localStorage.setItem('thermalEdited', 'true');  // Setting a flag to indicate data has been edited
+}
+
+function disableFormFields() {
+    ['htc_cond_yoke_housing', 'htc_conv', 'housing_stack_length_ratio', 'fin_area_factor', 'ambient_temperature'].forEach(function(id) {
+        document.getElementById(id).disabled = true;
+    });
+}
+
+
+function runSimulation() {
+
+  
+	const aspectRatio = localStorage.getItem('aspectRatio');
+    const noOfPoles = localStorage.getItem('poles');
+    const noOfSlots = localStorage.getItem('slots');
+    const coilSpan = "1";
+    const gAirgap = localStorage.getItem('airGap');
+    const lPm = localStorage.getItem('magnetLength');
+    const toothHeight = localStorage.getItem('toothDepthFactor');
+    const fillFactor = localStorage.getItem('fillFactor');
+    const ambientTemperature = document.getElementById('ambient_temperature').value;
+    const htcConv =document.getElementById('htc_conv').value;
+    const finAreaFactor = document.getElementById('fin_area_factor').value;
+    const housingStackLengthRatio =  document.getElementById('housing_stack_length_ratio').value;
+    const htcCondYokeHousing = document.getElementById('htc_cond_yoke_housing').value;
+    const htcCondWireYoke = document.getElementById('htc_conv').value;
+    const wireMaterial = localStorage.getItem('wireMaterial');
+    const wireGauge = localStorage.getItem('wireGauge');
+    const magnetType = localStorage.getItem('magnetType');
+    const steelType = localStorage.getItem('steelType');
+    const topology = localStorage.getItem('topo');
+    const trv = localStorage.getItem('trv')
+    const batterVoltage = localStorage.getItem('batteryVoltage');
+    const peak_torque = localStorage.getItem('peak_torque')
+    const rated_speed = localStorage.getItem('rated_speed')
+    
+    console.log("peak_torque",peak_torque)
+    console.log("rated_speed",rated_speed)
+    console.log("battery",batterVoltage)
+    console.log('aspectRatio:', aspectRatio);
+console.log('noOfPoles:', noOfPoles);
+console.log('noOfSlots:', noOfSlots);
+console.log('coilSpan:', coilSpan);
+console.log('gAirgap:', gAirgap);
+console.log('lPm:', lPm);
+console.log('toothHeight:', toothHeight);
+console.log('fillFactor:', fillFactor);
+console.log('ambientTemperature:', ambientTemperature);
+console.log('htcConv:', htcConv);
+console.log('finAreaFactor:', finAreaFactor);
+console.log('housingStackLengthRatio:', housingStackLengthRatio);
+console.log('htcCondYokeHousing:', htcCondYokeHousing);
+console.log('htcCondWireYoke:', htcCondWireYoke);
+console.log('wireMaterial:', wireMaterial);
+console.log('wireGauge:', wireGauge);
+console.log('magnetType:', magnetType);
+console.log('steelType:', steelType);
+console.log('topology:', topology);
+console.log('trv',trv)
+
+  
+    if (topology == "IPMSM"){
+        var topo = [topology,"RADIAL","INTERIOR"]
+    }else{
+      var topo = [topology,"RADIAL","SURFACE"]
+    }
+  
+    var magnet = [magnetType,"RE"]
+    var steel = [steelType,"IRON"]
+    var wire = [wireGauge,wireMaterial]
+   
+
+	const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+    const data = {
+        user_id: user_id,
+        vehicle_name: vehiName,
+        motor_name: motoName,
+        peak_torque:  parseInt(localStorage.getItem('peak_torque')),
+        rated_speed:3000,
+        rated_torque: 4,
+        max_no_load_rpm: parseFloat(localStorage.getItem('noLoadSpeed')),
+        voltage_limit: parseInt(localStorage.getItem('batteryVoltage')),
+        trv: parseFloat(localStorage.getItem('trv')),
+        aspect_ratio: parseFloat(localStorage.getItem('aspectRatio')),
+        no_of_poles: parseInt(localStorage.getItem('poles')),
+        no_of_slots: parseInt(localStorage.getItem('slots')),
+        coil_span: 1,
+        g_airgap: parseFloat(localStorage.getItem('airGap')),
+        L_pm: parseFloat(localStorage.getItem('magnetLength')),
+        tooth_height: parseFloat(localStorage.getItem('toothDepthFactor')),
+        fill_factor: parseFloat(localStorage.getItem('fillFactor')),
+        ambient_temperature: parseFloat(document.getElementById('ambient_temperature').value),
+        htc_conv: parseFloat(document.getElementById('htc_conv').value),
+        fin_area_factor: parseFloat(document.getElementById('fin_area_factor').value),
+        housing_stack_length_ratio: parseFloat(document.getElementById('housing_stack_length_ratio').value),
+        htc_cond_yoke_housing: parseFloat(document.getElementById('htc_cond_yoke_housing').value),
+        htc_cond_wire_yoke: "200",  //doubt
+        magnet: magnet,
+        steel: steel,
+        wire: wire,
+        topology:topo
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: JSON.stringify(data),
+        redirect: "follow"
+    };
+
+    let intervalId;
+    let totalTimeElapsed = 0;
+    const initialDelay = 60000; // 1 minute
+    const subsequentInterval = 20000; // 20 seconds
+    const maxTime = 300000;
+
+    fetch(base_url+ "/motorwiz", requestOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json(); // Assuming response is in JSON format
+    })
+    .then(result => {
+        if (result.status === 'started' && result.error === 'none') {
+            showLoadingScreen();
+            setTimeout(()=>{
+              motor_get_data();
+              intervalId = setInterval(() => {
+                    totalTimeElapsed += subsequentInterval;
+                    if (totalTimeElapsed >= maxTime) {
+                        clearInterval(intervalId);
+                        alert('Operation timed out after 5 minutes.');
+                        window.location.href = 'motor_wiz_inputs.html';
+                        return;
+                    }
+                    motor_get_data();
+                }, subsequentInterval);
+            },60000)
+             // Call every 20 seconds
+        } else {
+            console.error('Invalid status or error:', result);
+            alert('Invalid status or error:', result.error);
+            
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to complete the operation. Please try again.');
+        
+    });
+    
+
+    function motor_get_data() {
+    fetch("https://motormojo.in/get_motor_data", requestOptions)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json(); // Assuming response is in JSON format
+    })
+    .then(result => {
+            console.log(result)
+            if (result.status === 'running' && result.error === 'none') {
+                console.log('Status is still running. Retrying in 20 seconds...');
+                // Stop the interval
+                // Store data in localStorage
+                // Do something with the result if needed
+            } else {
+                console.log("result",result.output.error)
+                console.log("status",result.output.status)
+                let output;
+                if (typeof(result.output) === "string"){
+                    output = JSON.parse(result.output);
+                    console.log("in motor get dta",output)
+                    }
+                    else{
+                        output=result.output
+                    }
+
+                if (output.status==='error'){
+
+                    console.log(output.error)
+                    
+                    alert(output.error)
+                    clearInterval(intervalId);
+                    window.location.href = 'motor_wiz_inputs.html';
+                }
+                else{
+                let output;
+                try {
+                    if (typeof(result.output) === "string"){
+                    output = JSON.parse(result.output);
+                    console.log("in motor get dta",output)
+                    }
+                    else{
+                        output=result.output
+                    }
+                } catch (e) {
+                    console.error('Error:', output.error);
+                    alert('Error: ' + output.error);
+                    clearInterval(intervalId);
+                    window.location.href = 'motor_wiz_inputs.html';
+                    }
+                 if (output.status === 'finished' && output.error == 'none') {
+                    console.log('Output:', output);
+                    clearInterval(intervalId);
+                    localStorage.setItem('motorDataOutput', JSON.stringify(output));
+                    localStorage.removeItem('motorDataInput');
+                    localStorage.removeItem('motorGetData');
+                    localStorage.removeItem('materialEdited');
+                    localStorage.removeItem('geometryEdited');
+                    localStorage.removeItem('thermalEdited');
+                    localStorage.removeItem('topologyEdited');
+                    navigateToNext();
+                } else {
+                    console.error('Unexpected output status:', output.status);
+                    alert('Unexpected output status: ' + output.status);
+                    clearInterval(intervalId);
+                }
+            }
+            }
+            
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error'+error);
+        clearInterval(intervalId);
+        window.location.href='motor_wiz_inputs.html'
+    });
+    }
+
+}
+
+function showLoadingScreen() {
+    // Load the loading screen HTML file into the main document
+    fetch('loading_screen.html')
+        .then(response => response.text())
+        .then(html => {
+            // Inject the loaded HTML into the main document
+            document.body.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading loading screen:', error)});
+    }
+
+
+function saveCurrentPageInputs() {
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput'));
+    const thermalEdited = localStorage.getItem('thermalEdited') === 'true';
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+    localStorage.setItem('htc_cond_yoke_housing', document.getElementById('htc_cond_yoke_housing').value);
+    localStorage.setItem('htc_conv', document.getElementById('htc_conv').value);
+    localStorage.setItem('housing_stack_length_ratio', document.getElementById('housing_stack_length_ratio').value);
+    localStorage.setItem('fin_area_factor', document.getElementById('fin_area_factor').value);
+    localStorage.setItem('ambient_temperature', document.getElementById('ambient_temperature').value);
+
+
+   
+
+    if (thermalEdited) {
+        storedObject.htc_cond_yoke_housing = document.getElementById('htc_cond_yoke_housing').value;
+                storedObject.htc_conv = document.getElementById('htc_conv').value;
+                storedObject.housing_stack_length_ratio = document.getElementById('housing_stack_length_ratio').value;
+                storedObject.fin_area_factor = document.getElementById('fin_area_factor').value;
+                storedObject.ambient_temperature = document.getElementById('ambient_temperature').value;
+                localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+            }
+
+            if(dataAltered){
+                getObject.htc_cond_yoke_housing = document.getElementById('htc_cond_yoke_housing').value;
+    getObject.htc_conv = document.getElementById('htc_conv').value;
+    getObject.housing_stack_length_ratio = document.getElementById('housing_stack_length_ratio').value;
+    getObject.fin_area_factor = document.getElementById('fin_area_factor').value;
+    getObject.ambient_temperature = document.getElementById('ambient_temperature').value;
+    localStorage.setItem('motorGetData', JSON.stringify(getObject));
+    console.log("Saved successfully")
+            }
+
+	runSimulation();
+
+}
+
+
+function validateCurrentPageInputs() {
+    // Validate each input field
+    const inputs = [
+        { id: "htc_cond_yoke_housing", min: 400, max: 25000, name: "Yoke-Housing HTC" },
+        { id: "htc_conv", min: 10, max: 10000, name: "Convective HTC" },
+        { id: "housing_stack_length_ratio", min: 1, max: 4, name: "L-Housing/L-Stack" },
+        { id: "fin_area_factor", min: 1, max: 4, name: "Fin Area Factor" },
+        { id: "ambient_temperature", min: -5, max: 80, name: "Ambient Temperature" } // Assuming range
+    ];
+
+    for (let input of inputs) {
+        let element = document.getElementById(input.id);
+        if (!element.value) {
+            showError(`${input.name} is required.`);
+            return false;
+        } else if (parseFloat(element.value) < input.min || parseFloat(element.value) > input.max) {
+            showError(`${input.name} must be between ${input.min} and ${input.max}.`);
+            return false;
+        }
+    }
+
+    saveCurrentPageInputs(); // If all checks pass
+}
+
+function showError(message) {
+    document.getElementById('errorMessage').innerText = message;
+    $('#errorModal').modal('show');
+}
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='dashboard.html'"></i> <span id="vehiName"></span>/ Vehicle Dynamics/ Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item active">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+            <!-- Slider -->
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="batteryVoltageContent" style="display: none;">
+                    <!-- Content for Battery Voltage -->
+                    <h3>Battery voltage DC (V)</h3><br>
+
+                    <ul> 
+                       <li>The battery voltage is often pre-decided by the vehicle manufacturer.  Else, it can be 
+                        chosen based on the availability of charging infrastructure. </li><br>
+                       <li>In case the controller is a bought-out item, then the voltage limit of the controller 
+                        defines the battery voltage that would be compatible with it.</li>
+                    </ul>
+
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="wheelRadiusContent" style="display: none;">
+                    <!-- Content for Wheel Radius -->
+                    <h3>Wheel Radius (m) </h3><br>
+                    <p>This refers to the “rolling radius” of the wheel – the distance from the centre of the 
+                        wheel to its point of contact with the road.  However, tyre manufacturers specify this in the 
+                        form of a riddle that has to be uncovered to arrive at this number, as given in the below 
+                        example: </p>
+                    <p>Example: Calculate the wheel diameter [mm], and radius [mm] for the tire with the size 
+                        marking <b>225/55R17.</b></p>
+                        <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> 
+                        <p>Credit: <a href="https://x-engineer.org/calculate-wheel-radius/">https://x-engineer.org/calculate-wheel-radius/ </a></p>
+                    <p><b>Step 1.</b> Write down the known parameters and convert rim diameters from inch in mm.</p>
+                        <p>Width, W=225 mm </p>
+                        <p>Aspect Ratio, AR=55 % </p>
+                        <p>D=17 in=17⋅25.4=431.8 mm </p><br>
+                    <p><b>Step 2.</b> Calculate the tire sidewall height. 
+                        <p>H= (AR * W)/100=55⋅225100=123.75 mm </p><br>
+                    <p><b>Step 3.</b> Calculate the wheel diameter 
+                       <p>dw=D+(2 * H) =431.8+2⋅123.75=679.3 mm </p><br>
+                    <p><b>Step 4.</b> Calculate the wheel radius </p>  
+                       <p>rw=dw/2=679.32=339.65 mm= 0.339 m </p> <br><br>
+                    <p>A bigger wheel-radius increases the torque demand on the motor, but enables the 
+                        motor to run slower – and vice-versa.  However, the choice of the wheel is primarily 
+                        determined by the type of vehicle and the kind of terrain it is expected to operate in. </p>
+                    <p>For motorcycles or bicycles, the wheel radius typically about 10 inches (25 cm), 
+                            depending on the size and type of the vehicle.  For cars, the wheel radius is typically about 
+                            12” (30 cm).</p>
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="dragCoefficientContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Drag coefficient </h3><br>
+                    <p>This is a dimensionless parameter representing the drag force experienced by a 
+                        moving vehicle. It depends on the vehicle's shape, surface characteristics, and airflow 
+                        patterns. Lower drag coefficients indicate better aerodynamic performance, while higher 
+                        coefficient represent greater drag. </p>
+                    <p>For a 2-wheeler the drag coefficient is 0.5 – 1.1. </p>
+                    <p>For a four-wheeler the drag coefficient is as follows,</p>
+                    <ul>
+                        <li>Passenger car: 0.28–0.40 </li>
+                        <li>Sports car: 0.20–0.40 </li>
+                        <li>Small/Light van and MPV: 0.35–0.50</li>
+                        <li>Bus: 0.40–0.80</li>
+                    </ul>
+                        <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="RollingResistanceCoeffContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Rolling Resistance Coefficient </h3><br>
+                    <p>Rolling resistance refers to the force that opposes the motion of a vehicle as its tires roll along a level surface. It arises mainly due to the deformation of the tire, internal friction within the tire material, and the interaction between the tire and the road surface. Rolling resistance consumes energy.</p>
+                        
+                        <table id="slider-table">
+                            <!-- <caption>Battery Voltage Table</caption> -->
+                            <thead>
+                                <tr>
+                                    <th>Road surface* </th>
+                                    <th>Rolling resistance coefficient* </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pneumatic car tires on </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>large set pavement </td>
+                                    <td>0.013 </td>
+                                </tr>
+                                <tr>
+                                    <td>small set pavement </td>
+                                    <td>0.013 </td>
+                                </tr>
+                                <tr>
+                                    <td>concrete, asphalt  </td>
+                                    <td>0.011 </td>
+                                </tr>
+                                <tr>
+                                    <td>rolled gravel  </td>
+                                    <td>0.02 </td>
+                                </tr>
+                                <tr>
+                                    <td>Tar-Macadam </td>
+                                    <td>0.025  </td>
+                                </tr>
+                                <tr>
+                                    <td>unpaved road </td>
+                                    <td>0.05  </td>
+                                </tr>
+                                <tr>
+                                    <td>field  </td>
+                                    <td>0.1 – 0.35  </td>
+                                </tr>
+                                <tr>
+                                    <td>Pneumatic truck tires on </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>concrete, asphalt </td>
+                                    <td>0.006 – 0.01 </td>
+                                </tr>
+                                <tr>
+                                    <td>Strake wheels in field </td>
+                                    <td>0.14 – 0.24 </td>
+                                </tr>
+                                <tr>
+                                    <td>Track-type tractor in field </td>
+                                    <td>0.07 – 0.12 </td>
+                                </tr>
+                                <tr>
+                                    <td>Wheel on rail </td>
+                                    <td>0.001 – 0.002 </td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table><br>
+                        <p>Credit: <a href="https://x-engineer.org/rolling-resistance/#comment-1829">https://x-engineer.org/rolling-resistance/#comment-1829 </a></p>
+                        <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="GrossvehicleweightContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Gross Vehicle Weight(kg) </h3><br>
+                    <p>Gross Vehicle Weight (GVW) is the total weight of a vehicle when fully loaded with 
+                        passengers, cargo, and fluids. </p>
+                    <p>It is the “total” weight of the vehicle, which includes the kerb weight and the payload.  </p>
+                    <p>Kerb weight: This is the bare vehicle weight including that of its power-train 
+                        (motor, batteries etc.)  </p>
+                    <p>Payload: This includes the maximum weight of passengers and cargo that the 
+                        vehicle is designed to carry. </p>
+                    <p>In the case of a 2-wheeler, the kerb weight is around 100-200 kgs. The payload includes 
+                        the total weight of two passengers and luggage – usually estimated at 160Kg. </p>
+                    <p>In the case of a 4-wheeler, the kerb weight can be chosen in the following range 
+                        depending upon the application in addition to the weight of the passengers. </p>
+                    <ul>
+                        <li>Subcompact cars: 1,000 kg - 1,500 kgs  </li>
+                        <li>Compact cars: 1,200 kg - 1,800 kgs </li>
+                        <li>Midsize sedans: 1,400 kg - 2,000 kgs </li>
+                        <li>SUVs and crossovers: 1,500 kg - 2,500 kgs depending on size and purpose. </li>
+                    </ul>
+                
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="FrontalAreaContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Frontal Area (m^2)  </h3><br>
+                    <p>It is the projected area of the vehicle's front surface as viewed from the direction of 
+                        air motion, influencing air resistance and aerodynamic drag. A larger frontal area creates more 
+                        resistance to airflow, resulting in higher aerodynamic drag. </p>
+                        <img src="./assets/images/Frontal Area.png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> <br><br>
+                        <p>Credit: <a href="https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf ">https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf</a></p>
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="GearratioContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Single Speed Gear Ratio</h3><br>
+                    <p>A big single-speed gear ratio (1:10) prioritizes higher top speeds and efficiency at high speeds but sacrifices acceleration. A small single-speed gear ratio (1:6) prioritizes quicker acceleration and efficiency at low speeds but limits the vehicle's top speed.</p>
+                    <p>A gear ratio may be already defined by the choice of gear-train in the vehicle.  However, it is possible to modify it to customize the performance of the vehicle.  </p>
+                        <!-- <img src="./assets/images/Frontal Area.png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> <br><br>
+                        <p>Credit: <a href=":https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf ">https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf</a></p>
+                    <p>For bike, the frontal area is <b>0.9 times</b> the width and the height of a rectangle that 
+                        outlines the front of a car. </p>
+                    <p>For cars, the frontal area is <b>0.8 times</b> the width and the height of a rectangle that 
+                        outlines the front of a car. </p> -->
+                   
+                
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="GearEfficiencyContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Gear Efficiency (%) </h3><br>
+                    <p>The gear efficiency for various types of gears in the transmission of power are given as follows can be chosen as per the application. </p>
+                        
+                    <p><b>In Bikes:</b> In bikes Spur gears are used. </p>
+                    <p><b>In Cars:</b> In cars helical gears is used due to their high contact ratio and smooth transmission.</p>
+                    <table id="slider-table">
+                        <!-- <caption>Battery Voltage Table</caption> -->
+                        <thead>
+                            <tr>
+                                <th>No  </th>
+                                <th>Type</th>
+                                <th>Normal Ratio Range  </th>
+                                <th>Efficiency Range </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 </td>
+                                <td >Spur </td>
+                                <td >1:1 to 1:6  </td>
+                                <td >94-98% </td>
+                            </tr>
+                            <tr>
+                                <td >2</td>
+                                <td >Helical </td>
+                                <td >1:1.5 to 1:10 </td>
+                                <td >94-98% </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>   
+                
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+              </div>
+              <div class="overlay"></div>
+  <!-- Slider -->
+
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">								
+						
+						<div id="process">
+            <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" onClick="window.location.href='vehicle_parameters.html'">
+                        <i class="vehicle_ic"></i>
+                    </button>
+                    <p>Vehicle Parameters</p>
+                </li>                
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" onclick="checkDataAndProceed()">
+                        <i class="performance"></i>
+                    </button>
+                    <p>Performance Specs</p>
+                </li>
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" onclick="driveCycleButton()">
+                        <i class="drive_cycle"></i>
+                    </button>
+                    <p>Drive Cycle</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg45B"></div>	
+					
+					<div class="row box_bg">    
+                                               
+						<div class="col-md-6">                          
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+								<td valign="top">Battery Voltage <b>(DC - V)</b></td>
+								<td align="right"><div data-tip="From 1-1000"><input id="batteryVoltage" name="batteryVoltage" type="number" class="form-control num_input" min="1" max="1000"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The battery voltage must be at least 48V, and it can go as high as possible. " data-content-id="batteryVoltageContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Wheel radius<b>(m)</b></td>
+								<td align="right"><div data-tip="From 0.1-1"> <input id="wheelRadius" name="wheelRadius" type="number" class="form-control num_input"  min="0.1" max="1"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Please verify the vehicle's tires. The wheel radius ranges from 0.25 to 0.4 meters." data-content-id="wheelRadiusContent" href="javascript:void(0)"><i class="info_ic" ></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Drag coefficient</td>
+								<td align="right"> <div data-tip="From 0.1-1"> <input id="dragCoefficient" name="dragCoefficient" type="number" class="form-control num_input"  min="0.1" max="1" ></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The coefficient typically ranges from 0.5 to 1.1 for two-wheelers and from 0.3 to 0.5 for four-wheelers. " data-content-id="dragCoefficientContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Rolling Resistance Coeff.</td>
+								<td align="right"> <div data-tip="From 0.0001-0.03 "><input id="rollingResistance" name="rollingResistance" type="number" class="form-control num_input"  min="0.0001" max="0.03"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="In typical Indian road conditions, the coefficient is  0.015. " data-content-id="RollingResistanceCoeffContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>                                
+							</table>
+						</div>
+					   
+						<div class="col-md-6">                          
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+								<td valign="top">Gross vehicle weight<b>(kg)</b></td>
+								<td align="right"> <div data-tip="From 1-10000"> <input id="grossVehicleWeight" name="grossVehicleWeight" type="number" class="form-control num_input"  min="1" max="10000"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="It refers to the total weight of a vehicle when fully loaded with passengers, cargo, and fuel."  data-content-id="GrossvehicleweightContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Frontal Area<b>(m&sup2)</b></td>
+								<td align="right"> <div data-tip="From 0.3-10"><input id="frontalArea" name="frontalArea" type="number" class="form-control num_input" min="0.3" max="10" ></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The frontal area for bikes and cars is determined by multiplying 0.9 and 0.8, respectively, by the width and height of a corresponding rectangular outline of the front." data-content-id="FrontalAreaContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Gear ratio</td>
+								<td align="right"><div data-tip="From 0.1-100"><input id="gearRatio" name="gearRatio" type="number" class="form-control num_input"  min="0.1" max="100"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Single speed gear ratio is around 6 to 12. " data-content-id="GearratioContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Gear Efficiency<b>(%)</b></td>
+								<td align="right"><div data-tip="From 50-100"><input id="gearEfficiency" name="gearEfficiency" type="number" class="form-control num_input"  min="50" max="100"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Typically gear efficiency, it's around 80% to 95%. " data-content-id="GearEfficiencyContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>                                
+							</table>
+						</div>
+				   
+					</div>
+                    		
+							<div class="clear mrg45B"></div>
+						<div class="pad10A">	
+						
+						<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onClick="window.location.href='dashboard.html'" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns" onclick="showEditModal()">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()">Next <img src="assets/images/arrow_right.svg"> </button></div></div>
+						
+					
+					</div>
+							
+						</div>		
+										
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editModalLabel">Warning!</h4>
+                </div>
+                <div class="modal-body">
+                    If you do not want data to be overwritten, please create a new version.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="createVersion()">Create Version</button>
+                    <button type="button" class="btn btn-secondary" onclick="overwriteData()">Overwrite Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+	
+	<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+			</div>
+			<div class="modal-body">
+			  <p id="errorMessage"></p>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+      
+
+</div>
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+<script>
+
+    function saveDataAndNavigate(){
+        const vehicleParamEdited = localStorage.getItem('vehicleParamEdited') === 'true';
+    const inputs = [
+        { id: "batteryVoltage", min: 1, max: 1000, name: "Battery Voltage" },
+        { id: "wheelRadius", min: 0.1, max: 1, name: "Wheel Radius" },
+        { id: "dragCoefficient", min: 0.1, max: 1, name: "Drag Coefficient" },
+        { id: "rollingResistance", min: 0.0001, max: 0.03, name: "Rolling Resistance Coeff." },
+        { id: "grossVehicleWeight", min: 1, max: 10000, name: "Gross Vehicle Weight" },
+        { id: "frontalArea", min: 0.3, max: 10, name: "Frontal Area" },
+        { id: "gearRatio", min: 0.1, max: 100, name: "Gear Ratio" },
+        { id: "gearEfficiency", min: 50, max: 100, name: "Gear Efficiency" }
+    ];
+    
+    var storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData'));
+    console.log("before",storedObject)
+
+    let formData = {};
+    let valid = true;
+    for (let input of inputs) {
+        let element = document.getElementById(input.id);
+        if (element.disabled) continue; // Skip validation for disabled fields
+        if (element.value === "") {
+            showError(`${input.name} is Empty`);
+            valid = false;
+            break;
+        } else if (element.value < input.min || element.value > input.max) {
+            showError(`${input.name} should be in range ${input.min} - ${input.max}`);
+            valid = false;
+            break;
+        }
+
+        formData[input.id] = element.value;
+
+
+        
+        if (vehicleParamEdited){
+        switch (input.id) {
+            
+            case 'batteryVoltage':
+                storedObject['v_dc'] = element.value;
+                localStorage.setItem('batteryVoltage', element.value);
+                break;
+                case 'wheelRadius':
+                storedObject['wheel_radius'] = element.value;
+                    break;
+                case 'dragCoefficient':
+                storedObject['cd'] = element.value;
+                    break;
+                case 'rollingResistance':
+                storedObject['rolling_resistance_coeff'] = element.value;
+                    break;
+                case 'grossVehicleWeight':
+                storedObject['gvw'] = element.value;
+                    break;
+                case 'frontalArea':
+                storedObject['frontal_area'] = element.value;
+                    break;
+                case 'gearRatio':
+                storedObject['gear_ratio'] = element.value;
+                    break;
+                case 'gearEfficiency':
+                storedObject['gear_efficiency'] = element.value;
+                    break;
+                default:
+                    break;
+        }
+    }else{
+        switch (input.id) {
+            
+            case 'batteryVoltage':
+                getObject['v_dc'] = element.value;
+                console.log("befor local storage",element.value)
+                localStorage.setItem('batteryVoltage', element.value);
+                break;
+                case 'wheelRadius':
+                getObject['wheel_radius'] = element.value;
+                    break;
+                case 'dragCoefficient':
+                getObject['cd'] = element.value;
+                    break;
+                case 'rollingResistance':
+                getObject['rolling_resistance_coeff'] = element.value;
+                    break;
+                case 'grossVehicleWeight':
+                getObject['gvw'] = element.value;
+                    break;
+                case 'frontalArea':
+                getObject['frontal_area'] = element.value;
+                    break;
+                case 'gearRatio':
+                getObject['gear_ratio'] = element.value;
+                    break;
+                case 'gearEfficiency':
+                getObject['gear_efficiency'] = element.value;
+                    break;
+                default:
+                    break;
+        }
+    }
+    }
+    if (valid) {
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('vehicleGetData', JSON.stringify(getObject));
+        localStorage.setItem('vehicleData', JSON.stringify(storedObject));
+            console.log("After",storedObject) // Redirect to the next page
+        // }
+    }
+    }
+
+    function driveCycleButton(){
+        saveDataAndNavigate();
+        window.location.href = 'drive_cycle.html';
+    }
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+    var dataAltered = false;
+    var batteryVoltage, wheelRadius, dragCoefficient, rollingResistance, grossVehicleWeight, frontalArea, gearRatio, gearEfficiency;
+  function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+
+let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+        
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+    function resetEditFlags() {
+        hideLoader()
+    localStorage.setItem('vehicleParamEdited', 'false');
+    localStorage.setItem('performanceSpecEdited', 'false');
+    localStorage.setItem('driveCycleEdited', 'false');
+    
+}
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    resetEditFlags();
+    fetchVehicleData();
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+
+});
+
+
+function fetchVehicleData() {
+    hideLoader()
+    const storedData = localStorage.getItem('vehicleData')
+    const data1 = JSON.parse(localStorage.getItem('vehicleGetData'));
+    if (storedData) {
+            const data = JSON.parse(storedData);
+            if (data && !isEmpty(data)) {
+                batteryVoltage = data.v_dc;
+                wheelRadius = data.wheel_radius;
+            dragCoefficient = data.cd;
+            rollingResistance = data.rolling_resistance_coeff;
+            grossVehicleWeight = data.gvw;
+            frontalArea = data.frontal_area;
+            gearRatio = data.gear_ratio;
+            gearEfficiency = data.gear_efficiency;
+
+            fillInputFields();
+                dataAltered = false;
+            } else {
+                enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+            }
+        } else {
+            enableAndPopulateFields(data1);
+            console.log("No data available. User needs to input values.");
+            dataAltered = true;
+            editButton.style.display = 'none';
+        }
+    }
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+function fillInputFields() {
+    document.getElementById('batteryVoltage').value = batteryVoltage;
+    document.getElementById('wheelRadius').value = wheelRadius;
+    document.getElementById('dragCoefficient').value = dragCoefficient;
+    document.getElementById('rollingResistance').value = rollingResistance;
+    document.getElementById('grossVehicleWeight').value = grossVehicleWeight;
+    document.getElementById('frontalArea').value = frontalArea;
+    document.getElementById('gearRatio').value = gearRatio;
+    document.getElementById('gearEfficiency').value = gearEfficiency;
+
+    localStorage.setItem('batteryVoltage', batteryVoltage);
+
+    
+
+    // Disable the HTML input fields since data is already available
+    disableInputFields();
+}
+
+function disableInputFields() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+}
+
+function enableAndPopulateFields(data1) {
+    document.getElementById('batteryVoltage').value = data1.v_dc;
+    document.getElementById('wheelRadius').value = data1.wheel_radius;
+    document.getElementById('dragCoefficient').value = data1.cd;
+    document.getElementById('rollingResistance').value = data1.rolling_resistance_coeff;
+    document.getElementById('grossVehicleWeight').value = data1.gvw;
+    document.getElementById('frontalArea').value = data1.frontal_area;
+    document.getElementById('gearRatio').value = data1.gear_ratio;
+    document.getElementById('gearEfficiency').value = data1.gear_efficiency;
+    
+    console.log("batterycheck",batteryVoltage)
+}
+// Function to map API data to form fields
+
+
+function validateInputs() {
+    // Define all inputs with their min and max values
+    const vehicleParamEdited = localStorage.getItem('vehicleParamEdited') === 'true';
+    const inputs = [
+        { id: "batteryVoltage", min: 1, max: 1000, name: "Battery Voltage" },
+        { id: "wheelRadius", min: 0.1, max: 1, name: "Wheel Radius" },
+        { id: "dragCoefficient", min: 0.1, max: 1, name: "Drag Coefficient" },
+        { id: "rollingResistance", min: 0.0001, max: 0.03, name: "Rolling Resistance Coeff." },
+        { id: "grossVehicleWeight", min: 1, max: 10000, name: "Gross Vehicle Weight" },
+        { id: "frontalArea", min: 0.3, max: 10, name: "Frontal Area" },
+        { id: "gearRatio", min: 0.1, max: 100, name: "Gear Ratio" },
+        { id: "gearEfficiency", min: 50, max: 100, name: "Gear Efficiency" }
+    ];
+    
+    var storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData'));
+    console.log("before",storedObject)
+
+    let formData = {};
+    let valid = true;
+    for (let input of inputs) {
+        let element = document.getElementById(input.id);
+        if (element.disabled) continue; // Skip validation for disabled fields
+        if (element.value === "") {
+            showError(`${input.name} is Empty`);
+            valid = false;
+            break;
+        } else if (element.value < input.min || element.value > input.max) {
+            showError(`${input.name} should be in range ${input.min} - ${input.max}`);
+            valid = false;
+            break;
+        }
+
+        formData[input.id] = element.value;
+
+
+        
+        if (vehicleParamEdited){
+        switch (input.id) {
+            
+            case 'batteryVoltage':
+                storedObject['v_dc'] = element.value;
+                localStorage.setItem('batteryVoltage', element.value);
+                break;
+                case 'wheelRadius':
+                storedObject['wheel_radius'] = element.value;
+                    break;
+                case 'dragCoefficient':
+                storedObject['cd'] = element.value;
+                    break;
+                case 'rollingResistance':
+                storedObject['rolling_resistance_coeff'] = element.value;
+                    break;
+                case 'grossVehicleWeight':
+                storedObject['gvw'] = element.value;
+                    break;
+                case 'frontalArea':
+                storedObject['frontal_area'] = element.value;
+                    break;
+                case 'gearRatio':
+                storedObject['gear_ratio'] = element.value;
+                    break;
+                case 'gearEfficiency':
+                storedObject['gear_efficiency'] = element.value;
+                    break;
+                default:
+                    break;
+        }
+    }else{
+        switch (input.id) {
+            
+            case 'batteryVoltage':
+                getObject['v_dc'] = element.value;
+                console.log("befor local storage",element.value)
+                localStorage.setItem('batteryVoltage', element.value);
+                break;
+                case 'wheelRadius':
+                getObject['wheel_radius'] = element.value;
+                    break;
+                case 'dragCoefficient':
+                getObject['cd'] = element.value;
+                    break;
+                case 'rollingResistance':
+                getObject['rolling_resistance_coeff'] = element.value;
+                    break;
+                case 'grossVehicleWeight':
+                getObject['gvw'] = element.value;
+                    break;
+                case 'frontalArea':
+                getObject['frontal_area'] = element.value;
+                    break;
+                case 'gearRatio':
+                getObject['gear_ratio'] = element.value;
+                    break;
+                case 'gearEfficiency':
+                getObject['gear_efficiency'] = element.value;
+                    break;
+                default:
+                    break;
+        }
+    }
+    }
+    if (valid) {
+        localStorage.setItem('formData', JSON.stringify(formData));
+        localStorage.setItem('vehicleGetData', JSON.stringify(getObject));
+        localStorage.setItem('vehicleData', JSON.stringify(storedObject));
+            console.log("After",storedObject)
+        navigateToNext(); // Redirect to the next page
+        // }
+    }
+}
+
+function navigateToNext() {
+    window.location.href = 'performance_specs.html';
+}
+
+function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    $('#errorModal').modal('show');
+}
+
+function checkDataAndProceed() {
+    console.log("2nd",dataAltered)
+  if (!dataAltered) {
+    navigateToNext(); // Directly navigate if data is pre-filled
+    } else { 
+       validateInputs(); // Call validation function if data needs to be entered or confirmed
+    }
+}
+
+function showEditModal() {
+    $('#editModal').modal('show');
+}
+
+function createVersion() {
+    showLoader()
+    
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/create_vehicle_version", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            window.location.href = 'dashboard.html';
+            // Optionally redirect or update UI here
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+}
+
+
+function overwriteData() {
+    showLoader()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/delete_all_motors", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            localStorage.setItem('vehicleParamEdited', 'true');
+            enableInputFields();
+            dataAltered = true;
+            document.getElementById('errorMessage').textContent = "";
+            $('#editModal').modal('hide');
+            
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+   
+}
+
+
+function enableInputFields() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.disabled = false;
+    });
+    localStorage.setItem('vehicleParamEdited', 'true');
+    dataAltered = true;
+    
+}
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+</script>
+  </body>
+</html>

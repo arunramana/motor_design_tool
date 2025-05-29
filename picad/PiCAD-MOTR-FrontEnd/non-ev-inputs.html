@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="non-ev-dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='non-ev-dashboard.html'"></i><span id="vehiName"></span> / Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <!-- <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li> -->
+							  <li class="nav-item active">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+			<div class="page-content">
+			   							 
+					<div class="ip_body">   
+						<div class="nevi_container">
+                            <form id="motorForm">
+                                <table class="spec-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Duty</th>
+                                            <th>Motor Torque</th>
+                                            <th>Shaft Speed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="duty" value="continuous" id="continuous" checked>
+                                                <label for="continuous">Continuous</label>
+                                            </td>
+                                            <td><input type="number" name="motorTorque1"></td>
+                                            <td><input type="number" name="shaftSpeed1"></td>
+                                        </tr>
+                                        <tr class="additional-row">
+                                            <td></td>
+                                            <td><input type="number" name="motorTorque2"></td>
+                                            <td><input type="number" name="shaftSpeed2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" name="duty" value="short-term" id="shortTerm">
+                                                <label for="shortTerm">Short-Term</label>
+                                            </td>
+                                            <td><input type="number" name="motorTorque3"></td>
+                                            <td><input type="number" name="shaftSpeed3"></td>
+                                        </tr>
+                                        <tr class="additional-row">
+                                            <td></td>
+                                            <td><input type="number" name="motorTorque4"></td>
+                                            <td><input type="number" name="shaftSpeed4"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="nevi_input-groups">
+                                    <div class="nevi_input-group">
+                                        <label for="inputPower">Input Power (Volts)</label>
+                                        <input type="number" id="inputPower" name="inputPower">
+                                        <!-- <span>(Volts)</span> -->
+                                    </div>
+                                    <div class="nevi_input-group">
+                                        <label for="powerType">Power Type</label>
+                                        <select id="powerType" name="powerType">
+                                            <option value="1">DC</option>
+                                            <option value="2">AC 1Φ</option>
+                                            <option value="3">AC 3Φ (L - L)</option>
+                                            <!-- <option value="Retired3_LN">Retired 3Φ (L - N)</option> -->
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <button class="nevi_button" type="button" onclick="checkAndProceed()">Submit</button>
+                            </form>
+                        </div>
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+<div id="create_new" class="modal fade">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">      
+      <div class="modal-header">
+	  <div class="left"><h3>Create new Vehicle</h3></div>
+	  <div class="right"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button> </div>
+      </div>
+      <div class="modal-body pad40T">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">NAME</td>
+    <td class="pad10B"> <div data-tip="Please fill out this field.">  <input name="" type="text" class="form-control" id="vehicle_name"></div></td>
+  </tr>
+   <tr>
+    <td valign="top">DESCRIPTION</td>
+    <td><div data-tip="Please fill out this field."> <textarea name="" cols="" rows=""  class="form-control h80px" id="vehicle_desc"></textarea></div></td>
+  </tr>
+   <tr>
+    <td align="right" class="pad20T" colspan="2">	
+      <a href="#" class="secondarybt" data-dismiss="modal">Cancel</a>
+      <button onclick="createVehicle()" class="primarybt">Save</button> 
+      </td>
+    </tr>
+</table>
+
+	<div class="clear mrg20B"></div>
+      </div>
+	
+      </div>
+    </div>
+  </div>
+
+  <div id="create_new" class="modal fade">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">      
+        <div class="modal-header">
+        <div class="left"><h3>Create new Vehicle</h3></div>
+        <div class="right"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button> </div>
+        </div>
+        <div class="modal-body pad40T">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top">NAME</td>
+      <td class="pad10B"> <div data-tip="This is the context sensitive help">  <input name="" type="text" class="form-control" id="vehicle_name"></div></td>
+    </tr>
+     <tr>
+      <td valign="top">DESCRIPTION</td>
+      <td><div data-tip="This is the context sensitive help"> <textarea name="" cols="" rows=""  class="form-control h80px" id="vehicle_desc"></textarea></div></td>
+      
+    </tr>
+     <tr>
+      <td align="right" class="pad20T" colspan="2">	
+        <a href="#" class="secondarybt" data-dismiss="modal">Cancel</a>
+        <button onclick="createVehicle()" class="primarybt">Save</button> 
+        </td>
+      </tr>
+  </table>
+  
+      <div class="clear mrg20B"></div>
+        </div>
+      
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+
+<script>
+   
+    let dataAltered = false;
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+  // var base_url = "http://127.0.0.1:5000";
+  function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+  localStorage.removeItem('vehicleData')
+    localStorage.removeItem('vehicleGetData')
+    
+document.addEventListener('DOMContentLoaded', function() {
+    fetchData();
+});
+
+function checkAndProceed() {
+    console.log("data",dataAltered)
+    if (dataAltered) {
+        getValuesFromUser();
+    } else {
+        navigateToNextPage();
+    }
+}
+
+function navigateToNextPage() {
+    window.location.href = 'motor_wiz_inputs.html';
+}
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function fetchData() {
+    console.log("I am first")
+    const storedData = localStorage.getItem('applicationData');
+    const data1 = JSON.parse(localStorage.getItem('applicationGetData'));
+
+    if (storedData) {
+        const data = JSON.parse(storedData);
+        console.log("data",data)
+        localStorage.setItem('batteryVoltage', data.output.v_dc);
+                localStorage.setItem('peak_torque', data.output.peak_torque);
+                localStorage.setItem('noLoadSpeed', data.output.max_no_load_rpm);
+                localStorage.setItem('i_max', data.output.i_max);
+        fillInputFields(data.input);
+        disableInputFields();
+        dataAltered=false;
+    } else {
+        // enableInputFields(data1);
+        getValuesFromUser(validateAndSave);
+        dataAltered=true;
+        console.log("No data available. User needs to input values.");
+    }
+}
+
+// function enableInputFields(data) {
+//     document.getElementById('inputPower').value = data.input_power;
+//     document.getElementById('powerType').value = data.power_type;
+
+//     if (data.duty.includes('continuous')) {
+//         document.getElementById('continuous').checked = true;
+//         if ((data.points).length >0){
+//         const points = data.points[0];
+//         document.querySelector('input[name="motorTorque1"]').value = points[1];
+//         document.querySelector('input[name="shaftSpeed1"]').value = points[0];
+//         localStorage.setItem('shaftSpeed1',points[1]);
+//             localStorage.setItem('motorToque1', points[0]);
+//         if (points.length > 2) {
+//             document.querySelector('input[name="motorTorque2"]').value = points[3];
+//             document.querySelector('input[name="shaftSpeed2"]').value = points[2];
+//             localStorage.setItem('shaftSpeed2',points[3]);
+//             localStorage.setItem('motorToque2', points[2]);
+//         }
+//     }
+//         if (data.duty.includes('short-term')) {
+//         document.getElementById('shortTerm').checked = false;
+//         if ((data.points).length >0){
+//         const points = data.points[1];
+//         document.querySelector('input[name="motorTorque3"]').value = points[1];
+//         document.querySelector('input[name="shaftSpeed3"]').value = points[0];
+//         localStorage.setItem('shaftSpeed3',points[1]);
+//             localStorage.setItem('motorToque3', points[0]);
+//         if (points.length > 2) {
+//             document.querySelector('input[name="motorTorque4"]').value = points[3];
+//             document.querySelector('input[name="shaftSpeed4"]').value = points[2];
+//             localStorage.setItem('shaftSpeed4',points[3]);
+//             localStorage.setItem('motorToque4', points[2]);
+//         }
+//     }
+//     }
+//     }
+//     getValuesFromUser();
+// }
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+function fillInputFields(data) {
+    document.getElementById('inputPower').value = data.input_power;
+    document.getElementById('powerType').value = data.power_type;
+
+    localStorage.setItem('inputPower',data.input_power);
+            localStorage.setItem('powerType',data.power_type)
+
+    if (data.duty.includes('continuous')) {
+        document.getElementById('continuous').checked = true;
+        const points = data.points[0];
+        document.querySelector('input[name="motorTorque1"]').value = points[1];
+        document.querySelector('input[name="shaftSpeed1"]').value = points[0];
+        localStorage.setItem('shaftSpeed1',points[1]);
+            localStorage.setItem('motorToque1', points[0]);
+        if (points.length > 2) {
+            document.querySelector('input[name="motorTorque2"]').value = points[3];
+            document.querySelector('input[name="shaftSpeed2"]').value = points[2];
+            localStorage.setItem('shaftSpeed2',points[3]);
+            localStorage.setItem('motorToque2', points[2]);
+        }
+    }
+
+    if (data.duty.includes('short-term')) {
+        document.getElementById('shortTerm').checked = true;
+        const points = data.points[1];
+        document.querySelector('input[name="motorTorque3"]').value = points[1];
+        document.querySelector('input[name="shaftSpeed3"]').value = points[0];
+        localStorage.setItem('shaftSpeed3',points[1]);
+            localStorage.setItem('motorToque3', points[0]);
+        if (points.length > 2) {
+            document.querySelector('input[name="motorTorque4"]').value = points[3];
+            document.querySelector('input[name="shaftSpeed4"]').value = points[2];
+            localStorage.setItem('shaftSpeed4',points[3]);
+            localStorage.setItem('motorToque4', points[2]);
+        }
+    }
+    
+}
+
+function disableInputFields() {
+    const inputs = document.querySelectorAll('input, select');
+    inputs.forEach(input => input.disabled = true);
+}
+
+
+function getValuesFromUser(callback) {
+
+    let applicationGetData = JSON.parse(localStorage.getItem('applicationGetData'));
+    const form = document.getElementById('motorForm');
+    const dutyCheckboxes = form.querySelectorAll('input[name="duty"]:checked');
+    const inputPower = document.getElementById('inputPower').value;
+    const powerType = document.getElementById('powerType').value;
+
+    localStorage.setItem('inputPower',inputPower);
+            localStorage.setItem('powerType',powerType)
+
+            applicationGetData.input_power = parseFloat(inputPower);
+    applicationGetData.power_type = powerType;
+
+    let duties = [];
+    let points = [];
+
+    dutyCheckboxes.forEach((checkbox) => {
+        duties.push(checkbox.value);
+    });
+
+    applicationGetData.duty = duties;
+
+    if (document.getElementById('continuous').checked) {
+        let continuousPoints = [];
+        const motorTorque1 = form.querySelector('input[name="motorTorque1"]').value;
+        const shaftSpeed1 = form.querySelector('input[name="shaftSpeed1"]').value;
+        const motorTorque2 = form.querySelector('input[name="motorTorque2"]').value;
+        const shaftSpeed2 = form.querySelector('input[name="shaftSpeed2"]').value;
+
+        if (motorTorque1 && shaftSpeed1) {
+            continuousPoints.push(parseFloat(shaftSpeed1), parseFloat(motorTorque1));
+            localStorage.setItem('shaftSpeed1',shaftSpeed1);
+            localStorage.setItem('motorToque1',motorTorque1);
+        }
+        if (motorTorque2 && shaftSpeed2) {
+            continuousPoints.push(parseFloat(shaftSpeed2), parseFloat(motorTorque2));
+            localStorage.setItem('shaftSpeed2',shaftSpeed2);
+            localStorage.setItem('motorToque2',motorTorque2);
+        }
+        if (continuousPoints.length > 0) {
+            points.push(continuousPoints);
+        }
+    }
+
+    if (document.getElementById('shortTerm').checked) {
+        let shortTermPoints = [];
+        const motorTorque3 = form.querySelector('input[name="motorTorque3"]').value;
+        const shaftSpeed3 = form.querySelector('input[name="shaftSpeed3"]').value;
+        const motorTorque4 = form.querySelector('input[name="motorTorque4"]').value;
+        const shaftSpeed4 = form.querySelector('input[name="shaftSpeed4"]').value;
+
+        if (motorTorque3 && shaftSpeed3) {
+            shortTermPoints.push(parseFloat(shaftSpeed3), parseFloat(motorTorque3));
+            localStorage.setItem('shaftSpeed3',shaftSpeed3);
+            localStorage.setItem('motorToque3',motorTorque3);
+        }
+        if (motorTorque4 && shaftSpeed4) {
+            shortTermPoints.push(parseFloat(shaftSpeed4), parseFloat(motorTorque4));
+            localStorage.setItem('shaftSpeed4',shaftSpeed4);
+            localStorage.setItem('motorToque4',motorTorque4);
+        }
+        if (shortTermPoints.length > 0) {
+            points.push(shortTermPoints);
+        }
+    }
+
+    applicationGetData.points = points;
+    const userData = {
+       "input_power": parseFloat(inputPower),
+        "power_type": powerType,
+        "duty": duties,
+        "points": points
+    };
+
+
+    validateAndSave(userData)
+
+   
+
+}
+
+function validateAndSave(data) {
+        if (validateData(data)) {
+            saveDataLocally(data);
+            makeAPICall();
+        }
+}
+
+function saveDataLocally(data) {
+    localStorage.setItem('inputPower', data.input_power);
+    localStorage.setItem('powerType', data.power_type);
+    localStorage.setItem('duty', JSON.stringify(data.duty));
+    localStorage.setItem('points', JSON.stringify(data.points));
+}
+
+function validateData(data) {
+    // if (isNaN(data.input_power)) {
+    //     alert('Input Power must be a number.');
+    //     return false;
+    // }
+    if (data.points.length === 0) {
+        alert('At least one set of points must be provided.');
+        return false;
+    }
+    if (!data.duty.includes('continuous') && !data.duty.includes('short-term')) {
+        alert('Please select at least one duty option.');
+        return false;
+    }
+    return true;
+}
+
+
+function makeAPICall() {
+    const inputPower = localStorage.getItem('inputPower');
+    const powerType = localStorage.getItem('powerType');
+    const duty = JSON.parse(localStorage.getItem('duty'));
+    const points = JSON.parse(localStorage.getItem('points'));
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "application_name":vehiName ,
+        "input_power": parseFloat(inputPower),
+        "power_type": powerType,
+        "duty": duty,
+        "points": points
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: raw,
+        redirect: "follow"
+    };
+
+    showLoader();
+
+    fetch(base_url+"/application_dynamics", requestOptions)
+        .then(response => {
+            hideLoader();
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(result => {
+            if (result.peak_torque && result.max_no_load_rpm && result.i_max && result.v_dc) {
+                console.log("result",result)
+                localStorage.setItem('batteryVoltage', result.v_dc);
+                localStorage.setItem('peak_torque', result.peak_torque);
+                localStorage.setItem('noLoadSpeed', result.max_no_load_rpm);
+                localStorage.setItem('i_max', result.i_max);
+
+                navigateToNextPage();
+            } else {
+                console.error('API response is missing required fields:', result);
+            }
+        })
+        .catch(error => {
+            hideLoader();
+            console.error('Error:', error);
+        });
+}
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+        }
+
+
+        window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+</script>
+  </body>
+</html>

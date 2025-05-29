@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+	<script src="https://cdn.syncfusion.com/ej2/25.1.35/dist/ej2.min.js" type="text/javascript"></script>
+ <script src="https://cdn.syncfusion.com/ej2/syncfusion-helper.js" type ="text/javascript"></script>
+
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+					<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='continuous_mode.html'"></i>  <span id="vehiName"></span> / Vehicle Dynamics/ Output</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="batteryVoltageContent" style="display: none;">
+                    <!-- Content for Battery Voltage -->
+                   
+                    <h3>Peak Torque (Nm)</h3>
+                    <p>The highest torque output that the motor can deliver for a temporary period. This torque is needed by a vehicle from rest till a speed of about 10 Kmph only – to climb out of a steep ramp.</p> 
+                    <h3>Peak Power (kW)</h3>
+                    <p>It represents the maximum power output that the motor can
+                        achieve for a temporary period. This is needed when the vehicle accelerates from
+                        rest to a high speed, or when it is overtaking another reasonably fast-moving vehicle.</p> 
+                    <h3>Peak Speed (RPM)</h3>
+                    <p>It refers to the maximum speed that the motor can reach on a
+                        level road.</p>
+                    <h3>No Load Speed (RPM)</h3>
+                    <p>This is the highest speed at which the motor runs when there
+                        is no external load applied to it.</p>
+                        <h3>Rated Speed (RPM)</h3>
+                    <p>It refers to the maximum speed that the motor can sustain on a
+                        long uphill drive when it is called upon to deliver its “rated” torque.</p> 
+                    
+    
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                
+              </div>
+              <div class="overlay"></div>
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">								
+						
+						<div id="process" class="w65p">
+             <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='continuous_mode.html'">
+                        <i class="vehicle_ic"></i>
+                    </button>
+                    <p>Torque-Speed</p>
+                </li>                
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='peak_mode.html'">
+					 <i class="peak_mode"></i>
+					</button>
+                    <p>Power-Speed</p>
+                </li>
+				<li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='motor_specs.html'">
+					 <i class="voltage_ic"></i>
+					</button>
+                    <p>Voltage Specifications</p>
+                </li>
+                
+            </ul>
+        </div>
+	
+					<div class="clear mrg25B"></div>	
+					
+				<div class="row d-flex align-items-center dash_pad">   
+											
+							<div class="col-md-6 mrg20B pad20R"><div class="table_grid1">
+								<table id="peak_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<th align="center">Peak Mode<a class="hint--left info-icon" data-content-id="batteryVoltageContent" href="javascript:void(0)"><i class="info_output" ></i> </a></th>
+											<th align="center">Speed(RPM)</th>
+											<th align="center">Torque(Nm)</th>
+											<th align="center">Power(Kw)</th>
+										</tr>
+									</thead>
+									<tbody>
+                                        <tr>
+                                            <td>Peak Torque</td>
+                                            <td id="rated_speed"></td>
+                                            <td id="rated_torque"></td>
+                                            <td id="rated_power"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Peak Power</td>
+                                            <td id="peak_speed"></td>
+                                            <td id="peak_torque"></td>
+                                            <td id="peak_power"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Peak Speed</td>
+                                            <td id="no_load_speed"></td>
+                                            <td id="no_load_torque"></td>
+                                            <td id="no_load_power"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>No load Speed</td>
+                                            <td id="peak_torque_speed"></td>
+                                            <td id="peak_torque_torque"></td>
+                                            <td id="peak_torque_power"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rated Operating Point</td>
+                                            <td id="rated_0"></td>
+                                            <td id="rated_1"></td>
+                                            <td id="rated_2"></td>
+                                        </tr>
+                                    </tbody>
+								</table>
+
+							</div></div>
+								
+							<div class="col-md-6 mrg20B pad20L">	
+								<div id="graph_sheet_2">
+									<div id="graph_sheet_2_child"></div>
+								</div>
+							</div>
+							
+						</div>
+				
+					
+			<div class="clear mrg25B"></div>
+						
+					<div class="left"><button class="nxt_pre_btns" onClick="window.location.href='continuous_mode.html'" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+					<div class="right"><button class="nxt_pre_btns"  onclick="window.location.href='motor_specs.html'">Next <img src="assets/images/arrow_right.svg"> </button></div>
+			</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script>
+		var ele = document.getElementById('graph_sheet_1');
+		if(ele) {
+		  ele.style.visibility = "visible";
+		}  
+		</script>
+	<script src="./assets/js/config.js"></script>
+	
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {   
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+    });
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+
+	function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	document.addEventListener("DOMContentLoaded", function() {
+            showLoader()
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "user_id": user_id,
+                "vehicle_name": vehiName // Fetch from URL parameters
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(base_url + "/get_vehicle_data", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    hideLoader()
+                    if (data && data.output && data.output.table) {
+                        populatePeakTable(data.output.table,data.output.rated);
+						console.log("outputData",data.output.table)
+                        processData(data.output.table,data.output.rated);
+
+                // Now you can use chartData to initialize the chart
+                    }
+                })
+                .catch(error => {
+                    hideLoader()
+                    console.error('Error:', error)});
+        });
+
+function populatePeakTable(outputData,rated) {
+	    
+	        if (outputData.B) {
+                document.getElementById('rated_speed').textContent = outputData.B[0] || '0';
+                document.getElementById('rated_torque').textContent = outputData.B[1] || '0';
+                document.getElementById('rated_power').textContent = Math.round(outputData.B[2]) || '0';
+                localStorage.setItem('rated_speed', outputData.B[0]);
+            }
+            if (outputData.C) {
+                document.getElementById('peak_speed').textContent = outputData.C[0] || '0';
+                document.getElementById('peak_torque').textContent = outputData.C[1] || '0';
+                document.getElementById('peak_power').textContent = Math.round(outputData.C[2]) || '0';   
+            }
+            if (outputData.D) {
+                var noLoadSpeed = outputData.D[0] || '0';
+                document.getElementById('no_load_speed').textContent = Math.round(outputData.D[0]) || '0';
+                document.getElementById('no_load_torque').textContent = outputData.D[1] || '0';
+                document.getElementById('no_load_power').textContent = Math.round(outputData.D[2]) || '0';
+                localStorage.setItem('noLoadSpeed', outputData.D[0] || '0');
+            }
+            if(outputData.E){
+                document.getElementById("peak_torque_speed").textContent = Math.round(outputData.E[0]);
+                document.getElementById("peak_torque_torque").textContent = outputData.E[1];
+                document.getElementById("peak_torque_power").textContent = Math.round(outputData.E[2]);
+	        }
+            if(rated.F){
+                document.getElementById("rated_0").textContent=rated.F[0]
+                document.getElementById("rated_1").textContent = rated.F[1];
+                document.getElementById("rated_2").textContent = rated.F[2];
+
+            }
+}
+
+function processData(peak,rated) {
+            let chartData = [];
+            let chartData2= [];
+            let chartData3=[];
+        
+            // Loop through each key in the `continuous` object
+            for (const [key, values] of Object.entries(peak)) {
+                // Create an object with x, y, y2 and push it into chartData array
+                let entry = {
+                    x: values[0], // Speed
+                    y: values[1], // Torque
+                    y2: values[2] // Power
+                };
+                chartData.push(entry);
+            }
+        
+            for (const [key, values] of Object.entries(rated)) {
+
+            let entry = {
+              x: values[0], // Speed
+              y: values[1], // Torque
+             y2: values[2] // Power
+            };
+                chartData2.push(entry);
+
+            }
+
+            chartData2.push(chartData[3])
+            chartData2.push(chartData[4])
+            chartData3=[chartData2[1]]
+            chartData2.splice(1, 1);
+
+            initChart(chartData,chartData2,chartData3)
+        }
+
+
+
+        function initChart(chartData,chartData2,chartData3) {
+            // Log data to check
+        
+            var chart = new ej.charts.Chart({
+                primaryXAxis: {
+                    title: 'Speed (rpm)',
+                },
+                primaryYAxis: {
+                    title: 'Power (Kw)'
+                },
+                series: [
+                    {
+                        dataSource: chartData,
+                        width: 2,
+                        xName: 'x',
+                        yName: 'y2',
+                        name: 'Peak Power (Kw)',
+                        type: 'Line',
+                        fill: 'red',
+                        marker: { visible: true }
+                    },
+                    {
+                        dataSource: chartData2,
+                        width: 2,
+                        xName: 'x',
+                        yName: 'y2',
+                        name: 'Continuous Power (Kw)',
+                        type: 'Line',
+                        fill: 'blue',
+                        marker: { visible: true }
+                    },
+                    {
+                        dataSource: chartData3,
+                        width: 2,
+                        xName: 'x',
+                        yName: 'y2',
+                        type: 'Line',
+                        fill: 'green',
+                        marker: { visible: true }
+                    }
+                ],
+                tooltip: {
+                    enable: true
+                }
+            }, '#graph_sheet_2_child');
+        }
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+</script>
+  </body>
+</html>

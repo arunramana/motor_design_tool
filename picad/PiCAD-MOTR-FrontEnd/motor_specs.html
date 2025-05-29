@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="dashboard.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='peak_mode.html'"></i> <span id="vehiName"></span> / Vehicle Dynamics/ Output</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="batteryVoltageContent" style="display: none;">
+                    <!-- Content for Battery Voltage -->
+                   <h3>Voltage DC (V)</h3>
+                   <p> This is the battery voltage set by the user.</p>
+                   <h3> Current DC max (A)</h3>
+                   <p>Maximum current that the battery needs to supply for the time mentioned in the time to
+                    accelerate input box.</p>
+                    <h3> Ke (V/Krpm)</h3>
+                    <p> In permanent magnet motors, the rotor generates its own magnetic field, inducing a voltage
+                        in the stator windings as it moves. This induced voltage, known as back-emf, increases
+                        linearly with speed and plays a vital role in determining the maximum operating speed of
+                        the motor. The Back emf constant, represented by Ke, quantifies the ratio of the voltage
+                        generated in the winding to the rotor speed. Typically measured when the rotor is at 1000
+                        rpm, Ke is expressed in units of volts per kilorpm (Krpm).</p>
+                        <h3>Ke (Vs/rad)</h3>
+                        <p>In this, the Ke value is represented in SI units.</p>
+                        <h3> Kt (Nm/A_rms)</h3>
+                        <p>Torque constant (Kt) is defined as the ratio of the motor&#39;s torque (T) to the current
+                            (I) flowing through its windings. It indicates how much torque the motor will generate for
+                            every unit of current applied to it. A higher torque constant means the motor will produce
+                            more torque for a given current, while a lower torque constant implies less torque output
+                            for the same current.</p>
+                            <h3> Max A_rms (A)</h3>
+                            <p>Maximum current flowing through each switch of the hex inverter. The semiconductor
+                                should be decided to withstand this RMS current.</p>
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                
+              </div>
+              <div class="overlay"></div>
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">								
+						
+						<div id="process" class="w65p">
+           <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='continuous_mode.html'">
+                        <i class="vehicle_ic"></i>
+                    </button>
+                    <p>Continuous Mode</p>
+                </li>                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='peak_mode.html'">
+					 <i class="peak_mode"></i>
+					</button>
+                    <p>Peak Mode</p>
+                </li>
+				<li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onClick="window.location.href='motor_specs.html'">
+					 <i class="voltage_ic"></i>
+					</button>
+                    <p>Voltage Specifications</p>
+                </li>
+                
+            </ul>
+        </div>
+	
+					<div class="clear mrg25B"></div>						
+				<div class="col-md-6 mrg20B  offset-md-3">
+					<div class="table_grid1">
+                        <table id="voltage_specs_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th align="center">Parameter<a class="hint--left info-icon" data-content-id="batteryVoltageContent" href="javascript:void(0)"><i class="info_output" ></i> </a></th>
+                                <th align="center">Value</th>
+                            </tr>
+                            <tr>
+                                <td>Voltage DC (V)</td>
+                                <td id="v_dc"></td>
+                            </tr>
+                            <tr>
+                                <td>Current DC max (A)</td>
+                                <td id="a_dc_max"></td>
+                            </tr>
+                            <tr>
+                                <td>Ke (V/Krpm)</td>
+                                <td id="ke"></td>
+                            </tr>
+                            <tr>
+                                <td>Ke (Vs/rad)</td>
+                                <td id="ke_rad"></td>
+                            </tr>
+                            <tr>
+                                <td>Kt (Nm/A_rms)</td>
+                                <td id="kt"></td>
+                            </tr>
+                            <tr>
+                                <td>Max A_rms (A)</td>
+                                <td id="max_a_rms"></td>
+                            </tr>
+                            <tr>
+                                <td>Wh/Km (without regen)</td>
+                                <td id="wh/km"></td>
+                            </tr>
+                            
+                        </table>
+	
+						</div>
+					</div>
+					
+			<div class="clear mrg25B"></div>
+						
+					<div class="left"><button class="nxt_pre_btns" onClick="window.location.href='peak_mode.html'" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+					<div class="right"><button class="nxt_pre_btns"  onclick="window.location.href='motor_wiz_inputs.html'">View motors <img src="assets/images/arrow_right.svg"> </button></div>
+			</div>		
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+	
+<script>
+     document.addEventListener("DOMContentLoaded", function() {   
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+    });
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+    function showLoader() {
+       document.getElementById('loader_animation_overlay').style.display = 'flex';
+    }
+
+    function hideLoader() {
+       document.getElementById('loader_animation_overlay').style.display = 'none';
+    }
+
+    function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        showLoader()
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "user_id": user_id,
+                "vehicle_name": vehiName // Fetch from URL parameters
+            });
+
+            const requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(base_url + "/get_vehicle_data", requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    hideLoader()
+                    if (data && data.output && data.output.voltage_specs) {
+                        populateVoltageSpecsTable(data.output.voltage_specs,data.output);
+						console.log("outputData",data.output.voltage_specs)
+                        console.log("outputData1",data.output)
+                    }
+                })
+                .catch(error => {
+                    hideLoader()
+                console.error('Error:', error)});
+        });
+
+		
+
+
+    function populateVoltageSpecsTable(voltageSpecs,output) {
+    document.getElementById("v_dc").textContent = Math.round(voltageSpecs.v_dc) || 0;
+    document.getElementById("a_dc_max").textContent = Math.round( voltageSpecs.a_dc_max) || 0;
+    document.getElementById("ke").textContent = (voltageSpecs.ke || 0).toFixed(2);
+    document.getElementById("ke_rad").textContent = (voltageSpecs.ke_rad || 0).toFixed(2);
+    document.getElementById("kt").textContent = (voltageSpecs.kt || 0).toFixed(2);
+    document.getElementById("max_a_rms").textContent = Math.round(voltageSpecs.max_a_rms) || 0;
+    document.getElementById("wh/km").textContent = (output.wh_km).toFixed(2) || 0;
+}
+
+
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+</script>
+  </body>
+</html>

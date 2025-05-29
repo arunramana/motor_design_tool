@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu
+                -toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='motor_wiz_inputs.html'"></i> <span id="vehiName"></span> /<span id="motoName"></span> / Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="TopologyContent" style="display: none;">
+                    <h3>Topology</h3>
+                    <img src="./assets/images/Topology.png" alt="Topology Image" style="width: 100%; max-width: 500px;">
+                    <p>Credit: <a href="https://enmotor.com/what-is-the-difference-between-ipm-and-spm-motor/">https://enmotor.com/what-is-the-difference-between-ipm-and-spm-motor/</a></p>
+                    <p>Permanent magnet motors (also known as PMs) can be divided into two main categories:</p>
+                    <ol type="a">
+                        <li>Interior Permanent Magnet (IPM) is a motor with permanent magnets 
+                            embedded in the rotor. </li>
+                        <li>Surface Permanent Magnet (SPM) is a motor with permanent magnets 
+                            attached to the circumference of the rotor. </li>
+                    </ol> 
+                    <p>Both types generate magnetic flux through permanent magnets fixed to or inside the rotor.</p> 
+                    <p>In SPM motors because of their mechanical mounting, mechanical strength is weaker than 
+                        that of IPM motors. The weakened mechanical strength limits the motor’s maximum safe 
+                        mechanical speed. SPM motor rely heavily on magnetic torque components to generate 
+                        torque. </p>
+                        <p>In IPM motors the location of the permanent magnets makes IPM motors very mechanically 
+                            sound, and suitable for operating at very high speeds. The IPM motor can generate torque 
+                            by utilizing the magnetic torque and reluctance torque components of the motor. IPM 
+                            motor’s performance can be further manipulated using a technique called field weakening. 
+                            For applications demanding high speeds, such as traction motors, interior permanent 
+                            magnet motors emerge as the optimal choice. </p>
+                    <!-- Content for Battery Voltage -->
+                    <!-- <h3>Battery voltage DC (V)</h3><br> -->
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="NumberofPolesContent" style="display: none;">
+                    <!-- Content for Wheel Radius -->
+                    <h3>No. of poles </h3><br>
+                    <p>The no. of poles is the number of permanent magnetic poles, north and south, on the rotor. There is always the same number of north and south poles on the rotor. Thus, there are always an even number of poles.</p>
+                    <p>In general, greater number of magnet poles usually reduces torque ‘ripple’ – the instantaneous fluctuations in torque that could lead to the ride not feeling ‘smooth’. On the other hand, greater number of poles leads to higher electric frequency. This can pose challenges in control as well as lead to increased steel losses.</p>
+                       <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="NumberofSlotsContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>No. of Slots </h3><br>
+                    <p>The internal circumference of the stator includes grooves in specified intervals, known as ‘slots’ that channel copper windings. When an electric current passes through the windings, a series of magnetic fields is created. It’s the interaction between these magnetic fields and the magnets on the rotor (the central rotating part of the motor) that generates rotational motion. </p>
+                    <p>The number of slots, in combination with the number of poles, defines the winding patterns that are optimal for the design. The slots have to be equally allocated across all the phases of the windings, for the pattern to be ‘balanced’.  Thus for a three-phase motor, the number of slots is always a multiple of 3.</p>
+                     <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+              </div>
+            <div class="overlay"></div>
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">	
+						<div id="process" class="w75p">
+            <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="saveDataAndNavigateBack()">
+                       <i class="performance"></i>
+                    </button>
+                    <p>Topology</p>
+                </li>   
+				  <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="checkDataAndProceed()">
+                        <i class="metrial_ic"></i>
+                    </button>
+                    <p>Material</p>
+                </li>
+				  <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="geometryButton()">
+                        <i class="geometry_ic"></i>
+                    </button>
+                    <p>Geometry</p>
+                </li>             
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="thermalButton()">
+                        <i class="thermal_ic"></i>
+                    </button>
+                    <p>Thermal</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg45B"></div>	
+					
+          <div class="row">	
+												
+            <div class="col-md-6"><div class="box_bg">	
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <td valign="middle">Topology</td>
+            <td align="right"> 
+              <select id="topo" name="topo" class="custom-select">
+                      <option value="IPMSM">IPMSM RADIAL</option>
+                      <option value="SPMSM">SPMSM RADIAL</option>
+                  </select>
+            </td>
+            <td valign="top" width="25" align="center"><a class="hint--left info-icon" data-content-id="TopologyContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+</td>
+            </tr>				   
+          </table></div>
+        </div>	
+                  
+                  
+        <div class="clear mrg45B"></div>		
+                  
+                  
+        <div class="col-md-6 pad10B"> <div class="box_bg">	
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <td valign="middle">Number of Poles</td>
+            <td align="right"><select id="poles" name="poles" class="custom-select" onchange="updateSlotsBasedOnPoles()">
+              <option>8</option>
+              <option>10</option>
+              <option>12</option>
+          </select></td>
+            <td valign="top" width="25" align="center"><a class="hint--left info-icon"   data-content-id="NumberofPolesContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+            </td>
+            </tr>				   
+          </table>
+        </div></div>
+        
+        <div class="col-md-6"> <div class="box_bg">	
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+            <td valign="middle">Number of Slots</td>
+            <td align="right"><select id="slots" name="slots" class="custom-select" >
+              <option>9</option>
+              <option>12</option>
+              <option>15</option>
+          </select></td>
+            <td valign="top" width="25" align="center"><a class="hint--left info-icon"   data-content-id="NumberofSlotsContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+            </td>
+            </tr>				   
+          </table>
+        </div></div>
+      
+      </div>
+						<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+								</div>
+								<div class="modal-body">
+								  <p id="errorMessage"></p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						
+							<div class="clear mrg45B"></div>
+														
+						<div class="pad10A pad35T">			
+						
+						
+						<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()">Next <img src="assets/images/arrow_right.svg"> </button></div></div>
+						
+					
+					</div>						
+				
+					
+					</div>
+						
+						
+						</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+</div>
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script src="./assets/js/config.js"></script>
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function saveDataAndNavigateBack() {
+    const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput')) || {};
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+    // Retrieve values from form inputs
+    var topology = document.getElementById('topo').value;
+    var poles = document.getElementById('poles').value;
+    var slots = document.getElementById('slots').value;
+
+    // Store values in localStorage
+    localStorage.setItem('topo', topology);
+    localStorage.setItem('poles', poles);
+    localStorage.setItem('slots', slots);
+
+   
+
+    if (topologyEdited) {
+        storedObject.topology[0] = topology;  // Assuming topology should be stored as an array
+        storedObject.no_of_poles = poles;
+        storedObject.no_of_slots = slots;
+    }
+    if(dataAltered){
+        getObject.topology[0] = topology;
+    getObject.no_of_poles = poles;
+    getObject.no_of_slots = slots;
+    }
+
+    localStorage.setItem('motorGetData', JSON.stringify(getObject));
+    console.log("get",getObject)
+    localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+
+    console.log("Data saved. Navigating back to motor wizard inputs..."); // Navigate to the previous page
+}
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'motor_wiz_inputs.html';
+}
+function geometryButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'geometry.html';
+}
+function thermalButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'thermal.html';
+}
+
+	var dataAltered = false;
+    document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    resetEditFlags();
+    fetchMotorData();
+
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+    
+
+    // Set up the listener for the Edit button to call enableFormFields
+    document.getElementById('editButton').addEventListener('click', enableFormFields);
+});
+	
+  
+
+function updateSlotsBasedOnPoles() {
+     const poles = document.getElementById("poles");
+            const slots = document.getElementById("slots");
+            const selectedPole = poles.value;
+            const slotOptions = selectedPole === '12' ? ['9'] : ['9', '12', '15'];
+
+            slots.innerHTML = slotOptions.map(slot => `<option value="${slot}">${slot}</option>`).join('');
+}
+function resetEditFlags() {
+    hideLoader()
+    localStorage.setItem('topologyEdited', 'false');
+    localStorage.setItem('materialEdited', 'false');
+    localStorage.setItem('geometryEdited', 'false');
+    localStorage.setItem('thermalEdited', 'false'); 
+}
+
+
+
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+let motoName = getQueryParams("motor_name");
+    if(!motoName){
+        motoName = localStorage.getItem("motor_name")
+        document.getElementById("motoName").innerText = motoName;
+    }else{
+        document.getElementById("motoName").innerText = motoName;
+        localStorage.setItem("motor_name", motoName); // Store in local storage
+    }
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+console.log("motorName",motoName)
+
+function enableFormFields() {
+  
+    // This function will enable the form fields for editing
+    ['topo', 'poles', 'slots'].forEach(function(id) {
+        document.getElementById(id).disabled = false;
+    });
+    localStorage.setItem('topologyEdited', 'true');
+}
+
+
+function fetchMotorData() {
+    hideLoader()
+    const data = JSON.parse(localStorage.getItem('motorDataInput'));
+    const data1 = JSON.parse(localStorage.getItem('motorGetData'));
+    var checkdata;
+    if(typeof(data) == 'string'){
+    checkdata = JSON.parse(data)
+    }else{
+        checkdata=data
+    }
+
+    console.log("inputdata",data)
+          if (checkdata && !isEmpty(checkdata)) {
+                console.log("int",checkdata);
+                fillFormData(checkdata);
+                disableFormFields();
+                dataAltered = false;
+            } else {
+                console.log("No data available. User needs to input values.");
+                fillFormData1(data1);
+                dataAltered = true;
+                editButton.style.display = 'none';
+            }
+            console.log("clinton",data1)
+      }
+      
+
+      function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+function fillFormData1(data1) {
+    document.getElementById('topo').value = data1.topology[0];
+    document.getElementById('poles').value = data1.no_of_poles;
+    updateSlotsBasedOnPoles();
+    document.getElementById('slots').value = data1.no_of_slots;
+    
+}
+
+
+
+function fillFormData(data) {
+    document.getElementById('topo').value = data.topology[0];
+    document.getElementById('poles').value = data.no_of_poles;
+    updateSlotsBasedOnPoles();
+    document.getElementById('slots').value = data.no_of_slots;
+
+    var topology = document.getElementById('topo').value;
+    var poles = document.getElementById('poles').value;
+    var slots = document.getElementById('slots').value;
+	console.log("topo",topology)
+    localStorage.setItem('topo', topology);
+    localStorage.setItem('poles', poles);
+    localStorage.setItem('slots', slots);
+}
+
+function disableFormFields() {
+    ['topo', 'poles', 'slots'].forEach(function(id) {
+        var element = document.getElementById(id);
+        if (element) {
+            element.disabled = true;
+        } else {
+            console.log("Error: Element with ID '" + id + "' not found.");
+        }
+    });
+}
+
+function saveData() {
+    const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput'));
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+    var topology = document.getElementById('topo').value;
+    var poles = document.getElementById('poles').value;
+    var slots = document.getElementById('slots').value;
+	console.log("topo",topology)
+    localStorage.setItem('topo', topology);
+    localStorage.setItem('poles', poles);
+    localStorage.setItem('slots', slots);
+
+    if (dataAltered){
+        getObject.topology[0] = topology;
+    getObject.no_of_poles = poles;
+    getObject.no_of_slots = slots;
+    }
+
+    if (topologyEdited){
+        storedObject.topology[0] = topology
+        storedObject.no_of_poles = poles
+        storedObject.no_of_slots = slots
+    }
+    
+
+	console.log("topo",topology)
+	localStorage.setItem('motorGetData', JSON.stringify(getObject));
+    console.log("get",getObject)
+    console.log("stor",storedObject)
+    localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+	console.log(localStorage.getItem('topo'))
+	navigateToNext();
+}
+function navigateToNext() {
+  window.location.href = 'material.html';
+}
+
+function checkDataAndProceed() {
+  const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+  if (dataAltered || topologyEdited) {
+    saveDataAndNavigate();
+    console.log("hello",topologyEdited)
+     // Directly navigate if data is pre-filled
+    } else {
+      navigateToNext();
+       // Call validation function if data needs to be entered or confirmed
+    }
+}
+
+function saveDataAndNavigate() {
+
+	var poles = document.getElementById('poles').value;
+    var slots = document.getElementById('slots').value;
+
+    // Check if the number of poles is 12 and slots is not 9
+    if (poles === '12' && slots !== '9') {
+        var errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = 'When the number of poles is 12, the number of slots must be 9.';
+        $('#errorModal').modal('show'); // Use jQuery to show the modal
+        return; // Stop further execution
+    }
+    saveData(); // First save the data
+     // Then navigate to the next page
+}
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+	/* If the user clicks anywhere outside the select box,
+	then close all select boxes: */
+
+</script>
+
+  </body>
+</html>

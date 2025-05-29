@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='dashboard.html'"></i><span id="vehiName"></span>/ Vehicle Dynamics/ Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item active1">
+	                            <a  class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item active">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+
+            <!-- Slider -->
+ <div class="slider-screen">
+    <div class="close-btn">&times;</div>
+    <div class="slider-content"></div>
+    <div id="ContinuousGradientontent" style="display: none;">
+        <!-- Content for Battery Voltage -->
+        <h3>Continuous Gradient</h3><br>
+        <p>In Indian roads the continuous gradient is lesser than 5°, as per regulations of NHAI (National 
+            Highways Authority of India).</p>
+            <img src="./assets/images/Continuous gradient .png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;">
+
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="SpeedoncontinuousGradientContent" style="display: none;">
+        <!-- Content for Wheel Radius -->
+        <h3>Speed on continuous gradient (kmph) </h3><br>
+        <p>This is the speed at which the vehicle is designed to climb a slope over a journey that 
+            may last several hours. </p> 
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="Maxspeedonlevelroadontent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Max speed on level road (kmph) </h3><br>
+        <p>The maximum vehicle speed that the vehicle is designed to achieve on a level road. </p>
+        
+            <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="Gradeabilityontent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Gradeability (degrees) </h3><br>
+        <p>Gradeability indicates the maximum incline that the vehicle can climb in a short burst 
+            (of about 10 sec). In Indian roads, the maximum incline is 12.4°. </p>
+            <img src="./assets/images/Gradeability (degrees).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;">
+    </div>
+    <div id="LengthofgradeContent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Length of grade (m) </h3><br>
+        <p>As per the test procedure defined by ARAI (Automobile Research Association of India), 
+            the vehicle is expected to cover a length of 15m plus its wheel base, on fully loaded condition 
+            (max GVW), to demonstrate its gradeability.  The vehicle should start from rest and cover the 
+            specified distance without any stops on the way.   </p>
+        <p>The wheelbase of 2 and 3 wheelers is generally 2m The wheelbase for a four-wheeler 
+            can vary from around 2.5 to 3.5 meters.</p>
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="TimetocrossgradefromrestContent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Time to cross grade from rest (s) </h3><br>
+        <p>This is the time in which we wish to cross the specified grade-length, starting from rest. 
+            Too short a time would imply a higher peak-torque demand from the motor, while too long a 
+            time runs the risk of motor over-heating.  A time duration of 10 to 15 seconds is 
+            recommended. </p>
+        
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="Accelerationfromresttospeedontent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Acceleration from rest to speed (kmph)</h3><br>
+        <p>Enter the speed to which the vehicle can accelerate quickly from zero.</p>
+                       <!-- <img src="./assets/images/Frontal Area.png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> <br><br>
+            <p>Credit: <a href=":https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf ">https://sist.sathyabama.ac.in/sist_coursematerial/uploads/SAU1601.pdf</a></p>
+        <p>For bike, the frontal area is <b>0.9 times</b> the width and the height of a rectangle that 
+            outlines the front of a car. </p>
+        <p>For cars, the frontal area is <b>0.8 times</b> the width and the height of a rectangle that 
+            outlines the front of a car. </p> -->
+       
+    
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+    <div id="Timetoaccelerateontent" style="display: none;">
+        <!-- Content for drag Coefficient -->
+        <h3>Time to accelerate (s) </h3><br>
+        <p>This is the time taken to reach the target speed from rest.</p>
+            
+        <!-- <p>The values listed above define the performance expected of the vehicle. This in turn defines 
+            the various operating points that the motor should be capable of delivering.  (An “operating 
+            point” is defined as a torque-speed pair of values): </p>
+        <ol>
+            <li><b>Rated Speed (RPM)</b>: It refers to the maximum speed that the motor can sustain on a 
+                long uphill drive, when it is called upon to deliver its “rated” torque.</li> 
+            <li><b>Peak Speed (RPM)</b>: It refers to the maximum speed that the motor can reach on a level 
+                road.</li> 
+            <li><b>No Load Speed (RPM)</b>: This is the highest speed at which the motor runs when there 
+                is no external load applied to it.</li> 
+            <li><b>Peak Torque (Nm)</b>: The highest torque output that the motor can deliver for a 
+                temporary period.  This torque is needed by a vehicle from rest till a speed of about 
+                10 Kmph only – in order to climb out of a steep ramp.</li> 
+            <li><b>Peak Power (kW)</b>: It represents the maximum power output that the motor can 
+                achieve for a temporary period.  This is needed when the vehicle accelerates from rest 
+                to a high speed, or when it is overtaking another reasonably fast moving vehicle.</li>
+        </ol> -->
+       
+        <!-- Include your images, tables, etc. -->
+    </div>
+  </div>
+  <div class="overlay"></div>
+<!-- Slider -->
+
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">								
+						
+						<div id="process">
+            <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab"  href="#step1" onclick="previousButton()">
+                        <i class="vehicle_ic"></i>
+                    </button>
+                    <p>Vehicle Parameters</p>
+                </li>                
+                <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="saveDataAndNavigateBack()">
+                        <i class="performance"></i>
+                    </button>
+                    <p>Performance Specs</p>
+                </li>
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" onclick="checkDataAndProceed()">
+                        <i class="drive_cycle"></i>
+                    </button>
+                    <p>Drive Cycle</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg25B"></div>	
+					
+					<div class="row">
+                                           
+						<div class="col-md-6 mrg20B"><div class="box_bg">                      
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+								<td valign="top">Continuous Gradient<b> (deg)</b></td>
+								<td class="pad10B" align="right"><div data-tip="From 0-7"><input id="ContinuosGradient" name="ContinuosGradient" type="number" class="form-control num_input" min="0" max="7"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="It is the average gradient at which the vehicle runs the most. In Indian roads the 
+                                    continuous gradient is <5°, as per regulations of NHAI." data-content-id="ContinuousGradientContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Speed on continuous Gradient<b> (kmph)</b></td>
+								<td align="right"><div data-tip="From 2-60 "><input name="SpeedContinuous" id="SpeedContinuous" type="number" class="form-control num_input" min="2" max="60"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Usually, the speed on continuous gradient is around 20 to 60 kmph.  " data-content-id="SpeedoncontinuousGradientContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                </td>
+							  </tr>
+							   <tr>
+								<td valign="top">Max speed on level road<b> (kmph)</b></td>
+								<td align="right"><div data-tip="From 20-200 ">  <input name="MaxSpeedOnLevel" id="MaxSpeedOnLevel" type="number" class="form-control num_input" min="20" max="200"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The maximum vehicle speed that the vehicle is designed to achieve on a level road. 
+                                    Usually, it is around 100 to 200kmph. " data-content-id="MaxspeedonlevelroadContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>                                                    
+							</table>
+						</div></div>
+						   
+						<div class="col-md-6 mrg20B">               <div class="box_bg">            
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+								<td valign="top">Gradeability <b>(deg)</b></td>
+								<td class="pad10B" align="right"> <div data-tip="From 3-30"> <input id="Gradeability" name="Gradeability" type="number" class="form-control num_input" min="3" max="30"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Gradeability indicates the maximum incline that the vehicle can climb in a short burst 
+                                    (of about 10-sec). In Indian roads, the maximum incline is 12.4°. " data-content-id="GradeabilityContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Length of grade</td>
+								<td align="right"><div data-tip="From 15-25"><input name="LengthOfGrade" id="LengthOfGrade" type="number" class="form-control num_input" min="15" max="25"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The length of the gradient is equal to the wheelbase of the vehicle plus 15 meters " data-content-id="LengthofgradeContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Time to cross grade from rest<b>(s)</b></td>
+								<td align="right"><div data-tip="From 5-40"> <input id="TimetoCrossGrade" name="TimetoCrossGrade" type="number" class="form-control num_input" min="5" max="40"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="A time duration of 10 to 15 seconds is recommended. " data-content-id="TimetocrossgradefromrestContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>                            
+							</table>
+						</div></div>
+					   
+					   
+							<div class="col-md-6 mrg20B">   <div class="box_bg">                            
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+								<td valign="top">Acceleration from rest to speed<b>(kmph)</b></td>
+								<td class="pad10B" align="right"> <div data-tip="From 20-100">   <input id="AccelerationRest" name="AccelerationRest" type="number" class="form-control num_input" min="20" max="100"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Most manufacturers advertise how quickly the vehicle can ramp up from rest to a 
+                                    high speed.  For instance, “zero to 100 Kmph in 10 seconds”." data-content-id="AccelerationfromresttospeedContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+							  </tr>
+							   <tr>
+								<td valign="top">Time to accelerate <b>(s)</b></td>
+								<td align="right"><div data-tip="From 1-20"> <input id="timeAccelerate" name="timeAccelerate" type="number" class="form-control num_input" min="1" max="20"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="This is the time taken to reach the target speed from rest." data-content-id="TimetoaccelerateContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                </td>
+							  </tr>  
+                              <tr>
+								<td valign="top">P<sub>pk</sub> / P<sub>max-grad</sub></td>
+								<td align="right"><div data-tip="From 1-6"> <input id="factor" name="factor" type="number" class="form-control num_input" min="1" max="6"></div></td>
+								<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-content-id="factorContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                </td>
+							  </tr> 
+                                        
+							</table>
+						</div></div>
+				   
+					</div>
+						
+			<div class="clear mrg20B"></div>
+						
+						<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"><button class="nxt_pre_btns" id="editButton" onclick="showEditModal()">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()">Next <img src="assets/images/arrow_right.svg"> </button></div></div>
+					
+					</div>
+						
+						
+						
+						
+						</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="editModalLabel">Warning!</h4>
+                </div>
+                <div class="modal-body">
+                    If you do not want data to be overwritten, please create a new version.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="createVersion()">Create Version</button>
+                    <button type="button" class="btn btn-secondary" onclick="overwriteData()">Overwrite Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+        </div>
+        <div class="modal-body">
+          <p id="errorMessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+      </div>
+      </div>
+
+<div id="create_new" class="modal fade">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">      
+      <div class="modal-header">
+	  <div class="left"><h3>Create new Vehicle</h3></div>
+	  <div class="right"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button> </div>
+      </div>
+      <div class="modal-body pad40T">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top">NAME</td>
+    <td class="pad10B"> <div data-tip="This is the context sensitive help">  <input name="" type="text" class="form-control"></div></td>
+  </tr>
+   <tr>
+    <td valign="top">DESCRIPTION</td>
+    <td><div data-tip="This is the context sensitive help"> <textarea name="" cols="" rows=""  class="form-control h80px"></textarea></div></td>
+  </tr>
+   <tr><td align="right" class="pad20T" colspan="2">	<a href="#" class="secondarybt" data-dismiss="modal">Cancel</a> <a href="#" class="primarybt" data-toggle="modal" data-target="#" data-dismiss="modal">Save</a> </td></tr>
+</table>
+
+	<div class="clear mrg20B"></div>
+      </div>	  
+	
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+	<script src="./assets/js/config.js"></script>
+	
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function saveDataAndNavigateBack() {
+    const performanceSpecEdited = localStorage.getItem('performanceSpecEdited') === 'true';
+    const storedObject = JSON.parse(localStorage.getItem('vehicleData')) || {};
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData')) || {};
+
+    const continuousGradient = document.getElementById("ContinuosGradient").value;
+        const ratedSpeedKmph = document.getElementById("SpeedContinuous").value;
+        const maxSpeed = document.getElementById("MaxSpeedOnLevel").value;
+        const gradeability = document.getElementById("Gradeability").value;
+        const lengthOfGrade = document.getElementById("LengthOfGrade").value;
+        const timeToCrossGrade = document.getElementById("TimetoCrossGrade").value;
+        const accelerationFromRest = document.getElementById("AccelerationRest").value;
+        const timeToAccelerate = document.getElementById("timeAccelerate").value;
+        const factors = document.getElementById("factor").value;
+
+        localStorage.setItem('ContinuosGradient', continuousGradient);
+    localStorage.setItem('SpeedContinuous', ratedSpeedKmph);
+    localStorage.setItem('MaxSpeedOnLevel', maxSpeed);
+    localStorage.setItem('Gradeability', gradeability);
+    localStorage.setItem('LengthOfGrade', lengthOfGrade);
+    localStorage.setItem('TimetoCrossGrade', timeToCrossGrade);
+    localStorage.setItem('AccelerationRest', accelerationFromRest);
+    localStorage.setItem('timeAccelerate', timeToAccelerate);
+    localStorage.setItem('timeAccelerate', factors);
+    
+        if(performanceSpecEdited){
+                storedObject.continuous_gradient = continuousGradient;
+                storedObject.rated_speed_kmph = ratedSpeedKmph;
+                storedObject.max_speed= maxSpeed;
+                storedObject.gradeability= gradeability;
+                storedObject.length_of_grade = lengthOfGrade;
+                storedObject.time_to_cross_grade_from_rest= timeToCrossGrade;
+                storedObject.acceleration_from_rest_to_speed = accelerationFromRest;
+                storedObject.time_to_accelerate = timeToAccelerate;
+                storedObject.factor = factors;
+        }else{
+            getObject.continuous_gradient = continuousGradient;
+            getObject.rated_speed_kmph = ratedSpeedKmph;
+            getObject.max_speed= maxSpeed;
+            getObject.gradeability= gradeability;
+            getObject.length_of_grade = lengthOfGrade;
+            getObject.time_to_cross_grade_from_rest= timeToCrossGrade;
+            getObject.acceleration_from_rest_to_speed = accelerationFromRest;
+            getObject.time_to_accelerate = timeToAccelerate;  
+            getObject.factor = factors;               
+    }
+    
+    localStorage.setItem('vehicleGetData', JSON.stringify(getObject));
+    // If all checks pass, proceed to the next page
+    localStorage.setItem('vehicleData', JSON.stringify(storedObject));
+    console.log("Vehicle data saved. Navigating back to vehicle parameters...");
+    // Navigate to the previous page
+}
+
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'vehicle_parameters.html';
+}
+
+  var dataAltered = false;
+  var ContinuosGradient,SpeedContinuous,MaxSpeedOnLevel,Gradeability,LengthOfGrade,TimetoCrossGrade,AccelerationRest,timeAccelerate;
+  function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+    
+    
+    function navigateToNext() {
+        window.location.href = 'drive_cycle.html';
+}
+    
+function checkDataAndProceed() {
+
+    const vehicleParamEdited = localStorage.getItem('vehicleParamEdited') === 'true';
+    if(vehicleParamEdited){
+        localStorage.setItem('performanceSpecEdited','true');
+    }
+    const performanceSpecEdited = localStorage.getItem('performanceSpecEdited') === 'true';
+
+   
+    console.log("v",vehicleParamEdited)
+    console.log("p",performanceSpecEdited)
+    if (dataAltered || vehicleParamEdited || performanceSpecEdited ) {
+        console.log("altered")
+        validateInputs();  
+         // Directly navigate if data is pre-filled
+    } else {
+        console.log("not altered")
+        navigateToNext();
+        // Call validation function if data needs to be entered or confirmed
+    }
+}
+
+
+
+// Using the fetched vehicle name in the API call
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    fetchVehicleData();
+
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+
+});
+
+function fetchVehicleData() {
+    hideLoader()
+    const storedData = localStorage.getItem('vehicleData')
+    const data1 = JSON.parse(localStorage.getItem('vehicleGetData'));
+    if (storedData) {
+            const data = JSON.parse(storedData);
+            if (data && !isEmpty(data)) {
+                ContinuosGradient = data.continuous_gradient;
+        SpeedContinuous = data.rated_speed_kmph;
+        MaxSpeedOnLevel = data.max_speed;
+        Gradeability = data.gradeability;
+        LengthOfGrade = data.length_of_grade;
+        TimetoCrossGrade = data.time_to_cross_grade_from_rest;
+        AccelerationRest = data.acceleration_from_rest_to_speed;
+        timeAccelerate = data.time_to_accelerate;
+        factor = data.factor;
+        fillInputFields();
+                dataAltered = false;
+            } else {
+                enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+            }
+        } else {
+            enableAndPopulateFields(data1);
+            console.log("No data available. User needs to input values.");
+            dataAltered = true;
+            editButton.style.display = 'none';
+        }
+
+    }
+
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
+function fillInputFields() {
+    document.getElementById('ContinuosGradient').value = ContinuosGradient;
+    document.getElementById('SpeedContinuous').value = SpeedContinuous;
+    document.getElementById('MaxSpeedOnLevel').value = MaxSpeedOnLevel;
+    document.getElementById('Gradeability').value = Gradeability;
+    document.getElementById('LengthOfGrade').value = LengthOfGrade;
+    document.getElementById('TimetoCrossGrade').value = TimetoCrossGrade;
+    document.getElementById('AccelerationRest').value = AccelerationRest;
+    document.getElementById('timeAccelerate').value = timeAccelerate;
+    document.getElementById('factor').value = factor;
+
+    const continuousGradient = document.getElementById("ContinuosGradient").value;
+        const ratedSpeedKmph = document.getElementById("SpeedContinuous").value;
+        const maxSpeed = document.getElementById("MaxSpeedOnLevel").value;
+        const gradeability = document.getElementById("Gradeability").value;
+        const lengthOfGrade = document.getElementById("LengthOfGrade").value;
+        const timeToCrossGrade = document.getElementById("TimetoCrossGrade").value;
+        const accelerationFromRest = document.getElementById("AccelerationRest").value;
+        const timeToAccelerate = document.getElementById("timeAccelerate").value;
+        const factors = document.getElementById("factor").value;
+
+        localStorage.setItem('ContinuosGradient', continuousGradient);
+    localStorage.setItem('SpeedContinuous', ratedSpeedKmph);
+    localStorage.setItem('MaxSpeedOnLevel', maxSpeed);
+    localStorage.setItem('Gradeability', gradeability);
+    localStorage.setItem('LengthOfGrade', lengthOfGrade);
+    localStorage.setItem('TimetoCrossGrade', timeToCrossGrade);
+    localStorage.setItem('AccelerationRest', accelerationFromRest);
+    localStorage.setItem('timeAccelerate', timeToAccelerate);
+    localStorage.setItem('factor', factors);
+
+    // Disable the HTML input fields since data is already available
+    disableInputFields();
+}
+
+function disableInputFields() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+}
+
+
+function enableAndPopulateFields(data1) {
+    document.getElementById('ContinuosGradient').value = data1.continuous_gradient;
+    document.getElementById('SpeedContinuous').value = data1.rated_speed_kmph;
+    document.getElementById('MaxSpeedOnLevel').value = data1.max_speed;
+    document.getElementById('Gradeability').value = data1.gradeability;
+    document.getElementById('LengthOfGrade').value = data1.length_of_grade;
+    document.getElementById('TimetoCrossGrade').value = data1.time_to_cross_grade_from_rest;
+    document.getElementById('AccelerationRest').value = data1.acceleration_from_rest_to_speed;
+    document.getElementById('timeAccelerate').value = data1.time_to_accelerate;
+    document.getElementById('factor').value = data1.factor;
+    
+}
+
+
+
+
+function validateInputs() {
+    const performanceSpecEdited = localStorage.getItem('performanceSpecEdited') === 'true';
+    console.log("per",performanceSpecEdited)
+    // Define all inputs with their min and max values
+    const inputs = [
+        { id: "ContinuosGradient", min: 0, max: 7, name: "Continuous Gradient (deg)" },
+        { id: "SpeedContinuous", min: 2, max: 60, name: "Speed on continuous Gradient (kmph)" },
+        { id: "MaxSpeedOnLevel", min: 20, max: 200, name: "Max speed on level road (kmph)" },
+        { id: "Gradeability", min: 3, max: 30, name: "Gradeability (deg)" },
+        { id: "LengthOfGrade", min: 15, max: 25, name: "Length of grade" },
+        { id: "TimetoCrossGrade", min: 5, max: 40, name: "Time to cross grade from rest(s)" },
+        { id: "AccelerationRest", min: 20, max: 100, name: "Acceleration from rest to speed(kmph)" },
+        { id: "timeAccelerate", min: 1, max: 20, name: "Time to accelerate (s)" },
+        { id: "factor", min: 1, max: 6, name: "Peak Power / Power at Max-Grad" }
+
+    ];
+
+    var storedObject = JSON.parse(localStorage.getItem('vehicleData'));
+    const getObject = JSON.parse(localStorage.getItem('vehicleGetData'));
+    console.log("before",getObject)
+
+    let valid = true;
+    for (let input of inputs) {
+        let element = document.getElementById(input.id);
+        if (element.value === "") {
+            showError(`${input.name} is Empty`);
+            valid = false;
+            break; // Stop further processing
+        } else if (element.value < input.min || element.value > input.max) {
+            showError(`${input.name} should be in range ${input.min} - ${input.max}`);
+            valid = false;
+            break; // Stop further processing
+        }
+    }
+
+    const continuousGradient = document.getElementById("ContinuosGradient").value;
+        const ratedSpeedKmph = document.getElementById("SpeedContinuous").value;
+        const maxSpeed = document.getElementById("MaxSpeedOnLevel").value;
+        const gradeability = document.getElementById("Gradeability").value;
+        const lengthOfGrade = document.getElementById("LengthOfGrade").value;
+        const timeToCrossGrade = document.getElementById("TimetoCrossGrade").value;
+        const accelerationFromRest = document.getElementById("AccelerationRest").value;
+        const timeToAccelerate = document.getElementById("timeAccelerate").value;
+        const factors = document.getElementById("factor").value;
+
+        localStorage.setItem('ContinuosGradient', continuousGradient);
+    localStorage.setItem('SpeedContinuous', ratedSpeedKmph);
+    localStorage.setItem('MaxSpeedOnLevel', maxSpeed);
+    localStorage.setItem('Gradeability', gradeability);
+    localStorage.setItem('LengthOfGrade', lengthOfGrade);
+    localStorage.setItem('TimetoCrossGrade', timeToCrossGrade);
+    localStorage.setItem('AccelerationRest', accelerationFromRest);
+    localStorage.setItem('timeAccelerate', timeToAccelerate);
+    localStorage.setItem('factor', factors);
+    
+        if(performanceSpecEdited){
+                storedObject.continuous_gradient = continuousGradient;
+                storedObject.rated_speed_kmph = ratedSpeedKmph;
+                storedObject.max_speed= maxSpeed;
+                storedObject.gradeability= gradeability;
+                storedObject.length_of_grade = lengthOfGrade;
+                storedObject.time_to_cross_grade_from_rest= timeToCrossGrade;
+                storedObject.acceleration_from_rest_to_speed = accelerationFromRest;
+                storedObject.time_to_accelerate = timeToAccelerate;
+                storedObject.factor = factors;
+        }else{
+            getObject.continuous_gradient = continuousGradient;
+            getObject.rated_speed_kmph = ratedSpeedKmph;
+            getObject.max_speed= maxSpeed;
+            getObject.gradeability= gradeability;
+            getObject.length_of_grade = lengthOfGrade;
+            getObject.time_to_cross_grade_from_rest= timeToCrossGrade;
+            getObject.acceleration_from_rest_to_speed = accelerationFromRest;
+            getObject.time_to_accelerate = timeToAccelerate;    
+            getObject.factor = factors;               
+    }
+    
+    if(valid){
+        console.log("after",getObject)
+        localStorage.setItem('vehicleData', JSON.stringify(storedObject));
+        localStorage.setItem('vehicleGetData', JSON.stringify(getObject));
+    // If all checks pass, proceed to the next page
+    console.log("called")
+    navigateToNext();
+    }
+}
+
+
+
+
+function showError(message) {
+    document.getElementById('errorMessage').textContent = message;
+    $('#errorModal').modal('show');
+}
+
+function showEditModal() {
+    $('#editModal').modal('show');
+}
+
+function createVersion() {
+    showLoader()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/create_vehicle_version", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            window.location.href = 'dashboard.html';
+            // Optionally redirect or update UI here
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+}
+
+
+function overwriteData() {
+    showLoader()
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        "user_id": user_id,
+        "vehicle_name": vehiName  // Assuming you are using a global variable or fetched from local storage
+    });
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch(base_url+"/delete_all_motors", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            hideLoader()
+            console.log(result);
+            localStorage.setItem('performanceSpecEdited', 'true');
+            enableInputFields();
+            dataAltered = true;
+            document.getElementById('errorMessage').textContent = "";
+            $('#editModal').modal('hide');
+            
+        })
+        .catch(error => {
+            hideLoader()
+            console.error('Error:', error)});
+   
+}
+
+
+function enableInputFields() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.disabled = false;
+    });
+    localStorage.setItem('performanceSpecEdited', 'true');
+    dataAltered = true;
+    
+}
+
+$(document).ready(function() {
+ // executes when HTML-Document is loaded and DOM is ready
+console.log("document is ready");
+  
+  
+// document ready  
+});
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+}
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+</script>
+  </body>
+</html>

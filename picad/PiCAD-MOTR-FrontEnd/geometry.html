@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+       <meta name="description" content="PI Labs" />
+    <meta name="author" content="Labs" />
+    <title>PI Labs</title>
+
+   <link href="assets/css/fonts/font-awesome.css" rel="stylesheet" type="text/css" />
+   	<link href="assets/css/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />	
+	
+    <link rel="shortcut icon" href="assets/images/favicon.png" /> 
+
+ </head>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        <div class="page-header navbar navbar-fixed-top" elementsection="header">
+            <div class="page-header-inner ">
+                <div class="page-logo">
+                    <a href="motor_wiz_inputs.html"><img src="assets/images/logo.svg" alt="ChatBot"> </a>
+                </div>
+				
+                
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+				<div class="pull-left"><div class="bred_hd"><i class="back_ic" onClick="window.location.href='motor_wiz_inputs.html'"></i> <span id="vehiName"></span> / <span id="motoName"></span> / Input</div></div>
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                       
+ 						<li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <span class="avatar" id="avatar"></span>
+                                <span class="hd_txt">
+                                    <span id="userName"></span><br>
+                                    <span class="username username-hide-on-mobile" id="userMail"></span>
+                                </span>
+                            </a>
+							
+                            <ul class="dropdown-menu dropdown-menu-default animated jello">
+                                <!-- <li>
+                                     <a href="profile.html"> <i class="change_pass_ic"></i> Change Password </a>
+                                </li> -->							
+								<li>
+                                    <a href="javascript:void(0);" onclick="logout()"> <i class="logout_ic"></i><label>Log out</label> </a>
+                               </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+			 
+        <div class="page-container">
+		<div class="sidebar-container"  elementsection="menu"> 
+ 				<div class="sidemenu-container navbar-collapse collapse fixed-menu pad15T">
+	                <div id="remove-scroll">
+	                    <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">	                  
+                            <li class="nav-item">
+	                            <a class="nav-link nav-toggle">
+                                    <i class="dashboard_ic"></i> </a>
+							</li>
+                            <li class="nav-item">
+	                            <a  class="nav-link nav-toggle"> 
+                                    <i class="vehicle_dynamics"></i></a>
+							</li>
+							  <li class="nav-item active">
+	                            <a class="nav-link nav-toggle"> 
+                                    <i class="motor_wiz_inputs"></i> </a>
+							</li>                            
+	                    </ul>
+	                </div>
+                </div>
+            </div>
+			
+		<div class="page-content-wrapper">
+
+            <div class="slider-screen">
+                <div class="close-btn">&times;</div>
+                <div class="slider-content"></div>
+                <div id="AspectratioContent" style="display: none;">
+                    <!-- Content for Battery Voltage -->
+                    <h3>Aspect Ratio</h3><br>
+                    <p>It is the ratio of mean air gap radius to the stack length of a motor.This value determines the 
+                        shape of the motor. A nominal value of 0.5 would result in a rotor whose diameter is equal 
+                        to its length.</p>
+                    <img src="./assets/images/Aspect Ratio .png" alt="Aspect Ratio" style="width: 100%; max-width: 500px;"> 
+                    <ol type="a"> 
+                       <li>A smaller ratio may be used where the motor must fit into a narrow space.</li><br>
+                       <li> A larger ratio may reduce efficiency because it increases the ‘overhang’ length 
+                        of copper (in relation to its ‘active’ length).  The overhang in the windings 
+                        produce copper loss but do not contribute to torque production. </li>
+                    </ol>
+            
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="AirGapContent" style="display: none;">
+                    <!-- Content for Wheel Radius -->
+                    <h3>Air gap (mm) </h3><br>
+                    <p>It is the distance between the rotor and the stator, where magnetic fluxes interact, 
+                        and torque is produced. In motors, flux passes between the rotor and stator through an air 
+                        gap. Optimum value is around 0.5 to 1mm.  </p>
+                        <ol type="a"> 
+                            <li>A short airgap length maximizes the flux for a given thickness of magnet, but it 
+                                requires closer mechanical tolerances. </li><br>
+                            <li> A large airgap length increases the rotor-stator alignment tolerances, making it 
+                                easier to manufacture. However, it leads to a weaker magnetic circuit and will 
+                                reduce the efficiency of the motor. </li>
+                         </ol>
+                    <p>It is good to choose as small an airgap as manufacturing tolerances allow. </b></p>
+                               <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="TRVContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>TRV (Nm/cc)</h3><br>
+                    <p>Torque-per-rotor-volume is limited to 0.1 Nm/cc for rare-earth magnets. It offers a 
+                        common basis for comparing motors and for initial motor sizing for a given application. For 
+                        improved thermal performance, significantly lower values may be chosen.  </p>
+                               <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="MagnetContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Magnet length (mm)</h3><br>
+                    <p>It is typical to refer to magnet length as the dimension aligned with magnetization, 
+                        even though this tends to be the smallest dimension (thickness) of a magnet block.  </p>
+                               <!-- <img src="./assets/images/Wheel Radius (m).png" alt="Battery Voltage Image" style="width: 100%; max-width: 500px;"> -->
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                <div id="ToothDepthFactorContent" style="display: none;">
+                    <!-- Content for drag Coefficient -->
+                    <h3>Tooth Depth Factor</h3><br>
+                    <p>It is the ratio of tooth (or Slot) depth (d) to the mean air gap radius (rg). Nominal 
+                        value is between 0.43 and 0.67. </p>
+                        <img src="./assets/images/Tooth Depth Factor .png" alt="Tooth Depth Factor" style="width: 100%; max-width: 500px;">
+                
+                   
+                    <!-- Include your images, tables, etc. -->
+                </div>
+                </div>
+              <div class="overlay"></div>        
+
+			<div class="page-content">
+			   							 
+					<div class="row d-flex align-items-center dash_pad1">   
+						<div class="col-md-12 pad25T">	
+						<div id="process" class="w75p">
+              <ul id="stepButtons" class="process-row nav nav-tabs">                
+                <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="topologyButton()">
+                       <i class="performance"></i>
+                    </button>
+                    <p>Topology</p>
+                </li>   
+				  <li class="process-step active1">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="previousButton()">
+                        <i class="metrial_ic"></i>
+                    </button>
+                    <p>Material</p>
+                </li>
+				  <li class="process-step active">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="saveDataAndNavigateBack()">
+                        <i class="geometry_ic"></i>
+                    </button>
+                    <p>Geometry</p>
+                </li>             
+                <li class="process-step">
+                    <button type="button" class="btn btn-circle btn-default" data-toggle="tab" onclick="checkDataAndProceed()">
+                        <i class="thermal_ic"></i>
+                    </button>
+                    <p>Thermal</p>
+                </li>
+                
+            </ul>
+        </div>
+					<div class="clear mrg45B"></div>	
+					
+						<div class="row">		
+						
+						<div class="col-md-6 offset-md-3"><div class="box_bg">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td valign="top">Aspect ratio</td>
+									<td align="right"><div data-tip="From 0.25-1"><input  id="aspectRatio" name="aspectRatio" type="number" class="form-control num_input" min="0.25" max="1"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Nominal value is around 0.5 ." data-content-id="AspectratioContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+								  </tr>
+								   <tr>
+									<td valign="top">Air Gap <b>(mm)</b></td>
+									<td align="right"><div data-tip="From 0.3-1.5"><input name="airGap" id="airGap" type="number" class="form-control num_input" min="0.3" max="1.5"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="Optimum value is around 0.5 to 1mm." data-content-id="AirGapContent" href="javascript:void(0)"><i class="info_ic"></i> </a></td>
+								  </tr>
+								   <tr>
+									<td valign="top">TRV <b>(Nm/cc)</b></td>
+									<td align="right"><div data-tip="From 0.01-0.11"><input name="trv" id="trv" type="number" class="form-control num_input" min="0.01" max="0.11"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The torque-per-rotor-volume for rare-earth magnets is restricted to 0.1 Nm/cc, with 
+                                        a range typically spanning from 0.05 to 0.1 Nm/cc." data-content-id="TRVContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                    </td>
+								  </tr>
+								   <tr>
+									<td valign="top">Magnet ‘Length’ <b>(mm)</b></td>
+									<td align="right"><div data-tip="From 3-7"><input name="magnetLength" id="magnetLength" type="number" class="form-control num_input" min="3" max="7"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="A quick and approximate way to gauge magnet length is to estimate it at around 5 to 
+                                        10 times the length of the air gap. " data-content-id="MagnetContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                    </td>
+								  </tr>	
+								    <tr>
+									<td valign="top">Tooth Depth Factor</td>
+									<td align="right"><div data-tip="From 0.3-0.8"><input name="toothDepthFactor" id="toothDepthFactor" type="number" class="form-control num_input" min="0.3" max="0.8"></div></td>
+									<td valign="top" width="25" align="center"><a class="hint--left info-icon" data-hint="The nominal value is between 0.43 and 0.67" data-content-id="ToothDepthFactorContent" href="javascript:void(0)"><i class="info_ic"></i> </a>
+                                    </td>
+								  </tr>										   
+								</table></div>
+					</div>
+							
+							
+						
+						</div>
+						<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-header">
+								  <h4 class="modal-title" id="errorModalLabel">Input Validation Error</h5>
+								</div>
+								<div class="modal-body">
+								  <p id="errorMessage"></p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+							<div class="clear mrg45B"></div>
+						<div class="pad10A pad35T">			
+						
+						
+						<div class="row">
+						<div class="col-sm-4" align="left"><button class="nxt_pre_btns" onclick="previousButton()" ><img src="assets/images/arrow_left.svg"> Previous</button></div>
+						<div class="col-sm-4" align="center"><button id="editButton" class="nxt_pre_btns">Edit <img src="assets/images/edit_ic.svg" align="absmiddle"> </button></div>
+						<div class="col-sm-4" align="right"><button class="nxt_pre_btns" onclick="checkDataAndProceed()">Next <img src="assets/images/arrow_right.svg"> </button></div></div>
+						
+					
+					</div>						
+					
+					
+					</div>
+						
+						
+						</div>		
+						
+						
+						
+					  </div>
+					<div class="clear mrg15B"></div>
+					
+			</div>	
+								
+		 </div>		
+		 
+        </div>
+		</div>
+	</div>
+    </div>
+	
+
+
+</div>
+
+<div class="loader_animation_overlay" id="loader_animation_overlay">
+    <div class="loader_animation" id="loader_animation"></div>
+</div>
+	
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap4.min.js" ></script>
+    <script src="./assets/js/config.js"></script>
+<script>
+
+document.getElementById("userMail").innerText = userMail;
+document.getElementById("userName").innerText = userName;
+document.getElementById("avatar").innerText = userName.charAt(0).toUpperCase();
+
+function showLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'flex';
+}
+
+function hideLoader() {
+    document.getElementById('loader_animation_overlay').style.display = 'none';
+}
+
+function saveDataAndNavigateBack() {
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput')) || {};
+    const geometryEdited = localStorage.getItem('geometryEdited') === 'true';
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+
+    var aspectRatio = document.getElementById('aspectRatio').value;
+    var airGap = document.getElementById('airGap').value;
+    var trv = document.getElementById('trv').value;
+    var magnetLength = document.getElementById('magnetLength').value;
+    var toothDepthFactor = document.getElementById('toothDepthFactor').value;
+
+    localStorage.setItem('aspectRatio', aspectRatio);
+    localStorage.setItem('airGap', airGap);
+    localStorage.setItem('trv', trv);
+    localStorage.setItem('magnetLength', magnetLength);
+    localStorage.setItem('toothDepthFactor', toothDepthFactor);
+
+    
+   
+    if (geometryEdited) {
+    storedObject.aspect_ratio = document.getElementById('aspectRatio').value;
+    storedObject.g_airgap = document.getElementById('airGap').value;
+    storedObject.trv = document.getElementById('trv').value;
+    storedObject.L_pm = document.getElementById('magnetLength').value;
+    storedObject.tooth_height = document.getElementById('toothDepthFactor').value;
+               
+            }
+    if(dataAltered){
+                getObject.aspect_ratio = aspectRatio
+    getObject.g_airgap = airGap
+    getObject.trv = trv
+    getObject.L_pm = magnetLength
+    getObject.tooth_height = toothDepthFactor
+
+    localStorage.setItem('motorGetData', JSON.stringify(getObject));
+
+            }
+            localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+    console.log("Data saved. Navigating back...");
+     // Navigate to the previous page
+}
+function previousButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'material.html';
+}
+function topologyButton(){
+    saveDataAndNavigateBack();
+    window.location.href = 'topology.html';
+}
+
+    var dataAltered = false;
+function getQueryParams(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+	let vehiName = getQueryParams("vehicle_name");
+    if(!vehiName){
+        vehiName = localStorage.getItem("vehicle_name")
+        document.getElementById("vehiName").innerText = vehiName;
+    }else{
+        document.getElementById("vehiName").innerText = vehiName;
+        localStorage.setItem("vehicle_name", vehiName); // Store in local storage
+    }
+
+	
+let motoName = getQueryParams("motor_name");
+    if(!motoName){
+        motoName = localStorage.getItem("motor_name")
+        document.getElementById("motoName").innerText = motoName;
+    }else{
+        document.getElementById("motoName").innerText = motoName;
+        localStorage.setItem("motor_name", motoName); // Store in local storage
+    }
+	function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+console.log("motorName",motoName)
+
+document.addEventListener("DOMContentLoaded", function() {
+    showLoader()
+    fetchMotorData();
+
+    // Slider 
+
+  const infoIcons = document.querySelectorAll('.info-icon');
+  const sliderScreen = document.querySelector('.slider-screen');
+  const sliderContent = document.querySelector('.slider-content');
+  const closeBtn = document.querySelector('.slider-screen .close-btn');
+  const overlay = document.querySelector('.overlay');
+
+  infoIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            // Get the content ID from the data-content-id attribute
+            const contentId = this.getAttribute('data-content-id');
+            // Get the content of the corresponding content div
+            const fieldContent = document.getElementById(contentId).innerHTML.trim();
+            // Update the slider content with the field content
+            sliderContent.innerHTML = fieldContent;
+            // Open the slider
+            sliderScreen.classList.add('open');
+            overlay.classList.add('open');
+        });
+    })
+
+  function closeSlider() {
+    sliderScreen.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  closeBtn.addEventListener('click', closeSlider);
+  overlay.addEventListener('click', closeSlider);
+
+  //Slider
+
+    document.getElementById('editButton').addEventListener('click', enableFormFields);
+});
+
+function checkDataAndProceed() {
+
+const topologyEdited = localStorage.getItem('topologyEdited') === 'true';
+const materialEdited = localStorage.getItem('materialEdited') === 'true';
+const geometryEdited = localStorage.getItem('geometryEdited') === 'true';
+console.log(topologyEdited)
+console.log(materialEdited)
+console.log(geometryEdited)
+
+if (dataAltered || topologyEdited || materialEdited || geometryEdited) {
+    validateAndSaveData();  
+     // Directly navigate if data is pre-filled
+} else {
+    navigateToNext();
+    // Call validation function if data needs to be entered or confirmed
+}
+}
+
+function navigateToNext() {
+    window.location.href = 'thermal.html';
+}
+
+function fetchMotorData() {
+    const data = JSON.parse(localStorage.getItem('motorDataInput'));
+    const data1 = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var checkdata;
+    if(typeof(data) == 'string'){
+    checkdata = JSON.parse(data)
+    }else{
+        checkdata=data
+    }
+
+          if (checkdata && !isEmpty(checkdata) ) {
+                console.log("int",checkdata);
+                populateAndDisableFields(checkdata);
+                dataAltered = false;
+            } else {
+              enableAndPopulateFields(data1);
+                console.log("No data available. User needs to input values.");
+                dataAltered = true;
+                editButton.style.display = 'none';
+                
+            }
+          hideLoader()
+        
+      }
+
+      function populateAndDisableFields(data) {
+    document.getElementById('aspectRatio').value = data.aspect_ratio;
+    document.getElementById('airGap').value = data.g_airgap;
+    document.getElementById('trv').value = data.trv;
+    document.getElementById('magnetLength').value = data.L_pm;
+    document.getElementById('toothDepthFactor').value = data.tooth_height;
+
+    var aspectRatio = document.getElementById('aspectRatio').value;
+    var airGap = document.getElementById('airGap').value;
+    var trv = document.getElementById('trv').value;
+    var magnetLength = document.getElementById('magnetLength').value;
+    var toothDepthFactor = document.getElementById('toothDepthFactor').value;
+
+
+    // Store values in local storage
+    localStorage.setItem('aspectRatio', aspectRatio);
+    localStorage.setItem('airGap', airGap);
+    localStorage.setItem('trv', trv);
+    localStorage.setItem('magnetLength', magnetLength);
+    localStorage.setItem('toothDepthFactor', toothDepthFactor);
+    disableFormFields();
+}
+
+function enableAndPopulateFields(data1) {
+    document.getElementById('aspectRatio').value = data1.aspect_ratio;
+    document.getElementById('airGap').value = data1.g_airgap;
+    document.getElementById('trv').value = data1.trv;
+    document.getElementById('magnetLength').value = data1.L_pm;
+    document.getElementById('toothDepthFactor').value = data1.tooth_height;
+}
+
+function enableFormFields() {
+    ['aspectRatio', 'airGap', 'trv', 'magnetLength', 'toothDepthFactor'].forEach(function(id) {
+        document.getElementById(id).disabled = false;
+    });
+    localStorage.setItem('geometryEdited', 'true');  // Setting a flag to indicate data has been edited
+}
+
+function disableFormFields() {
+    ['aspectRatio', 'airGap', 'trv', 'magnetLength', 'toothDepthFactor'].forEach(function(id) {
+        document.getElementById(id).disabled = true;
+    });
+}
+      
+	function saveDataAndNavigate() {
+        const geometryEdited = localStorage.getItem('geometryEdited') === 'true';
+    const storedObject1 = JSON.parse(localStorage.getItem('motorDataInput'));
+    const getObject = JSON.parse(localStorage.getItem('motorGetData'));
+
+    var storedObject;
+    if (typeof(storedObject1) == 'string'){
+        storedObject = JSON.parse(storedObject1)
+    }else{
+        storedObject = storedObject1
+    }
+
+    // Retrieve values from inputs
+    var aspectRatio = document.getElementById('aspectRatio').value;
+    var airGap = document.getElementById('airGap').value;
+    var trv = document.getElementById('trv').value;
+    var magnetLength = document.getElementById('magnetLength').value;
+    var toothDepthFactor = document.getElementById('toothDepthFactor').value;
+
+
+    // Store values in local storage
+    localStorage.setItem('aspectRatio', aspectRatio);
+    localStorage.setItem('airGap', airGap);
+    localStorage.setItem('trv', trv);
+    localStorage.setItem('magnetLength', magnetLength);
+    localStorage.setItem('toothDepthFactor', toothDepthFactor);
+
+  
+
+   
+    if (geometryEdited) {
+            storedObject.aspect_ratio = aspectRatio
+                storedObject.g_airgap = airGap
+                storedObject.trv = trv
+                storedObject.L_pm = magnetLength
+                storedObject.tooth_height = toothDepthFactor
+                localStorage.setItem('motorDataInput', JSON.stringify(storedObject));
+            }
+            if(dataAltered){
+                  
+    getObject.aspect_ratio = aspectRatio
+    getObject.g_airgap = airGap
+    getObject.trv = trv
+    getObject.L_pm = magnetLength
+    getObject.tooth_height = toothDepthFactor
+
+    localStorage.setItem('motorGetData', JSON.stringify(getObject));
+            }
+            
+    navigateToNext();// Navigate to the next page
+   
+}
+function validateAndSaveData() {
+    
+    const inputs = [
+        { id: "aspectRatio", min: 0.25, max: 1, name: "Aspect Ratio" },
+        { id: "airGap", min: 0.3, max: 1.5, name: "Air Gap" },
+        { id: "trv", min: 0.01, max: 0.11, name: "TRV (Nm/cc)" },
+        { id: "magnetLength", min: 3, max: 7, name: "Magnet Length" },
+        { id: "toothDepthFactor", min: 0.3, max: 0.8, name: "Tooth Depth Factor" }
+    ];
+
+    let valid = true;
+    for (let input of inputs) {
+        let element = document.getElementById(input.id);
+        if (!element.value) {
+            showError(`${input.name} is required.`);
+            valid = false;
+            break;
+        } else if (element.value < input.min || element.value > input.max) {
+            showError(`${input.name} must be between ${input.min} and ${input.max}.`);
+            valid = false;
+            break;
+        }
+    }
+    
+
+    if (valid) {
+        saveDataAndNavigate();
+    }
+}
+
+function showError(message) {
+    document.getElementById('errorMessage').innerText = message;
+    $('#errorModal').modal('show');
+}
+	
+	/* If the user clicks anywhere outside the select box,
+	then close all select boxes: */
+
+
+function logout() {
+            sessionStorage.removeItem('user_id');
+            window.location.href = 'login.html';
+        }
+
+
+window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (!userId) {
+                // If user_id is present, redirect to dashboard.html
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+};
+
+</script>
+
+  </body>
+</html>

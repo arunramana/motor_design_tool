@@ -1,0 +1,591 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "LAUNCHXL-F28069M" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (id 0) (at -50.8 59.182 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "LAUNCHXL-F28069M" (id 1) (at -50.8 -63.5 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "TI_LAUNCHXL-F28069M" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MAXIMUM_PACKAGE_HEIGHT" "" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MANUFACTURER" "Texas Instruments" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "STANDARD" "Manufacturer Recommendations" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PARTREV" "B" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "LAUNCHXL-F28069M_0_0"
+      (rectangle (start -50.8 -60.96) (end 50.8 58.42)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at 55.88 53.34 180.0) (length 5.08)
+        (name "+3.3V"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 53.34 180.0) (length 5.08)
+        (name "+3.3V"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "41"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 0.0 180.0) (length 5.08)
+        (name "ADCINB6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "6"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -55.88 43.18 0) (length 5.08)
+        (name "J1.3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "3"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -55.88 40.64 0) (length 5.08)
+        (name "J1.4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "4"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -38.1 0) (length 5.08)
+        (name "GPIO12/~{TZ1~{/SCITXDA/SPISIMOB}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "5"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -50.8 0) (length 5.08)
+        (name "GPIO18/SPICLKA/SCITXDB/XCLKOUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "7"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 0.0 0) (length 5.08)
+        (name "ADCINA6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -12.7 180.0) (length 5.08)
+        (name "GPIO22/EQEP1S/MCLKXA/SCITXDB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "8"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -30.48 180.0) (length 5.08)
+        (name "GPIO33/SCLA/EPWMSYNCO/ADCSOCBO"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "9"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -27.94 180.0) (length 5.08)
+        (name "GPIO32/SDAA/EWPMSYNCI/ADCSOCAO"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "10"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 12.7 180.0) (length 5.08)
+        (name "ADCINB1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "24"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 10.16 180.0) (length 5.08)
+        (name "ADCINB2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "26"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 15.24 180.0) (length 5.08)
+        (name "ADCINB0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "28"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 12.7 0) (length 5.08)
+        (name "ADCINA1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "29"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 10.16 0) (length 5.08)
+        (name "ADCINA2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "25"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 15.24 0) (length 5.08)
+        (name "ADCINA0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "27"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 -2.54 0) (length 5.08)
+        (name "ADCINA7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "23"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 -58.42 180.0) (length 5.08)
+        (name "GND"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "22"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 -58.42 180.0) (length 5.08)
+        (name "GND"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "60"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 -58.42 180.0) (length 5.08)
+        (name "GND"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "62"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 55.88 180.0) (length 5.08)
+        (name "+5V"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "21"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 55.88 55.88 180.0) (length 5.08)
+        (name "+5V"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "61"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -7.62 0) (length 5.08)
+        (name "GPIO0/EPWM1A"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "40"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -10.16 0) (length 5.08)
+        (name "GPIO1/EPWM1B/RSVD/COMP1OUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "39"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -12.7 0) (length 5.08)
+        (name "GPIO2/EPWM2A"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "38"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -15.24 0) (length 5.08)
+        (name "GPIO3/EPWM2B/SPISOMIA/COMP2OUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "37"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -17.78 0) (length 5.08)
+        (name "GPIO4/EPWM3A"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "36"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -20.32 0) (length 5.08)
+        (name "GPIO5/EPWM3B/SPISIMOA/ECAP1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "35"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -40.64 0) (length 5.08)
+        (name "GPIO13/~{TZ2~{/RSVD/SPISOMIB}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "34"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -53.34 0) (length 5.08)
+        (name "GPIO19/~{SPISTEA~{/SCIRXDB/ECAP1}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "19"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -33.02 180.0) (length 5.08)
+        (name "GPIO44/MFSRA/SCIRXDB/EPWM7B"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "18"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 48.26 0) (length 5.08)
+        (name "RESET#"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "16"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 48.26 0) (length 5.08)
+        (name "RESET#"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "56"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -45.72 0) (length 5.08)
+        (name "GPIO16/SPISIMOA/RSVD/~{TZ2~{}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "15"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -48.26 0) (length 5.08)
+        (name "GPIO17/SPISOMIA/RSVD/~{TZ3~{}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "14"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -35.56 180.0) (length 5.08)
+        (name "GPIO50/EQEP1A/MDXA/TZ1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "13"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -38.1 180.0) (length 5.08)
+        (name "GPIO51/EQEP1B/MDRA/TZ2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "12"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -48.26 180.0) (length 5.08)
+        (name "GPIO55/SPISOMIA/EQEP2B/HRCAP2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "11"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 27.94 0) (length 5.08)
+        (name "DAC1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "32"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 25.4 0) (length 5.08)
+        (name "DAC2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "31"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -55.88 35.56 0) (length 5.08)
+        (name "J7.3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "43"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -55.88 33.02 0) (length 5.08)
+        (name "J7.4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "44"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -7.62 180.0) (length 5.08)
+        (name "GPIO20/EQEP1A/MDXA/COMP1OUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "45"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -43.18 0) (length 5.08)
+        (name "GPIO14/TZ3/SCITXDB/SPICLKB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "47"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -10.16 180.0) (length 5.08)
+        (name "GPIO21/EQEP1B/MDRA/COMP2OUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "48"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -15.24 180.0) (length 5.08)
+        (name "GPIO23/EQEP1I/MFSXA/SCIRXDB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "49"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -45.72 180.0) (length 5.08)
+        (name "GPIO54/SPISIMOA/EQEP2A/HRCAP1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "50"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 -2.54 180.0) (length 5.08)
+        (name "ADCINB7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "63"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 7.62 0) (length 5.08)
+        (name "ADCINA3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "67"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 5.08 0) (length 5.08)
+        (name "ADCINA4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "69"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -55.88 2.54 0) (length 5.08)
+        (name "ADCINA5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "65"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 7.62 180.0) (length 5.08)
+        (name "ADCINB3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "68"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 5.08 180.0) (length 5.08)
+        (name "ADCINB4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "64"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 55.88 2.54 180.0) (length 5.08)
+        (name "ADCINB5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "66"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -22.86 0) (length 5.08)
+        (name "GPIO6/EPWM4A/EPWMSYNCI/EPWMSYNCO"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "80"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -25.4 0) (length 5.08)
+        (name "GPIO7/EPWM4B/SCIRXDA/ECAP2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "79"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -27.94 0) (length 5.08)
+        (name "GPIO8/EPWM5A/RSVD/~{ADCSOCAO}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "78"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -30.48 0) (length 5.08)
+        (name "GPIO9/EPWM5B/SCITXDB/ECAP3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "77"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -33.02 0) (length 5.08)
+        (name "GPIO10/EPWM6A/RSVD/~{ADCSOCBO}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "76"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 -35.56 0) (length 5.08)
+        (name "GPIO11/EPWM6B/SCIRXDB/ECAP1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "75"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 22.86 0) (length 5.08)
+        (name "DAC3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "72"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -55.88 20.32 0) (length 5.08)
+        (name "DAC4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "71"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -25.4 180.0) (length 5.08)
+        (name "GPIO27/HRCAP2/EQEP2S/~{SPISTEB}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "59"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -22.86 180.0) (length 5.08)
+        (name "GPIO26/ECAP3/EQEP2I/SPICLKB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "58"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -17.78 180.0) (length 5.08)
+        (name "GPIO24/ECAP1/EQEP2A/SPISIMOB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "55"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -20.32 180.0) (length 5.08)
+        (name "GPIO25/ECAP2/EQEP2B/SPISOMIB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "54"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -40.64 180.0) (length 5.08)
+        (name "GPIO52/EQEP1S/MCLKXA/~{TZ3}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "53"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -43.18 180.0) (length 5.08)
+        (name "GPIO53/EQEP1I/MFSXA/RSVD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "52"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 55.88 -50.8 180.0) (length 5.08)
+        (name "GPIO56/SPICLKA/EQEP2I/HRCAP3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "51"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)

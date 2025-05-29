@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function() {
+            // Check if user_id is present in sessionStorage
+            const userId = sessionStorage.getItem('user_id');
+            if (userId) {
+                // If user_id is present, redirect to dashboard.html
+                window.location.href = "dashboard.html";
+            } else {
+                // If user_id is not present, redirect to login.html
+                window.location.href = "login.html";
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- You can add a loading message or spinner here if you like -->
+</body>
+</html>
